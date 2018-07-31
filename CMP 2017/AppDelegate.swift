@@ -8,6 +8,8 @@
 
 import UIKit
 import AERecord
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let image = UIImage(named: "list_black")
+        
+//        Fabric.with([Crashlytics.self])
         
         SideMenuController.preferences.drawing.menuButtonImage = image
         SideMenuController.preferences.drawing.sidePanelPosition = .overCenterPanelLeft

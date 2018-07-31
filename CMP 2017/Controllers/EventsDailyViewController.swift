@@ -63,11 +63,14 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "Program") as! EventsViewController
+        let event = eventsArrray![indexPath.row]
+        newViewController.filterString = event.dailyEventDate
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     func loadDailyEvents() {
-        let request = CDDailyEvent.createFetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "dailyEventDate", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        let request = CDDailyEvent.createFetchRequest(predicate: nil, sortDescriptors: [sortDescriptor])
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDDailyEvent];
         self.collectionView?.reloadData()

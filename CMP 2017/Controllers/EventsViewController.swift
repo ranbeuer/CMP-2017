@@ -21,6 +21,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var query: String?
     var imagesArray: [String] = ["sample_conf1", "sample_conf2","sample"]
     var sponsors : SponsorsViewController?
+    var filterString : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,13 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (sponsors == nil) {
+        if (sponsors == nil && eventsArrray?.count != 0) {
             sponsors = self.storyboard?.instantiateViewController(withIdentifier: "Sponsors") as! SponsorsViewController
             sponsors?.modalPresentationStyle = .overCurrentContext
             sponsors?.modalTransitionStyle = .crossDissolve
             self.present(sponsors!, animated: true, completion: nil)
+        } else if (eventsArrray?.count == 0) {
+            
         }
     }
     
@@ -74,8 +77,17 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         return size
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let event = eventsArrray![indexPath.row]
+        let detail = self.storyboard?.instantiateViewController(withIdentifier: "EventDetail") as! EventDetailViewController
+        detail.event = event
+        self.show(detail, sender: nil)
+    }
+    
     func loadEvents() {
         let request = CDEvent.createFetchRequest()
+        let query = "eventDate = \"" + filterString! + "\""
+        request.predicate = NSPredicate(format: query)
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDEvent];
         self.collectionView?.reloadData()

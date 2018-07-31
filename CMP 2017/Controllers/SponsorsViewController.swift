@@ -14,7 +14,8 @@ class SponsorsViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - Vars -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let bgView = self.view.viewWithTag(3)
+        bgView?.layer.cornerRadius = 15
         // Do any additional setup after loading the view.
     }
     

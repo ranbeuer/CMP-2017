@@ -68,7 +68,7 @@ class InitialViewController : UIViewController {
     }
     
     func saveEvents(_ events: [Event]) {
-        for (i, event) in events.enumerated() {
+        for (_, event) in events.enumerated() {
             insertEvent(event: event)
         }
         AERecord.saveAndWait()
