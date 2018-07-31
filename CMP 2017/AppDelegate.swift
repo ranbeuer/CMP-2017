@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AERecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let image = UIImage(named: "list_black")
+        
+        SideMenuController.preferences.drawing.menuButtonImage = image
+        SideMenuController.preferences.drawing.sidePanelPosition = .overCenterPanelLeft
+        SideMenuController.preferences.drawing.sidePanelWidth = UIScreen.main.bounds.size.width
+        SideMenuController.preferences.drawing.centerPanelShadow = true
+        SideMenuController.preferences.animating.statusBarBehaviour = .horizontalPan
+        
+        do {
+            try AERecord.loadCoreDataStack()
+        } catch {
+            print(error)
+        }
         return true
     }
 

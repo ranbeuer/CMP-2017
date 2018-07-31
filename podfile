@@ -1,0 +1,16 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+
+target 'CMP 2017' do
+
+use_frameworks!
+pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
+pod 'AlamofireObjectMapper', '~> 5.0'
+#pod 'CoreStore', '~> 5.0'
+pod 'AERecord'
+pod 'UINavigationBar-Transparent'
+pod 'Kingfisher', '~> 4.0'
+#pod 'SideMenu'
+#pod 'SideMenuController'
+end

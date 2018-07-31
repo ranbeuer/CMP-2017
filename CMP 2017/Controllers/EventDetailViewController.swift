@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //  CMP 2017
 //
 //  Created by Rodolfo Casanova on 6/23/18.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class EventDetailViewController: UIViewController {
+    @IBOutlet var collectionView : UICollectionView?
+    var eventsArrray: [Event]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
