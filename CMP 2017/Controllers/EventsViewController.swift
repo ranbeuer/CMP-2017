@@ -12,6 +12,7 @@ import Alamofire
 import AlamofireObjectMapper
 import Kingfisher
 import AERecord
+import SVProgressHUD
 
 class EventsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -33,12 +34,12 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (sponsors == nil && eventsArrray?.count != 0) {
-            sponsors = self.storyboard?.instantiateViewController(withIdentifier: "Sponsors") as! SponsorsViewController
+            sponsors = self.storyboard?.instantiateViewController(withIdentifier: "Sponsors") as? SponsorsViewController
             sponsors?.modalPresentationStyle = .overCurrentContext
             sponsors?.modalTransitionStyle = .crossDissolve
             self.present(sponsors!, animated: true, completion: nil)
         } else if (eventsArrray?.count == 0) {
-            
+            SVProgressHUD.showError(withStatus: "No hay eventos para éste día.")
         }
     }
     

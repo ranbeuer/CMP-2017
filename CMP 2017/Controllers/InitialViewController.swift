@@ -12,10 +12,11 @@ import Alamofire
 import UINavigationBar_Transparent
 import AERecord
 import CoreData
+import SVProgressHUD
 
 class InitialViewController : UIViewController {
     var eventsRetrieved = false
-    var exhibitorsRetrieved = false
+    var exhibitorsRetrieved = true
     var programRetrieved = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class InitialViewController : UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        SVProgressHUD.show(withStatus: "Por favor espere...")
         WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
@@ -31,13 +33,13 @@ class InitialViewController : UIViewController {
             self.programRetrieved = true
             self.showMainMenu()
         }
-        WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
-            if error == nil {
+//        WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
+//            if error == nil {
 //                self.saveExhibitors((response?.value?.result)!)
-            }
-            self.exhibitorsRetrieved = true
-            self.showMainMenu()
-        }
+//            }
+//            self.exhibitorsRetrieved = true
+//            self.showMainMenu()
+//        }
         
         WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
             if error == nil {
@@ -55,6 +57,7 @@ class InitialViewController : UIViewController {
     
     func showMainMenu() {
         if eventsRetrieved && exhibitorsRetrieved && programRetrieved {
+            SVProgressHUD.dismiss()
             let sideMenu = SideMenuController()
             let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
             let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController

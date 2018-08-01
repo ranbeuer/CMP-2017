@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "554756671.1595401"
+            timestampString = "554761687.996864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106">
+            startingLineNumber = "105"
+            endingLineNumber = "105">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "554756671.1623549"
+            timestampString = "554761688.007531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106">
+            startingLineNumber = "105"
+            endingLineNumber = "105">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -54,11 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "554756671.1632529"
+            timestampString = "554761688.007997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106">
+            startingLineNumber = "105"
+            endingLineNumber = "105">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -164,13 +164,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "554756671.164391"
+            timestampString = "554761688.00872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "EventsViewController"
-            landmarkType = "3">
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -180,13 +180,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/InitialViewController.swift"
-            timestampString = "554756671.1651011"
+            timestampString = "554761688.011025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "insertEvent(event:)"
-            landmarkType = "7">
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -196,13 +196,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "554756671.166743"
+            timestampString = "554761688.0121371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

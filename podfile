@@ -13,7 +13,7 @@ pod 'UINavigationBar-Transparent'
 pod 'Kingfisher', '~> 4.0'
 pod 'Fabric'
 pod 'Crashlytics'
-pod 'MBProgressHUD'
+pod 'SVProgressHUD'
 #pod 'SideMenu'
 #pod 'SideMenuController'
 end
