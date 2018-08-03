@@ -19,9 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_news" translatesAutoresizingMaskIntoConstraints="NO" id="4R8-Gw-K9g">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MqH-uA-4ie">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="Zke-pu-R90">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -109,8 +112,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="4R8-Gw-K9g" secondAttribute="trailing" id="3fL-3e-aWc"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="MqH-uA-4ie" secondAttribute="trailing" id="4jI-Fa-1aw"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="4R8-Gw-K9g" secondAttribute="bottom" id="S34-VN-jiY"/>
+                            <constraint firstItem="4R8-Gw-K9g" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="SPS-ZR-6A2"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="MqH-uA-4ie" secondAttribute="bottom" id="iB6-Tq-qEd"/>
+                            <constraint firstItem="4R8-Gw-K9g" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ijl-Sq-Owl"/>
                             <constraint firstItem="MqH-uA-4ie" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="20" id="mj0-lP-5ap"/>
                             <constraint firstItem="MqH-uA-4ie" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="v4W-0j-Fwy"/>
                         </constraints>
@@ -877,6 +884,7 @@
     <resources>
         <image name="bg_addevent" width="226" height="403"/>
         <image name="bg_login" width="226" height="403"/>
+        <image name="bg_news" width="375" height="804"/>
         <image name="ic_facebook" width="24" height="24"/>
         <image name="ic_google" width="24" height="24"/>
         <image name="ic_twitter" width="24" height="24"/>
