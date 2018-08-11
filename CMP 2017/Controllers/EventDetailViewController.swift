@@ -34,8 +34,24 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         }
         widthConstraint?.constant = self.view.frame.size.width
         containerView.setNeedsLayout()
+        
+        let gradient = CAGradientLayer()
+        var rect = self.view.bounds
+        rect.origin.y += (rect.size.height - (rect.size.height / 3))
+        rect.size.height = rect.size.height / 3
+        gradient.frame = rect
+        gradient.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.5), UIColor.white.cgColor]
+        gradient.locations = [0, 0.6, 1]
+        self.view.layer.addSublayer(gradient)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setTitleBarItemsColor(color: UIColor.black)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -28,11 +28,18 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         self.title = "PROGRAM"
         self.loadEvents()
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setTitleBarItemsColor(color: UIColor.white)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if (sponsors == nil && eventsArrray?.count != 0) {
             sponsors = self.storyboard?.instantiateViewController(withIdentifier: "Sponsors") as? SponsorsViewController
             sponsors?.modalPresentationStyle = .overCurrentContext

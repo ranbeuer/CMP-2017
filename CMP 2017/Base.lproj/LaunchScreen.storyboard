@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_addevent" translatesAutoresizingMaskIntoConstraints="NO" id="aQ4-fq-Hl1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQ4-fq-Hl1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                         </subviews>
@@ -37,7 +37,4 @@
             <point key="canvasLocation" x="-4580" y="618"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bg_addevent" width="226" height="403"/>
-    </resources>
 </document>

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let image = UIImage(named: "list_black")
+        let image = UIImage(named: "list_black1") //Leo Cid remove 1 to enable side menu
         
 //        Fabric.with([Crashlytics.self])
         
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SideMenuController.preferences.drawing.sidePanelWidth = UIScreen.main.bounds.size.width
         SideMenuController.preferences.drawing.centerPanelShadow = true
         SideMenuController.preferences.animating.statusBarBehaviour = .horizontalPan
-        
+        SideMenuController.preferences.interaction.swipingEnabled = false //remove to enable swiping on side menu
         do {
             try AERecord.loadCoreDataStack()
         } catch {

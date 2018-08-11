@@ -11,7 +11,6 @@
 		69FB64C120DEFE9E008E58D2 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64C020DEFE9E008E58D2 /* EventDetailViewController.swift */; };
 		69FB64C320DEFE9E008E58D2 /* EventsDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64C220DEFE9E008E58D2 /* EventsDailyViewController.swift */; };
 		69FB64C620DEFE9E008E58D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69FB64C420DEFE9E008E58D2 /* Main.storyboard */; };
-		69FB64C820DEFEAF008E58D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FB64C720DEFEAF008E58D2 /* Assets.xcassets */; };
 		69FB64CB20DEFEAF008E58D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69FB64C920DEFEAF008E58D2 /* LaunchScreen.storyboard */; };
 		69FB64D620DEFEB0008E58D2 /* CMP_2017Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64D520DEFEB0008E58D2 /* CMP_2017Tests.swift */; };
 		69FB64E120DEFEB0008E58D2 /* CMP_2017UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64E020DEFEB0008E58D2 /* CMP_2017UITests.swift */; };
@@ -19,6 +18,7 @@
 		69FB64F320DF0927008E58D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64F220DF0927008E58D2 /* LoginViewController.swift */; };
 		69FB64F520DF09A4008E58D2 /* RegistryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */; };
 		938BFAF6FCEE6152A5CE8CF7 /* Pods_CMP_2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47523B794193B1632B443149 /* Pods_CMP_2017.framework */; };
+		A802DC472114D30E00E455C0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802DC462114D30E00E455C0 /* UIViewController.swift */; };
 		A83E65FD210EA03C00047B87 /* WSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E65FC210EA03C00047B87 /* WSHelper.swift */; };
 		A83E6600210EA2B900047B87 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E65FF210EA2B900047B87 /* Event.swift */; };
 		A83E6602210EA2C500047B87 /* Exhibitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E6601210EA2C500047B87 /* Exhibitor.swift */; };
@@ -42,6 +42,7 @@
 		A83E669D210F6FBC00047B87 /* CenteredFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E669C210F6FBC00047B87 /* CenteredFlowLayout.swift */; };
 		A83E669F210FF27C00047B87 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E669E210FF27C00047B87 /* EventsViewController.swift */; };
 		A83E66A1211029C400047B87 /* EventProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E66A0211029C400047B87 /* EventProgramCell.swift */; };
+		A88F3C11211EFB130093992C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88F3C10211EFB120093992C /* Assets.xcassets */; };
 		A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */; };
 		A8AFC5EE211041A00096E7A5 /* CDEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5EA2110419F0096E7A5 /* CDEvent+CoreDataProperties.swift */; };
 		A8AFC5EF211041A00096E7A5 /* CDDailyEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5EB2110419F0096E7A5 /* CDDailyEvent+CoreDataClass.swift */; };
@@ -77,7 +78,6 @@
 		69FB64C020DEFE9E008E58D2 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		69FB64C220DEFE9E008E58D2 /* EventsDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDailyViewController.swift; sourceTree = "<group>"; };
 		69FB64C520DEFE9E008E58D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		69FB64C720DEFEAF008E58D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69FB64CA20DEFEAF008E58D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69FB64CC20DEFEAF008E58D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FB64D120DEFEB0008E58D2 /* CMP 2017Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CMP 2017Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +90,7 @@
 		69FB64F120DF0155008E58D2 /* CMP 2017.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CMP 2017.entitlements"; sourceTree = "<group>"; };
 		69FB64F220DF0927008E58D2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewController.swift; sourceTree = "<group>"; };
+		A802DC462114D30E00E455C0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A83E65FC210EA03C00047B87 /* WSHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSHelper.swift; sourceTree = "<group>"; };
 		A83E65FF210EA2B900047B87 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A83E6601210EA2C500047B87 /* Exhibitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibitor.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		A83E669C210F6FBC00047B87 /* CenteredFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFlowLayout.swift; sourceTree = "<group>"; };
 		A83E669E210FF27C00047B87 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		A83E66A0211029C400047B87 /* EventProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProgramCell.swift; sourceTree = "<group>"; };
+		A88F3C10211EFB120093992C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "CMP 2017/Assets.xcassets"; sourceTree = "<group>"; };
 		A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CMP.xcdatamodel; sourceTree = "<group>"; };
 		A8AFC5EA2110419F0096E7A5 /* CDEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AFC5EB2110419F0096E7A5 /* CDDailyEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDDailyEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				69FB64D420DEFEB0008E58D2 /* CMP 2017Tests */,
 				69FB64DF20DEFEB0008E58D2 /* CMP 2017UITests */,
 				69FB64BC20DEFE9E008E58D2 /* Products */,
+				A88F3C10211EFB120093992C /* Assets.xcassets */,
 				69FB64EE20DF0142008E58D2 /* Frameworks */,
 				E826E48DAC6C82EF77B7369D /* Pods */,
 			);
@@ -174,6 +177,7 @@
 		69FB64BD20DEFE9E008E58D2 /* CMP 2017 */ = {
 			isa = PBXGroup;
 			children = (
+				A802DC452114D16100E455C0 /* Categories */,
 				A8AFC5D921103FE90096E7A5 /* CoreDataEntities */,
 				A83E669B210F6FAE00047B87 /* Layouts */,
 				A83E6685210F0C5600047B87 /* SideMenuController */,
@@ -185,7 +189,6 @@
 				69FB64F120DF0155008E58D2 /* CMP 2017.entitlements */,
 				69FB64BE20DEFE9E008E58D2 /* AppDelegate.swift */,
 				69FB64C420DEFE9E008E58D2 /* Main.storyboard */,
-				69FB64C720DEFEAF008E58D2 /* Assets.xcassets */,
 				69FB64C920DEFEAF008E58D2 /* LaunchScreen.storyboard */,
 				69FB64CC20DEFEAF008E58D2 /* Info.plist */,
 			);
@@ -232,6 +235,14 @@
 				A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A802DC452114D16100E455C0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A802DC462114D30E00E455C0 /* UIViewController.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		A83E65FB210EA02200047B87 /* Network */ = {
@@ -452,10 +463,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FB64CB20DEFEAF008E58D2 /* LaunchScreen.storyboard in Resources */,
-				69FB64C820DEFEAF008E58D2 /* Assets.xcassets in Resources */,
 				A83E669A210F0C5600047B87 /* README.md in Resources */,
 				A83E6691210F0C5600047B87 /* LICENSE in Resources */,
 				69FB64C620DEFE9E008E58D2 /* Main.storyboard in Resources */,
+				A88F3C11211EFB130093992C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +515,9 @@
 				"${BUILT_PRODUCTS_DIR}/AERecord/AERecord.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Atlas/Atlas.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${PODS_ROOT}/LayerKit/LayerKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
@@ -515,7 +528,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AERecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LayerKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
@@ -541,6 +556,7 @@
 				A83E6602210EA2C500047B87 /* Exhibitor.swift in Sources */,
 				69FB64F320DF0927008E58D2 /* LoginViewController.swift in Sources */,
 				A83E660E210ED89E00047B87 /* InitialViewController.swift in Sources */,
+				A802DC472114D30E00E455C0 /* UIViewController.swift in Sources */,
 				A83E65FD210EA03C00047B87 /* WSHelper.swift in Sources */,
 				A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */,
 				A83E6697210F0C5600047B87 /* SideMenuController+SideUnder.swift in Sources */,
@@ -741,12 +757,16 @@
 			baseConfigurationReference = 480EED372DA464A51B350C9A /* Pods-CMP 2017.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FD7V433D7B;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -759,12 +779,16 @@
 			baseConfigurationReference = 0614B314E33E3532C70BAEF7 /* Pods-CMP 2017.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FD7V433D7B;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -779,7 +803,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -795,7 +823,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -810,7 +842,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -825,7 +861,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
