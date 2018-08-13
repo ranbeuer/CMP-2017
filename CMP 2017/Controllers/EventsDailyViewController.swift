@@ -11,10 +11,14 @@ import Alamofire
 import AlamofireObjectMapper
 import Kingfisher
 import AERecord
+import CoreData
+import SVProgressHUD
 
 class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet var collectionView : UICollectionView?
+    @IBOutlet var reloadButton : UIButton?
+    var loadingObjects : Bool = false;
     
     var eventsArrray: [CDDailyEvent]?
     
@@ -23,6 +27,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
 //        let flowLayout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
 //        flowLayout.minimumLineSpacing = 0
         self.loadDailyEvents()
+        reloadButton?.layer.cornerRadius = 10
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -78,12 +83,79 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         let request = CDDailyEvent.createFetchRequest(predicate: nil, sortDescriptors: [sortDescriptor])
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDDailyEvent];
-        self.collectionView?.reloadData()
+        self.collectionView?.performBatchUpdates({
+            self.collectionView?.reloadData()
+        }, completion: { (finished: Bool) in
+            
+        })
+        
 //        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
 //            if error == nil {
 //                self.eventsArrray = response?.value?.result
 //                self.collectionView?.reloadData()
 //            }
 //        }
+    }
+    
+    @IBAction func reloadButtonPressed(sender: UIButton) {
+        if !loadingObjects {
+            loadingObjects = true;
+            SVProgressHUD.show(withStatus: "Cargando...")
+            reloadEvents()
+        }
+    }
+    
+    func reloadEvents() {
+        WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
+            if error == nil {
+                self.saveEvents((response?.value?.result)!)
+            }
+        }
+        
+        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
+            if error == nil {
+                self.saveDailyEvents(events: (response?.value?.result)!)
+                self.loadDailyEvents()
+                SVProgressHUD.dismiss()
+                self.loadingObjects = false;
+
+            }
+        }
+    }
+    
+    func saveEvents(_ events: [Event]) {
+        for (_, event) in events.enumerated() {
+            insertEvent(event: event)
+        }
+        AERecord.saveAndWait()
+    }
+    
+    func recordExists(id: Int, entity: String, field: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
+        fetchRequest.predicate = NSPredicate(format: "\(field) = %d", id)
+        
+        let results = AERecord.execute(fetchRequest: fetchRequest)
+        return results.count > 0
+    }
+    
+    func insertEvent(event: Event) {
+        if !recordExists(id: event.idEvent!, entity: "CDEvent", field: "idEvent") {
+            CDEvent.create(with: ["idEvent":event.idEvent!,"eventDate":event.eventDate!,"eventDescription":event.eventDescription!,"eventHour":event.eventHour!,"image":event.image!,"name":event.name!])
+            AERecord.saveAndWait()
+        }
+    }
+    
+    func saveDailyEvents(events: [DailyEvent]) {
+        for (i, event) in events.enumerated() {
+            insertDailyEvent(event: event)
+        }
+        AERecord.saveAndWait()
+    }
+    
+    func insertDailyEvent(event: DailyEvent) {
+        if !recordExists(id: event.idDailyEvent!, entity: "CDDailyEvent", field: "id") {
+            CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
+            
+        }
     }
 }

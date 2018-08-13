@@ -55,6 +55,8 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
