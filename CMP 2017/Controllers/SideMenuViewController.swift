@@ -58,6 +58,54 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        var centerViewController : UIViewController!
+        
+        switch(indexPath.row) {
+        case 0:
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "exhibitors")
+            if centerViewController != nil {
+                sideMenuController?.embed(centerViewController: centerViewController)
+            } else if !(self.sideMenuController?.centerViewController.isKind(of: ExhibitorsViewController.self))!{
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Exhibitors")
+                centerViewController.title = "Exhibitors"
+                let navController = UINavigationController(rootViewController: centerViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "exhibitors")
+            }
+            break
+        case 1:
+            if (!(self.sideMenuController?.centerViewController.isKind(of: EventsDailyViewController.self))!) {
+                centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "events")
+                self.sideMenuController?.embed(centerViewController: centerViewController)
+            }
+            break
+        case 2:
+            
+            break
+        case 3:
+            
+            break
+        case 4:
+            
+            break
+        case 5:
+            
+            break
+        case 6:
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "profile")
+            if centerViewController != nil {
+                sideMenuController?.embed(centerViewController: centerViewController)
+            } else if !(self.sideMenuController?.centerViewController.isKind(of: ProfileViewController.self))!{
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile")
+                centerViewController.title = "Profile"
+                sideMenuController?.embed(centerViewController: centerViewController, cacheIdentifier: "profile")
+            }
+            break
+        default:
+            
+            break
+        }
         self.sideMenuController?.toggle()
     }
 }

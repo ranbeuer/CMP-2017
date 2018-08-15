@@ -16,7 +16,7 @@ import SVProgressHUD
 
 class InitialViewController : UIViewController {
     var eventsRetrieved = false
-    var exhibitorsRetrieved = true
+    var exhibitorsRetrieved = false
     var programRetrieved = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +33,13 @@ class InitialViewController : UIViewController {
             self.programRetrieved = true
             self.showMainMenu()
         }
-//        WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
-//            if error == nil {
-//                self.saveExhibitors((response?.value?.result)!)
-//            }
-//            self.exhibitorsRetrieved = true
-//            self.showMainMenu()
-//        }
+        WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
+            if error == nil {
+                self.saveExhibitors((response?.value?.result)!)
+            }
+            self.exhibitorsRetrieved = true
+            self.showMainMenu()
+        }
         
         WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
             if error == nil {
@@ -102,9 +102,18 @@ class InitialViewController : UIViewController {
     func insertDailyEvent(event: DailyEvent) {
         if !recordExists(id: event.idDailyEvent!, entity: "CDDailyEvent", field: "id") {
             CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
-            
         }
     }
     
-//    func insert exhibitor(event: )
+    func saveExhibitors(_ exhibitors: [Exhibitor]) {
+        for (i, exhibitor) in exhibitors.enumerated() {
+            insertExhibitor(exhibitor: exhibitor)
+        }
+        AERecord.saveAndWait()
+    }
+    func insertExhibitor(exhibitor: Exhibitor ) {
+        if !recordExists(id: exhibitor.idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
+            CDExhibitor.create(with: ["idExhibitor":exhibitor.idExhibitor!,"degree":exhibitor.degree!,"email":exhibitor.email!,"history":exhibitor.history!,"job":exhibitor.job!,"lastName":exhibitor.lastName ?? "", "name":exhibitor.name!, "phoneNumber":exhibitor.phonenumber!, "url":exhibitor.picture!, "type":exhibitor.type!])
+        }
+    }
  }

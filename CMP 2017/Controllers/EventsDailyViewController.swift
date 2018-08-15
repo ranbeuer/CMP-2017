@@ -57,7 +57,13 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dailyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DailyCell", for: indexPath) as! DailyEventCell
         let event = eventsArrray![indexPath.row]
-        dailyCell.backgroundImageView?.kf.setImage(with: URL(string: event.image!))
+        var url: URL
+        if event.image!.starts(with: "http") {
+            url = URL(string: event.image!)!
+        } else {
+            url = URL(string: WSHelper.getBaseURL() + event.image!)!
+        }
+        dailyCell.backgroundImageView?.kf.setImage(with: url)
         dailyCell.layer.cornerRadius = 10
         dailyCell.nameLabel?.text = event.dailyEventName
         dailyCell.descriptionLabel?.text = event.dailyEventDescription

@@ -24,7 +24,7 @@ class WSHelper {
     /// Indicates if the application is pointing to prod or dev env
     let devEnv = true
     /// Configurable base URL, it can be either prod or dev
-    var baseURL : String
+    static var baseURL : String!
     /// If set to true it will let the application to show the requests and responses
     static let logEverything = false
     
@@ -36,11 +36,20 @@ class WSHelper {
     public typealias ResultBlockForDEvent = (_ response: DataResponse<DailyEventsResponse>?, _ error: Error?)-> Void
     
     init() {
-        baseURL = devEnv ? devURL : prodURL
+        WSHelper.setBaseURL(devEnv ? devURL : prodURL)
     }
     
+    static func setBaseURL(_ url: String) {
+        baseURL = url
+    }
+    
+    static func getBaseURL() -> String! {
+        return baseURL!
+    }
+    
+    
     func getEvents(result: @escaping ResultBlockForEvents) {
-        let url = baseURL + kURLEvents
+        let url = WSHelper.getBaseURL() + kURLEvents
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<EventsResponse>) in
             switch response.result {
@@ -66,7 +75,7 @@ class WSHelper {
     }
     
     func getExhibitors(result: @escaping ResultBlockForExhibitor) {
-        let url = baseURL + kURLExhibitor
+        let url = WSHelper.getBaseURL() + kURLExhibitor
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<ExhibitorResponse>) in
             switch response.result {
@@ -92,7 +101,7 @@ class WSHelper {
     }
     
     func getDaily(result: @escaping ResultBlockForDEvent) {
-        let url = baseURL + kURLDailyEvents
+        let url = WSHelper.getBaseURL() + kURLDailyEvents
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<DailyEventsResponse>) in
             switch response.result {

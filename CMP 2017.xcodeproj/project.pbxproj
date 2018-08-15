@@ -50,6 +50,11 @@
 		A8AFC5F1211041A00096E7A5 /* CDEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5ED211041A00096E7A5 /* CDEvent+CoreDataClass.swift */; };
 		A8AFC5F3211094A30096E7A5 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */; };
 		A8AFC5F52110983A0096E7A5 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */; };
+		A8D25CDE2123E40300D58159 /* ExhibitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CDD2123E40300D58159 /* ExhibitorViewController.swift */; };
+		A8D25CE02123E66D00D58159 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CDF2123E66D00D58159 /* UIColor.swift */; };
+		A8D25CE221246CDB00D58159 /* ExhibitorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */; };
+		A8D25CE42124736600D58159 /* ExhibitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */; };
+		A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE521248C1900D58159 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +127,11 @@
 		A8AFC5ED211041A00096E7A5 /* CDEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
 		A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
+		A8D25CDD2123E40300D58159 /* ExhibitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorViewController.swift; sourceTree = "<group>"; };
+		A8D25CDF2123E66D00D58159 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorCell.swift; sourceTree = "<group>"; };
+		A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorsViewController.swift; sourceTree = "<group>"; };
+		A8D25CE521248C1900D58159 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +243,9 @@
 				69FB64F220DF0927008E58D2 /* LoginViewController.swift */,
 				A83E660D210ED89E00047B87 /* InitialViewController.swift */,
 				A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */,
+				A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */,
+				A8D25CDD2123E40300D58159 /* ExhibitorViewController.swift */,
+				A8D25CE521248C1900D58159 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -241,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				A802DC462114D30E00E455C0 /* UIViewController.swift */,
+				A8D25CDF2123E66D00D58159 /* UIColor.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -280,6 +294,7 @@
 				A83E6683210F02E200047B87 /* DailyEventCell.swift */,
 				A83E66A0211029C400047B87 /* EventProgramCell.swift */,
 				A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */,
+				A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -561,6 +576,7 @@
 				A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */,
 				A83E6697210F0C5600047B87 /* SideMenuController+SideUnder.swift in Sources */,
 				A83E6609210EC17C00047B87 /* SideMenuViewController.swift in Sources */,
+				A8D25CE02123E66D00D58159 /* UIColor.swift in Sources */,
 				A83E669F210FF27C00047B87 /* EventsViewController.swift in Sources */,
 				A83E667F210F004F00047B87 /* DailyEvent.swift in Sources */,
 				A83E6696210F0C5600047B87 /* SideMenuController+CustomTypes.swift in Sources */,
@@ -570,7 +586,9 @@
 				A83E6699210F0C5600047B87 /* SideMenuController+SideOver.swift in Sources */,
 				A83E6695210F0C5600047B87 /* UIKitExtensions.swift in Sources */,
 				A83E6681210F016400047B87 /* DailyEventsResponse.swift in Sources */,
+				A8D25CE221246CDB00D58159 /* ExhibitorCell.swift in Sources */,
 				A83E6600210EA2B900047B87 /* Event.swift in Sources */,
+				A8D25CDE2123E40300D58159 /* ExhibitorViewController.swift in Sources */,
 				A83E6694210F0C5600047B87 /* TransitionAnimator.swift in Sources */,
 				A83E6684210F02E200047B87 /* DailyEventCell.swift in Sources */,
 				69FB64F520DF09A4008E58D2 /* RegistryViewController.swift in Sources */,
@@ -581,7 +599,9 @@
 				69FB64BF20DEFE9E008E58D2 /* AppDelegate.swift in Sources */,
 				A8AFC5F3211094A30096E7A5 /* SponsorsViewController.swift in Sources */,
 				69FB64C120DEFE9E008E58D2 /* EventDetailViewController.swift in Sources */,
+				A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */,
 				A83E66A1211029C400047B87 /* EventProgramCell.swift in Sources */,
+				A8D25CE42124736600D58159 /* ExhibitorsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,10 +17,21 @@
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CDExhibitor" representedClassName="CDExhibitor" syncable="YES" codeGenerationType="class"/>
+    <entity name="CDExhibitor" representedClassName="CDExhibitor" syncable="YES" codeGenerationType="class">
+        <attribute name="degree" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="history" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idExhibitor" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="job" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="CDEvent" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="CDDailyEvent" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="CDExhibitor" positionX="-36" positionY="9" width="128" height="45"/>
+        <element name="CDEvent" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="CDExhibitor" positionX="-36" positionY="9" width="128" height="195"/>
     </elements>
 </model>

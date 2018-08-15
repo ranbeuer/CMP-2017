@@ -16,5 +16,5 @@ pod 'Crashlytics'
 pod 'SVProgressHUD'
 pod 'Atlas'
 #pod 'SideMenu'
-#pod 'SideMenuController'
+pod 'SideMenuController'
 end

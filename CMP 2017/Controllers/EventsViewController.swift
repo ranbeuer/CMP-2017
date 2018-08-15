@@ -68,7 +68,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dailyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventProgramCell", for: indexPath) as! EventProgramCell
         let event = eventsArrray![indexPath.row]
-        let url = WSHelper.sharedInstance.baseURL +  event.image!
+        let url = WSHelper.getBaseURL() +  event.image!
         let placeholderIndex = indexPath.row % imagesArray.count
         dailyCell.backgroundImageView?.kf.setImage(with: URL(string: url), placeholder: UIImage(named: imagesArray[placeholderIndex]), options: nil, progressBlock: nil, completionHandler: { (image : UIImage, error: NSError?, cacheType : CacheType, url: URL?) in
             
