@@ -16,9 +16,13 @@ class WSHelper {
     private let prodURL = "http://api.unitedsteelsupply.com"
     
     let kURLEvents = "/events"
+    let kURLLogin = "/session/login"
+    let kURLCreateUser = "/users/create"
     let kURLEventsRelExhibitor = "/events/relation/exhibitor"
     let kURLExhibitor = "/events/exhibitor"
     let kURLDailyEvents = "/events/daily"
+    let kURLAvatar = "/images/avatar"
+    let kURLUploadAvatar = "/upload/avatar"
     
     
     /// Indicates if the application is pointing to prod or dev env

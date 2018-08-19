@@ -60,28 +60,37 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
         
         var centerViewController : UIViewController!
-        
+        let currentCenter = self.sideMenuController?.centerViewController
         switch(indexPath.row) {
         case 0:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "exhibitors")
-            if centerViewController != nil {
-                sideMenuController?.embed(centerViewController: centerViewController)
-            } else if !(self.sideMenuController?.centerViewController.isKind(of: ExhibitorsViewController.self))!{
+            if centerViewController == nil {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Exhibitors")
                 centerViewController.title = "Exhibitors"
                 let navController = UINavigationController(rootViewController: centerViewController)
                 navController.navigationBar.setBarColor(UIColor.clear)
                 sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "exhibitors")
+            } else if centerViewController  != currentCenter {
+                sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
         case 1:
-            if (!(self.sideMenuController?.centerViewController.isKind(of: EventsDailyViewController.self))!) {
-                centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "events")
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "events")
+            if centerViewController  != currentCenter {
                 self.sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
         case 2:
-            
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "networking")
+            if centerViewController == nil {
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Networking")
+                centerViewController.title = "NETWORKING"
+                let navController = UINavigationController(rootViewController: centerViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "networking")
+            } else if centerViewController  != currentCenter {
+                sideMenuController?.embed(centerViewController: centerViewController)
+            }
             break
         case 3:
             
@@ -94,12 +103,12 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 6:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "profile")
-            if centerViewController != nil {
-                sideMenuController?.embed(centerViewController: centerViewController)
-            } else if !(self.sideMenuController?.centerViewController.isKind(of: ProfileViewController.self))!{
+            if centerViewController == nil {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile")
                 centerViewController.title = "Profile"
                 sideMenuController?.embed(centerViewController: centerViewController, cacheIdentifier: "profile")
+            } else if centerViewController  != currentCenter {
+                sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
         default:

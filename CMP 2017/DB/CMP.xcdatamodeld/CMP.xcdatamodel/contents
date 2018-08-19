@@ -17,7 +17,7 @@
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CDExhibitor" representedClassName="CDExhibitor" syncable="YES" codeGenerationType="class">
+    <entity name="CDExhibitor" representedClassName="CDExhibitor" syncable="YES">
         <attribute name="degree" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="history" optional="YES" attributeType="String" syncable="YES"/>
