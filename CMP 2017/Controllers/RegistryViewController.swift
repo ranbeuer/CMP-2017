@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
 
 class RegistryViewController: UIViewController {
 
     // MARK: - Vars -
     @IBOutlet weak var fullNameTextField: UITextField!
+    
+    @IBOutlet weak var lastNameTextField: UITextField!
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -26,6 +30,9 @@ class RegistryViewController: UIViewController {
         fullNameTextField.layer.cornerRadius = 5
         fullNameTextField.layer.borderWidth = 1
         fullNameTextField.layer.borderColor = UIColor.white.cgColor
+        lastNameTextField.layer.cornerRadius = 5
+        lastNameTextField.layer.borderWidth = 1
+        lastNameTextField.layer.borderColor = UIColor.white.cgColor
         emailTextField.layer.cornerRadius = 5
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.white.cgColor
@@ -55,7 +62,56 @@ class RegistryViewController: UIViewController {
     */
     
     @IBAction func signUpPressed(_ sender: Any) {
+        if validateFields() {
+            SVProgressHUD.show(withStatus: "Creando Usuario...")
+            WSHelper.sharedInstance.createUser(email: emailTextField.text!, password: passwordTextField.text!, name: fullNameTextField.text!, lastName: lastNameTextField.text!) { (_ response:Any? , _ error: Error?) in
+                if error == nil {
+                    WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
+                        if (error == nil) {
+                            SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
+                            self.showAddEventScreen()
+                        } else {
+                            SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                        }
+                    })
+                    
+                } else {
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    @IBAction func checkPressed(_ sender: UIButton) {
         
+        sender.isSelected = !sender.isSelected
+        signUpButton.isEnabled = sender.isSelected
+    }
+    
+    func validateFields() -> Bool {
+        if fullNameTextField.text?.count == 0 {
+            SVProgressHUD.showError(withStatus: "Please enter your first name.")
+            return false
+        } else if lastNameTextField.text?.count == 0 {
+            SVProgressHUD.showError(withStatus: "Please enter your last name.")
+            return false
+        } else if emailTextField.text?.count == 0 {
+            SVProgressHUD.showError(withStatus: "Please enter your email.")
+            return false
+        } else if !(emailTextField.text?.isValidMail())! {
+            SVProgressHUD.showError(withStatus: "Please enter a valid email.")
+            return false
+        } else if passwordTextField.text?.count == 0 {
+            SVProgressHUD.showError(withStatus: "Please enter a valid password.")
+            return false
+        } else {
+            return true
+        }
     }
 
+    func showAddEventScreen() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
+        self.present(vc!, animated: true, completion: nil)
+    }
 }

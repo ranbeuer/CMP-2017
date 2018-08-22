@@ -24,14 +24,20 @@ class AddEventViewController : UIViewController {
     var eventsRetrieved = false
     var exhibitorsRetrieved = false
     var programRetrieved = false
+    var shownMenu = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        WSHelper.sharedInstance.getUserProfile { (_ response : Any?, _ error: Error?) in
+            if error == nil {
+                SessionHelper.instance.saveUserInfo(response as! [String : Any])
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,6 +81,10 @@ class AddEventViewController : UIViewController {
     
     func showMainMenu() {
         if eventsRetrieved && exhibitorsRetrieved && programRetrieved {
+            if (shownMenu) {
+                return
+            }
+            shownMenu = true
             SVProgressHUD.dismiss()
             let sideMenu = SideMenuController()
             let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
@@ -84,7 +94,8 @@ class AddEventViewController : UIViewController {
             navController.navigationBar.setBarColor(UIColor.clear)
             sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")
             sideMenu.embed(sideViewController: sideMenuViewController)
-            self.show(sideMenu, sender: nil)
+            sideMenu.modalTransitionStyle = .crossDissolve
+            self.present(sideMenu, animated: true, completion: nil)
         }
     }
     

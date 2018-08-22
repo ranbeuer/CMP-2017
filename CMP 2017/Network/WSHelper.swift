@@ -15,14 +15,18 @@ class WSHelper {
     /// Prod Base url
     private let prodURL = "http://api.unitedsteelsupply.com"
     
-    let kURLEvents = "/events"
-    let kURLLogin = "/session/login"
-    let kURLCreateUser = "/users/create"
-    let kURLEventsRelExhibitor = "/events/relation/exhibitor"
-    let kURLExhibitor = "/events/exhibitor"
-    let kURLDailyEvents = "/events/daily"
-    let kURLAvatar = "/images/avatar"
-    let kURLUploadAvatar = "/upload/avatar"
+    
+    let kURLLogin =                 "/session/login"
+    let kURLCreateUser =            "/users/create"
+    let kURLUserProfile =           "/profile/minimum"
+    let kURLGetFriends =            "/profile/friends"
+    let kURLAddFriends =            "/profile/addfriend"
+    let kURLEvents =                "/events"
+    let kURLExhibitor =             "/events/exhibitor"
+    let kURLDailyEvents =           "/events/daily"
+    let kURLEventsRelExhibitor =    "/events/relation/exhibitor"
+    let kURLGetAvatar =             "/images/avatar"
+    let kURLUploadAvatar =          "/upload/avatar"
     
     
     /// Indicates if the application is pointing to prod or dev env
@@ -35,9 +39,11 @@ class WSHelper {
     /// Singleton instance
     static let sharedInstance = WSHelper()
     
-    public typealias ResultBlockForEvents = (_ response: DataResponse<EventsResponse>?, _ error: Error?)-> Void
-    public typealias ResultBlockForExhibitor = (_ response: DataResponse<ExhibitorResponse>?, _ error: Error?)-> Void
-    public typealias ResultBlockForDEvent = (_ response: DataResponse<DailyEventsResponse>?, _ error: Error?)-> Void
+     typealias ResultBlockForEvents = (_ response: DataResponse<EventsResponse>?, _ error: Error?)-> Void
+     typealias ResultBlockForExhibitor = (_ response: DataResponse<ExhibitorResponse>?, _ error: Error?)-> Void
+     typealias ResultBlockForDEvent = (_ response: DataResponse<DailyEventsResponse>?, _ error: Error?)-> Void
+    typealias ResultBlockForFriends = (_ response: DataResponse<FriendsResponse>?, _ error: Error?)-> Void
+     typealias ResultBlock = (_ response: Any?, _ error: Error?)-> Void
     
     init() {
         WSHelper.setBaseURL(devEnv ? devURL : prodURL)
@@ -104,9 +110,16 @@ class WSHelper {
         })
     }
     
+    func getUserProfile(result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLUserProfile
+        let email = SessionHelper.instance.email
+        let token = SessionHelper.instance.sessionToken
+        genericPost(url: url, parameters: ["email":email,"token":token], callback: result)
+        
+    }
+    
     func getDaily(result: @escaping ResultBlockForDEvent) {
         let url = WSHelper.getBaseURL() + kURLDailyEvents
-        
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<DailyEventsResponse>) in
             switch response.result {
             case .success:
@@ -129,4 +142,65 @@ class WSHelper {
             }
         })
     }
+    
+    func genericPost(url: URLConvertible, parameters:[String:Any]?, callback result: @escaping ResultBlock ) {
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default
+            , headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success:
+                    let json = response.result.value as! Dictionary <String, Any>
+                    let code = json["code"] as! Int
+                    if (code == 200) {
+                        let finalresponse = json["response"]
+                        result(finalresponse, nil)
+                    } else {
+                        let errorMessage = json["message"];
+                        let finalError = NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey: errorMessage as Any])
+                        result(nil, finalError)
+                    }
+                    break;
+                case .failure(let error) :
+                    result(nil, error)
+                    break;
+                }
+        }
+    }
+    
+    func login(email: String, password: String, withResult result: @escaping ResultBlock) {
+        let url = WSHelper.baseURL + kURLLogin
+        let parameters = ["email": email,"password":password]
+        genericPost(url: url, parameters: parameters, callback: result)
+    }
+    
+    func createUser(email: String, password: String, name: String, lastName: String,  withResult result: @escaping ResultBlock) {
+        let url = WSHelper.baseURL + kURLCreateUser
+        let parameters = ["email": email,"password":password, "name": name, "lastname": lastName ]
+        genericPost(url: url, parameters: parameters, callback: result)
+    }
+    
+    func genericGet(url: URLConvertible, parameters:[String:Any]?, callback result: @escaping ResultBlock ) {
+        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default
+            , headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success:
+                    let json = response.result.value as! Dictionary <String, Any>
+                    let code = json["code"] as! Int
+                    if (code == 200) {
+                        let finalresponse = json["response"]
+                        result(finalresponse, nil)
+                    } else {
+                        let errorMessage = json["message"];
+                        let finalError = NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey: errorMessage as Any])
+                        result(nil, finalError)
+                    }
+                    break;
+                case .failure(let error) :
+                    result(nil, error)
+                    break;
+                }
+        }
+    }
+    
+    
+    
 }

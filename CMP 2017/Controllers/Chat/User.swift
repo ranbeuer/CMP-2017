@@ -24,15 +24,34 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class User {
+class User : Mappable{
     
     var userId: String = ""
-    
+    var idAvatar: String!
+    var email: String!
+    var firstName: String!
+    var lastName: String!
+    var avatarImg: String!
     static let currentUser: User = {
         let user = User()
         user.userId = "23333"
         return user
     }()
     
+    init() {
+        
+    }
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        idAvatar <- map["idAvatar"]
+        firstName <- map["name"]
+        lastName <- map["lastname"]
+        email <- map["email"]
+        avatarImg <- map["avatar"]
+    }
 }

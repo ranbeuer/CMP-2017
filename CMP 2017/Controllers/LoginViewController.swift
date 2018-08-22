@@ -8,6 +8,8 @@
 
 import UIKit
 import FRHyperLabel
+import Alamofire
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -28,6 +30,11 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        verifyForSignedIn()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,8 +51,26 @@ class LoginViewController: UIViewController {
     }
     */
     @IBAction func signInPressed(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
-        self.present(vc!, animated: true, completion: nil)
+        if emailTextField.text?.count != 0 && passwordTextField.text?.count != 0 {
+            if (emailTextField.text?.isValidMail())! {
+                SVProgressHUD.show(withStatus: "Iniciando sesión...")
+                WSHelper.sharedInstance.login(email: emailTextField.text!, password: passwordTextField.text!) { (_ response:Any?, _ error: Error?) in
+                    SVProgressHUD.dismiss()
+                    if error == nil {
+                        SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
+                        self.showAddEventScreen()
+                    } else {
+                        SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                    }
+                }
+            } else {
+                SVProgressHUD.showError(withStatus: "Please enter a valid email.")
+            }
+        } else {
+            SVProgressHUD.showError(withStatus: "Email or password missing.")
+        }
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
+//        self.present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func showSignUp() {
@@ -53,4 +78,22 @@ class LoginViewController: UIViewController {
         self.show(vc!, sender: nil)
     }
     
+    func showAddEventScreen() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
+        self.present(vc!, animated: true, completion: nil)
+    }
+    
+    func verifyForSignedIn() {
+        if SessionHelper.instance.sessionToken != nil { //has logged in before
+            let sideMenu = SideMenuController()
+            let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
+            let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
+            eventsViewController.title = "EVENTS"
+            let navController = UINavigationController(rootViewController: eventsViewController)
+            navController.navigationBar.setBarColor(UIColor.clear)
+            sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")
+            sideMenu.embed(sideViewController: sideMenuViewController)
+            self.present(sideMenu, animated: true, completion: nil)
+        }
+    }
 }
