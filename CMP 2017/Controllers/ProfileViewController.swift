@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 import SVProgressHUD
 import QRCode
-class ProfileViewController : UIViewController {
+import Alamofire
+import AERecord
+import Kingfisher
+
+class ProfileViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,9 +22,12 @@ class ProfileViewController : UIViewController {
     @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var contactsCollectionView: UICollectionView!
+    var friendsArray : [CDFriend]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        avatarImageView.layer.cornerRadius = 40
+        avatarImageView.clipsToBounds = true
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -30,18 +37,34 @@ class ProfileViewController : UIViewController {
             SVProgressHUD.show(withStatus: "Please wait...")
         } else {
             showProfileInfo()
+            showFriends()
         }
         WSHelper.sharedInstance.getUserProfile { (_ response: Any?, _ error: Error?) in
             SVProgressHUD.dismiss()
             if (error == nil) {
-                SessionHelper.instance.saveUserInfo(response as! [String : Any])
+                let responseObj = response as! [String : Any]
+                SessionHelper.instance.saveUserInfo(responseObj["profile"] as! [String : Any])
                 self.showProfileInfo()
+            }
+        }
+        
+        WSHelper.sharedInstance.getFriends { (_ response: DataResponse<FriendsResponse>?, _ error: Error?) in
+            if (error == nil) {
+                let result = response?.value
+                if (result?.code == 200) {
+                    result?.friends?.forEach({ (friend) in
+                        friend.insertFriend()
+                    })
+                    AERecord.saveAndWait()
+                    self.showFriends()
+                }
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         
     }
     
@@ -59,6 +82,36 @@ class ProfileViewController : UIViewController {
         nameLabel.text = (user?.firstName)! + " " + (user?.lastName)!
         userIdLabel.text = (user?.email)!
         let qr = QRCode((user?.email)!)
+        var url: URL
+        if (user?.avatarImg)!.starts(with: "http") {
+            url = URL(string: (user?.avatarImg)!)!
+        } else {
+            url = URL(string: WSHelper.getBaseURL() + (user?.avatarImg)!)!
+        }
+        avatarImageView.kf.setImage(with: url)
         qrImageView.image = qr?.image
+    }
+    
+    func showFriends() {
+        
+        let request = CDFriend.createFetchRequest()
+        let results = AERecord.execute(fetchRequest: request)
+        friendsArray = results as? [CDFriend];
+        self.contactsCollectionView?.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (friendsArray?.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PContactCell", for: indexPath)
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.layer.cornerRadius = 40
+        imageView.clipsToBounds = true
+        let friend = friendsArray[indexPath.row]
+        let url = URL(string: WSHelper.sharedInstance.urlForAvatarWith(email: friend.receiver!))
+        imageView.kf.setImage(with: url)
+        return cell
     }
 }

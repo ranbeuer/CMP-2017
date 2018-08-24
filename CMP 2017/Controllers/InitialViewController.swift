@@ -72,9 +72,9 @@ class InitialViewController : UIViewController {
     
     func saveEvents(_ events: [Event]) {
         for (_, event) in events.enumerated() {
-            insertEvent(event: event)
+            event.insertEvent()
         }
-        AERecord.saveAndWait()
+        AERecord.save()
     }
     
     func recordExists(id: Int, entity: String, field: String) -> Bool {
@@ -85,35 +85,18 @@ class InitialViewController : UIViewController {
         return results.count > 0
     }
     
-    func insertEvent(event: Event) {
-        if !recordExists(id: event.idEvent!, entity: "CDEvent", field: "idEvent") {
-            CDEvent.create(with: ["idEvent":event.idEvent!,"eventDate":event.eventDate!,"eventDescription":event.eventDescription!,"eventHour":event.eventHour!,"image":event.image!,"name":event.name!])
-            AERecord.saveAndWait()
-        }
-    }
     
     func saveDailyEvents(events: [DailyEvent]) {
-        for (i, event) in events.enumerated() {
-            insertDailyEvent(event: event)
+        for (_, event) in events.enumerated() {
+            event.insertEvent();
         }
-        AERecord.saveAndWait()
-    }
-    
-    func insertDailyEvent(event: DailyEvent) {
-        if !recordExists(id: event.idDailyEvent!, entity: "CDDailyEvent", field: "id") {
-            CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
-        }
+        AERecord.save()
     }
     
     func saveExhibitors(_ exhibitors: [Exhibitor]) {
-        for (i, exhibitor) in exhibitors.enumerated() {
-            insertExhibitor(exhibitor: exhibitor)
+        for (_, exhibitor) in exhibitors.enumerated() {
+            exhibitor.insertExhibitor()
         }
-        AERecord.saveAndWait()
-    }
-    func insertExhibitor(exhibitor: Exhibitor ) {
-        if !recordExists(id: exhibitor.idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
-            CDExhibitor.create(with: ["idExhibitor":exhibitor.idExhibitor!,"degree":exhibitor.degree!,"email":exhibitor.email!,"history":exhibitor.history!,"job":exhibitor.job!,"lastName":exhibitor.lastName ?? "", "name":exhibitor.name!, "phoneNumber":exhibitor.phonenumber!, "url":exhibitor.picture!, "type":exhibitor.type!])
-        }
+        AERecord.save()
     }
  }

@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import CoreData
+import AERecord
+import Alamofire
 
 class ContactsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+    var friendsArray : [CDFriend]!
     @IBOutlet weak var contactsTableView: UITableView!
     
     static let botChat: Chat = {
@@ -25,6 +28,28 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        WSHelper.sharedInstance.getFriends { (_ response: DataResponse<FriendsResponse>?, _ error: Error?) in
+            if (error == nil) {
+                let result = response?.value
+                if (result?.code == 200) {
+                    result?.friends?.forEach({ (friend) in
+                        friend.insertFriend()
+                    })
+                    AERecord.saveAndWait()
+                    self.showFriends()
+                }
+            }
+        }
+    }
+    
+    
+    func showFriends() {
+        
+        let request = CDFriend.createFetchRequest()
+        let results = AERecord.execute(fetchRequest: request)
+        friendsArray = results as? [CDFriend];
+        self.contactsTableView?.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,11 +81,12 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return (friendsArray?.count)!;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+        
         return cell;
     }
     
@@ -68,4 +94,6 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         showChat()
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
 }

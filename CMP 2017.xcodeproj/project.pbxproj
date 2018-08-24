@@ -42,6 +42,7 @@
 		A83E669D210F6FBC00047B87 /* CenteredFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E669C210F6FBC00047B87 /* CenteredFlowLayout.swift */; };
 		A83E669F210FF27C00047B87 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E669E210FF27C00047B87 /* EventsViewController.swift */; };
 		A83E66A1211029C400047B87 /* EventProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E66A0211029C400047B87 /* EventProgramCell.swift */; };
+		A847E87A212E1671004D5B8B /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A847E879212E1671004D5B8B /* BaseEntity.swift */; };
 		A84A35A12128EBA800E3DFC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A84A35A02128EBA800E3DFC1 /* Assets.xcassets */; };
 		A84A35A22128F28F00E3DFC1 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4F2127161E00E244B2 /* MessageManager.swift */; };
 		A84A35A42128FA0300E3DFC1 /* UITextField+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A35A32128FA0300E3DFC1 /* UITextField+Options.swift */; };
@@ -148,6 +149,8 @@
 		A83E669C210F6FBC00047B87 /* CenteredFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFlowLayout.swift; sourceTree = "<group>"; };
 		A83E669E210FF27C00047B87 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		A83E66A0211029C400047B87 /* EventProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProgramCell.swift; sourceTree = "<group>"; };
+		A847E878212E0513004D5B8B /* Friends.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Friends.xcdatamodel; sourceTree = "<group>"; };
+		A847E879212E1671004D5B8B /* BaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEntity.swift; sourceTree = "<group>"; };
 		A84A35A02128EBA800E3DFC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A84A35A32128FA0300E3DFC1 /* UITextField+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Options.swift"; sourceTree = "<group>"; };
 		A84A35B12128FF4100E3DFC1 /* CDExhibitor+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDExhibitor+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 				A83E6601210EA2C500047B87 /* Exhibitor.swift */,
 				A83E667E210F004F00047B87 /* DailyEvent.swift */,
 				A8B42F75212DBAA900824083 /* Friend.swift */,
+				A847E879212E1671004D5B8B /* BaseEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -632,10 +636,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CMP 2017/Pods-CMP 2017-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AERecord/AERecord.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/FRHyperLabel/FRHyperLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/HPGrowingTextView/HPGrowingTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NoChat/NoChat.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -648,10 +654,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AERecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FRHyperLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HPGrowingTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NoChat.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -737,6 +745,7 @@
 				A868AA4721270EE300E244B2 /* ChatViewController.swift in Sources */,
 				A84A35B42128FF4100E3DFC1 /* CDExhibitor+CoreDataProperties.swift in Sources */,
 				A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */,
+				A847E87A212E1671004D5B8B /* BaseEntity.swift in Sources */,
 				A83E66A1211029C400047B87 /* EventProgramCell.swift in Sources */,
 				A868AA542127161E00E244B2 /* MMTextMessageCellLayout.swift in Sources */,
 				A84A35AE2128FEE000E3DFC1 /* CDDailyEvent+CoreDataProperties.swift in Sources */,
@@ -918,16 +927,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FD7V433D7B;
+				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -940,16 +949,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FD7V433D7B;
+				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -960,15 +968,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CMP 2017.app/CMP 2017";
@@ -980,15 +987,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CMP 2017.app/CMP 2017";
@@ -1001,11 +1007,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1020,11 +1022,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1078,9 +1076,10 @@
 		A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A847E878212E0513004D5B8B /* Friends.xcdatamodel */,
 				A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */,
 			);
-			currentVersion = A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */;
+			currentVersion = A847E878212E0513004D5B8B /* Friends.xcdatamodel */;
 			path = CMP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

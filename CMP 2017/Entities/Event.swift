@@ -8,8 +8,9 @@
 
 import Foundation
 import ObjectMapper
+import AERecord
 
-class Event : Mappable {
+class Event : BaseEntity {
     
     // MARK: - Vars -
     var idEvent : NSInteger?
@@ -20,15 +21,21 @@ class Event : Mappable {
     var eventHour : String?
     
     required init?(map: Map){
-        
+        super.init(map: map)
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         idEvent <- map["idEvent"]
         name <- map["name"]
         eventDescription <- map["description"]
         image <- map["image"]
         eventDate <- map["eventDate"]
         eventHour <- map["eventHour"]
+    }
+    
+    func insertEvent() {
+        if !recordExists(id: self.idEvent!, entity: "CDEvent", field: "idEvent") {
+            CDEvent.create(with: ["idEvent":self.idEvent!,"eventDate":self.eventDate!,"eventDescription":self.eventDescription!,"eventHour":self.eventHour!,"image":self.image!,"name":self.name!])
+        }
     }
 }

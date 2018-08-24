@@ -35,7 +35,8 @@ class AddEventViewController : UIViewController {
         super.viewWillAppear(animated)
         WSHelper.sharedInstance.getUserProfile { (_ response : Any?, _ error: Error?) in
             if error == nil {
-                SessionHelper.instance.saveUserInfo(response as! [String : Any])
+                let responseObj = response as! [String : Any]
+                SessionHelper.instance.saveUserInfo(responseObj["profile"] as! [String : Any])
             }
         }
     }

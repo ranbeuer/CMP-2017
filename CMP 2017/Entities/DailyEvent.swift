@@ -8,8 +8,9 @@
 
 import Foundation
 import ObjectMapper
+import AERecord
 
-class DailyEvent : Mappable {
+class DailyEvent : BaseEntity {
     var idDailyEvent : NSInteger?
     var dailyEventName : String?
     var dailyEventDescription : String?
@@ -20,10 +21,10 @@ class DailyEvent : Mappable {
     
     
     required init?(map: Map){
-        
+        super.init(map: map)
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         idDailyEvent <- map["idDailyEvent"]
         dailyEventName <- map["dailyEventName"]
         dailyEventDescription <- map["dailyEventDescription"]
@@ -31,5 +32,11 @@ class DailyEvent : Mappable {
         dailyEventDate <- map["dailyEventDate"]
         dailyEventStartsAt <- map["dailyEventStartsAt"]
         dailyEventPicture <- map["dailyEventPicture"]
+    }
+    
+    func insertEvent() {
+        if !recordExists(id: idDailyEvent!, entity: "CDDailyEvent", field: "id") {
+            CDDailyEvent.create(with: ["id":idDailyEvent!,"dailyEventDate":dailyEventDate!,"dailyEventDescription":dailyEventDescription!,"dailyEventPicture":dailyEventPicture!,"image":image!,"dailyEventName":dailyEventName!])
+        }
     }
 }

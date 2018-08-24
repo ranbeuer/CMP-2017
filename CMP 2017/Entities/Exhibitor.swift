@@ -8,8 +8,9 @@
 
 import Foundation
 import ObjectMapper
+import AERecord
 
-class Exhibitor : Mappable {
+class Exhibitor : BaseEntity {
     
     // MARK: - Vars -
     var idExhibitor : NSInteger?
@@ -26,10 +27,11 @@ class Exhibitor : Mappable {
     
     
     required init?(map: Map){
+        super.init(map: map)
         
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         idExhibitor <- map["idExhibitor"]
         name <- map["name"]
         email <- map["email"]
@@ -41,5 +43,11 @@ class Exhibitor : Mappable {
         job <- map["job"]
         url <- map["url"]
         type <- map["type"]
+    }
+    
+    func insertExhibitor() {
+        if !recordExists(id: idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
+            CDExhibitor.create(with: ["idExhibitor":idExhibitor!,"degree":degree!,"email":email!,"history":history!,"job":job!,"lastName":lastName ?? "", "name":name!, "phoneNumber":phonenumber!, "url":picture!, "type":type!])
+        }
     }
 }

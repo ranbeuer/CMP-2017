@@ -29,7 +29,7 @@ import ObjectMapper
 class User : Mappable{
     
     var userId: String = ""
-    var idAvatar: String!
+    var idAvatar: Int!
     var email: String!
     var firstName: String!
     var lastName: String!

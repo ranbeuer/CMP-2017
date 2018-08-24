@@ -8,8 +8,9 @@
 
 import Foundation
 import ObjectMapper
+import AERecord
 
-class Friend : Mappable {
+class Friend : BaseEntity {
     // MARK: - Vars -
     var idFriend : NSInteger?
     var sender : String?
@@ -17,13 +18,19 @@ class Friend : Mappable {
     var createdAt : String?
     
     required init?(map: Map){
-        
+        super.init(map: map)
     }
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         idFriend <- map["idFriend"]
         sender <- map["sender"]
         receiver <- map["receiver"]
         createdAt <- map["createdAt"]
+    }
+    
+    func insertFriend() {
+        if !recordExists(id: idFriend!, entity: "CDFriend", field: "idFriend") {
+            CDFriend.create(with: ["idFriend":idFriend!,"createdAt":createdAt!,"sender":sender!,"receiver":receiver!])
+        }
     }
 }

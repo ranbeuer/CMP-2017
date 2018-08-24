@@ -9,8 +9,9 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import Photos
 
-class RegistryViewController: UIViewController {
+class RegistryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - Vars -
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -24,6 +25,12 @@ class RegistryViewController: UIViewController {
     @IBOutlet weak var termsCheckButton: UIButton!
     
     @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
+    
+    var avatarPhotoURL: URL!
+    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,19 +68,63 @@ class RegistryViewController: UIViewController {
     }
     */
     
+    @IBAction func photoPressed(_ sender: Any) {
+        let optionMenu = UIAlertController(title: nil, message: "Select the source of the pictures.", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            self.imagePicker =  UIImagePickerController()
+            self.imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.cameraDevice = .front
+            self.imagePicker.allowsEditing = true
+            
+            self.present(self.imagePicker, animated: true, completion: {
+
+            })
+            
+        })
+        
+        let libraryAction = UIAlertAction(title: "Choose from the library", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            self.imagePicker =  UIImagePickerController()
+            self.imagePicker.delegate = self
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.allowsEditing = true
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        
+        
+        optionMenu.addAction(cameraAction)
+        optionMenu.addAction(libraryAction)
+        optionMenu.addAction(UIAlertAction(title:"Cancel", style: .cancel, handler: nil))
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
     @IBAction func signUpPressed(_ sender: Any) {
         if validateFields() {
-            SVProgressHUD.show(withStatus: "Creando Usuario...")
+            SVProgressHUD.show(withStatus: "Creating account...")
             WSHelper.sharedInstance.createUser(email: emailTextField.text!, password: passwordTextField.text!, name: fullNameTextField.text!, lastName: lastNameTextField.text!) { (_ response:Any? , _ error: Error?) in
                 if error == nil {
-                    WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
-                        if (error == nil) {
-                            SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
-                            self.showAddEventScreen()
-                        } else {
-                            SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                    let data = UIImagePNGRepresentation(self.avatarImageView.image!)
+                    SVProgressHUD.show(withStatus: "Uploading avatar...")
+                    WSHelper.sharedInstance.uplooadAvatar(data!, email: self.emailTextField.text!, result: { (response, error) in
+                        if error == nil {
+                            WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
+                                SVProgressHUD.dismiss()
+                                if (error == nil) {
+                                    SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
+                                    self.showAddEventScreen()
+                                } else {
+                                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                                }
+                            })
                         }
                     })
+                    
                     
                 } else {
                     SVProgressHUD.dismiss()
@@ -105,6 +156,9 @@ class RegistryViewController: UIViewController {
         } else if passwordTextField.text?.count == 0 {
             SVProgressHUD.showError(withStatus: "Please enter a valid password.")
             return false
+        } else if self.avatarPhotoURL == nil {
+            SVProgressHUD.showError(withStatus: "Please add a user photo.")
+            return false
         } else {
             return true
         }
@@ -114,4 +168,70 @@ class RegistryViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
         self.present(vc!, animated: true, completion: nil)
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var image: UIImage!
+        if info [UIImagePickerControllerEditedImage] != nil{
+            image = info[UIImagePickerControllerEditedImage] as! UIImage
+            avatarImageView.image = image
+        } else {
+            image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            avatarImageView.image = image
+        }
+        if (picker.sourceType == .camera) {
+            SVProgressHUD.show(withStatus: NSLocalizedString("Saving image", comment: ""))
+            UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+        } else {
+            self.avatarPhotoURL = info[UIImagePickerControllerReferenceURL] as! URL
+        }
+        
+        
+        dismiss(animated:true, completion: nil)
+        self.dismiss(animated: true) {
+            
+        }
+    }
+    
+    @objc private func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer?) {
+        SVProgressHUD.dismiss()
+        fetchLastImage { (path: String?) in
+            
+            if let imagePath = path  {
+                let url = URL(fileURLWithPath: imagePath)
+                let imageName = url.lastPathComponent
+                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as String
+                
+                // getting local path
+                let localPath = (documentDirectory as NSString).appendingPathComponent(imageName)
+                self.avatarPhotoURL = URL(fileURLWithPath: localPath)
+                //getting actual image
+
+            }
+        }
+    }
+    
+    func fetchLastImage(completion: (_ localIdentifier: String?) -> Void)
+    {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.fetchLimit = 1
+        
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        if (fetchResult.firstObject != nil)
+        {
+            let lastImageAsset: PHAsset = fetchResult.firstObject as! PHAsset
+            completion(lastImageAsset.localIdentifier)
+        }
+        else
+        {
+            completion(nil)
+        }
+    }
+    
 }
