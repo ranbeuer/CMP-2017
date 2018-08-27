@@ -29,6 +29,8 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.showFriends()
+        
         WSHelper.sharedInstance.getFriends { (_ response: DataResponse<FriendsResponse>?, _ error: Error?) in
             if (error == nil) {
                 let result = response?.value
@@ -66,14 +68,12 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
     }
     
-    func showChat() {
+    func showChat(friend: CDFriend) {
         let chat = ContactsViewController.botChat
-        var chatVC: UIViewController?
+        var chatVC = MMChatViewController(chat: chat)
+        chatVC.friend = friend
+        navigationController?.pushViewController(chatVC, animated: true)
         
-            chatVC = MMChatViewController(chat: chat)
-        if let vc = chatVC {
-            navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,13 +85,21 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as! ContactCell
+        let friend = friendsArray[indexPath.row]
+        let name = friend.firstName! + " " + friend.lastName!
+        let avatarImg = WSHelper.getBaseURL() + friend.avatarImage!
+        cell.avatarImageView.kf.setImage(with: URL(string: avatarImg), placeholder: #imageLiteral(resourceName: "ic_exhibi"), options: nil, progressBlock: nil, completionHandler: nil)
+        cell.avatarImageView.layer.cornerRadius = 25
+        cell.avatarImageView.clipsToBounds = true
+        cell.countryLabel.text = friend.receiver
+        cell.nameLabel.text = name.capitalized
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showChat()
+        let friend = friendsArray[indexPath.row]
+        showChat(friend:friend)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

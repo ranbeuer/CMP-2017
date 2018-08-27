@@ -39,7 +39,7 @@ class ProfileViewController : UIViewController, UICollectionViewDataSource, UICo
             showProfileInfo()
             showFriends()
         }
-        WSHelper.sharedInstance.getUserProfile { (_ response: Any?, _ error: Error?) in
+        WSHelper.sharedInstance.getUserProfile(email: SessionHelper.instance.email!) { (_ response: Any?, _ error: Error?) in
             SVProgressHUD.dismiss()
             if (error == nil) {
                 let responseObj = response as! [String : Any]

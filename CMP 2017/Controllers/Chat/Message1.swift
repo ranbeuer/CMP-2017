@@ -34,7 +34,7 @@ enum MessageDeliveryStatus {
     case Read
 }
 
-class Message: NSObject, NOCChatItem {
+class Message1: NSObject, NOCChatItem {
     
     var msgId: String = UUID().uuidString
     var msgType: String = "Text"

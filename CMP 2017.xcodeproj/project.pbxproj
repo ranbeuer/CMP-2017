@@ -19,6 +19,8 @@
 		69FB64F520DF09A4008E58D2 /* RegistryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */; };
 		938BFAF6FCEE6152A5CE8CF7 /* Pods_CMP_2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47523B794193B1632B443149 /* Pods_CMP_2017.framework */; };
 		A802DC472114D30E00E455C0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802DC462114D30E00E455C0 /* UIViewController.swift */; };
+		A8287434213277B000B59EBE /* MessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8287433213277B000B59EBE /* MessagesResponse.swift */; };
+		A8287436213277DA00B59EBE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8287435213277DA00B59EBE /* Message.swift */; };
 		A83E65FD210EA03C00047B87 /* WSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E65FC210EA03C00047B87 /* WSHelper.swift */; };
 		A83E6600210EA2B900047B87 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E65FF210EA2B900047B87 /* Event.swift */; };
 		A83E6602210EA2C500047B87 /* Exhibitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E6601210EA2C500047B87 /* Exhibitor.swift */; };
@@ -65,7 +67,7 @@
 		A868AA4521270ED600E244B2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4421270ED600E244B2 /* ContactsViewController.swift */; };
 		A868AA4721270EE300E244B2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4621270EE300E244B2 /* ChatViewController.swift */; };
 		A868AA522127161E00E244B2 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA492127161E00E244B2 /* Chat.swift */; };
-		A868AA532127161E00E244B2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4A2127161E00E244B2 /* Message.swift */; };
+		A868AA532127161E00E244B2 /* Message1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4A2127161E00E244B2 /* Message1.swift */; };
 		A868AA542127161E00E244B2 /* MMTextMessageCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4B2127161E00E244B2 /* MMTextMessageCellLayout.swift */; };
 		A868AA552127161E00E244B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4C2127161E00E244B2 /* User.swift */; };
 		A868AA562127161E00E244B2 /* MMChatInputTextPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4D2127161E00E244B2 /* MMChatInputTextPanel.swift */; };
@@ -126,6 +128,10 @@
 		69FB64F220DF0927008E58D2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewController.swift; sourceTree = "<group>"; };
 		A802DC462114D30E00E455C0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendsUpdate.xcdatamodel; sourceTree = "<group>"; };
+		A8287433213277B000B59EBE /* MessagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesResponse.swift; sourceTree = "<group>"; };
+		A8287435213277DA00B59EBE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A82874372132883000B59EBE /* MessagesUpdate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessagesUpdate.xcdatamodel; sourceTree = "<group>"; };
 		A83E65FC210EA03C00047B87 /* WSHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSHelper.swift; sourceTree = "<group>"; };
 		A83E65FF210EA2B900047B87 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A83E6601210EA2C500047B87 /* Exhibitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibitor.swift; sourceTree = "<group>"; };
@@ -168,7 +174,7 @@
 		A868AA4421270ED600E244B2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		A868AA4621270EE300E244B2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A868AA492127161E00E244B2 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		A868AA4A2127161E00E244B2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A868AA4A2127161E00E244B2 /* Message1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message1.swift; sourceTree = "<group>"; };
 		A868AA4B2127161E00E244B2 /* MMTextMessageCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMTextMessageCellLayout.swift; sourceTree = "<group>"; };
 		A868AA4C2127161E00E244B2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A868AA4D2127161E00E244B2 /* MMChatInputTextPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMChatInputTextPanel.swift; sourceTree = "<group>"; };
@@ -347,6 +353,7 @@
 				A83E667E210F004F00047B87 /* DailyEvent.swift */,
 				A8B42F75212DBAA900824083 /* Friend.swift */,
 				A847E879212E1671004D5B8B /* BaseEntity.swift */,
+				A8287435213277DA00B59EBE /* Message.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -358,6 +365,7 @@
 				A83E6604210EB3A300047B87 /* EventsResponse.swift */,
 				A83E6606210EBA3400047B87 /* ExhibitorResponse.swift */,
 				A8B42F7B212DC03D00824083 /* FriendsResponse.swift */,
+				A8287433213277B000B59EBE /* MessagesResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -419,7 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				A868AA492127161E00E244B2 /* Chat.swift */,
-				A868AA4A2127161E00E244B2 /* Message.swift */,
+				A868AA4A2127161E00E244B2 /* Message1.swift */,
 				A868AA4B2127161E00E244B2 /* MMTextMessageCellLayout.swift */,
 				A868AA4C2127161E00E244B2 /* User.swift */,
 				A868AA4D2127161E00E244B2 /* MMChatInputTextPanel.swift */,
@@ -695,7 +703,7 @@
 				A868AA562127161E00E244B2 /* MMChatInputTextPanel.swift in Sources */,
 				A84A35B72128FFA700E3DFC1 /* SessionHelper.swift in Sources */,
 				A8B42F7A212DBD8B00824083 /* CDFriend+CoreDataClass.swift in Sources */,
-				A868AA532127161E00E244B2 /* Message.swift in Sources */,
+				A868AA532127161E00E244B2 /* Message1.swift in Sources */,
 				A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */,
 				A83E6697210F0C5600047B87 /* SideMenuController+SideUnder.swift in Sources */,
 				A83E6609210EC17C00047B87 /* SideMenuViewController.swift in Sources */,
@@ -729,6 +737,7 @@
 				A84A35BE21290F5A00E3DFC1 /* MMDateMessageCellLayout.swift in Sources */,
 				A868AA592127161E00E244B2 /* MMBaseMessageCellLayout.swift in Sources */,
 				A868AA5A2127161E00E244B2 /* MMTextMessageCell.swift in Sources */,
+				A8287434213277B000B59EBE /* MessagesResponse.swift in Sources */,
 				A84A35B32128FF4100E3DFC1 /* CDExhibitor+CoreDataClass.swift in Sources */,
 				A83E669D210F6FBC00047B87 /* CenteredFlowLayout.swift in Sources */,
 				A84A35A22128F28F00E3DFC1 /* MessageManager.swift in Sources */,
@@ -738,6 +747,7 @@
 				A8AFC5F3211094A30096E7A5 /* SponsorsViewController.swift in Sources */,
 				A84A35A42128FA0300E3DFC1 /* UITextField+Options.swift in Sources */,
 				A84A35C52129183500E3DFC1 /* UIFont+NoChat.swift in Sources */,
+				A8287436213277DA00B59EBE /* Message.swift in Sources */,
 				69FB64C120DEFE9E008E58D2 /* EventDetailViewController.swift in Sources */,
 				A868AA522127161E00E244B2 /* Chat.swift in Sources */,
 				A84A35C92129206700E3DFC1 /* ContactCell.swift in Sources */,
@@ -932,7 +942,10 @@
 				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -954,7 +967,10 @@
 				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -972,7 +988,11 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JU33AQ3V5D;
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -991,7 +1011,11 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "CMP 2017Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1007,7 +1031,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1022,7 +1050,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "CMP 2017UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1076,10 +1108,12 @@
 		A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A82874372132883000B59EBE /* MessagesUpdate.xcdatamodel */,
+				A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */,
 				A847E878212E0513004D5B8B /* Friends.xcdatamodel */,
 				A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */,
 			);
-			currentVersion = A847E878212E0513004D5B8B /* Friends.xcdatamodel */;
+			currentVersion = A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */;
 			path = CMP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

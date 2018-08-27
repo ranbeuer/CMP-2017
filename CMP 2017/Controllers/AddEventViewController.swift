@@ -33,10 +33,31 @@ class AddEventViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        WSHelper.sharedInstance.getUserProfile { (_ response : Any?, _ error: Error?) in
+        WSHelper.sharedInstance.getUserProfile(email: SessionHelper.instance.email!) { (response, error) in
             if error == nil {
                 let responseObj = response as! [String : Any]
                 SessionHelper.instance.saveUserInfo(responseObj["profile"] as! [String : Any])
+            }
+        }
+        WSHelper.sharedInstance.getFriends { (response, error) in
+            if (error == nil) {
+                let result = response?.value
+                if (result?.code == 200) {
+                    result?.friends?.forEach({ (friend) in
+                        if (!friend.existsFriendAndNeedsUpdate()) {
+                            WSHelper.sharedInstance.getUserProfile(email: friend.receiver!, result: { (response, error) in
+                                if (error == nil) {
+                                    let responseObj = response as! [String : Any]
+                                    friend.updateData(info:responseObj["profile"] as! [String : Any])
+                                    friend.insertFriend()
+                                    AERecord.save()
+                                }
+                            })
+                        }
+                        
+                    })
+                    //                    AERecord.saveAndWait()
+                }
             }
         }
     }
@@ -78,6 +99,7 @@ class AddEventViewController : UIViewController {
             self.eventsRetrieved = true
             self.showMainMenu()
         }
+        
     }
     
     func showMainMenu() {

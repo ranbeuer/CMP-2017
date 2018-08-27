@@ -11,6 +11,7 @@ import NoChat
 
 class MMChatViewController: NOCChatViewController, UINavigationControllerDelegate, MessageManagerDelegate, MMChatInputTextPanelDelegate, MMTextMessageCellDelegate {
     
+    var friend : CDFriend!
     var messageManager = MessageManager.manager
     var layoutQueue = DispatchQueue(label: "com.little2s.nochat-example.mm.layout", qos: DispatchQoS(qosClass: .default, relativePriority: 0))
     
@@ -61,17 +62,17 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
 //        backgroundView?.image = UIImage(named: "MMWallpaper")!
         navigationController?.delegate = self
         let rightItem = UIBarButtonItem(image: UIImage(named: "MMUserInfo"), style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = rightItem
-        title = chat.title
-        
+//        navigationItem.rightBarButtonItem = rightItem
+        title = friend.firstName! + " " + friend.lastName!
+        self.navigationController?.navigationBar.setBarColor(nil)
         loadMessages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = UIColor(white: 0.1, alpha: 0.9)
-        navigationController?.navigationBar.tintColor = UIColor.white
+//        navigationController?.navigationBar.barStyle = .black
+//        navigationController?.navigationBar.barTintColor = UIColor(white: 0.1, alpha: 0.9)
+//        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     override func viewWillDisappear(_ animated: Bool) {

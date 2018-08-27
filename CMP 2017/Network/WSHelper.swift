@@ -43,10 +43,12 @@ class WSHelper {
     /// Singleton instance
     static let sharedInstance = WSHelper()
     
-     typealias ResultBlockForEvents = (_ response: DataResponse<EventsResponse>?, _ error: Error?)-> Void
-     typealias ResultBlockForExhibitor = (_ response: DataResponse<ExhibitorResponse>?, _ error: Error?)-> Void
-     typealias ResultBlockForDEvent = (_ response: DataResponse<DailyEventsResponse>?, _ error: Error?)-> Void
+    typealias ResultBlockForEvents = (_ response: DataResponse<EventsResponse>?, _ error: Error?)-> Void
+    typealias ResultBlockForExhibitor = (_ response: DataResponse<ExhibitorResponse>?, _ error: Error?)-> Void
+    typealias ResultBlockForDEvent = (_ response: DataResponse<DailyEventsResponse>?, _ error: Error?)-> Void
     typealias ResultBlockForFriends = (_ response: DataResponse<FriendsResponse>?, _ error: Error?)-> Void
+    typealias ResultBlockForMessages = (_ response: DataResponse<MessagesResponse>?, _ error: Error?)-> Void
+
      typealias ResultBlock = (_ response: Any?, _ error: Error?)-> Void
     
     init() {
@@ -141,11 +143,10 @@ class WSHelper {
         })
     }
     
-    func getUserProfile(result: @escaping ResultBlock) {
+    func getUserProfile(email: String, result: @escaping ResultBlock) {
         let url = WSHelper.getBaseURL() + kURLUserProfile
-        let email = SessionHelper.instance.email
         let token = SessionHelper.instance.sessionToken
-        genericPost(url: url, parameters: ["email":email,"token":token], callback: result)
+        genericPost(url: url, parameters: ["email":email,"token":token!], callback: result)
         
     }
     
@@ -321,6 +322,8 @@ class WSHelper {
             }
         }
     }
+    
+    
     
     func urlForAvatarWith(email: String) -> String {
         return WSHelper.getBaseURL() + kURLGetAvatar + "/" + email + ".png"
