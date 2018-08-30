@@ -18,6 +18,7 @@ class SessionHelper : NSObject {
 //    private var appToken : String? = nil
     ///
     private var client : String? = nil
+    
     /// Token expiry
 //    private var expiry : String? = nil
     /// Uid, email address.
@@ -31,6 +32,13 @@ class SessionHelper : NSObject {
     private(set) var isUserLogged = false
     
     /// Indicates if Photo Instructions screen should be shown.
+    var eventsDownloaded : Bool = false {
+        didSet {
+            UserDefaults.standard.set(eventsDownloaded, forKey: "EventsDownloaded")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     var notShowPhotoInstructions : Bool {
         didSet {
             UserDefaults.standard.set(notShowPhotoInstructions, forKey: "DontShowInstructions")
@@ -49,12 +57,15 @@ class SessionHelper : NSObject {
             email = info["email"]
         }
         
-        if let userInfo : [String:Any] = UserDefaults.standard.dictionary(forKey: "userInfo") as? [String: Any] {
+        if let userInfo : [String:Any] = UserDefaults.standard.dictionary(forKey: "userInfo") {
             user = User(JSON: userInfo)!
         }
         
         let instructions = UserDefaults.standard.bool(forKey: "DontShowInstructions")
         notShowPhotoInstructions = instructions
+        
+        let eventsDown = UserDefaults.standard.bool(forKey: "EventsDownloaded")
+        eventsDownloaded = eventsDown
     }
     
     /// Stores and persists the session's information

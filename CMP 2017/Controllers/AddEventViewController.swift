@@ -33,10 +33,15 @@ class AddEventViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let avatarframe = avatarImageView.frame
+        avatarImageView.layer.cornerRadius = avatarframe.size.height / 2
+        avatarImageView.clipsToBounds = true
         WSHelper.sharedInstance.getUserProfile(email: SessionHelper.instance.email!) { (response, error) in
             if error == nil {
                 let responseObj = response as! [String : Any]
                 SessionHelper.instance.saveUserInfo(responseObj["profile"] as! [String : Any])
+                self.showProfileInfo()
             }
         }
         WSHelper.sharedInstance.getFriends { (response, error) in
@@ -72,7 +77,11 @@ class AddEventViewController : UIViewController {
     }
     
     @IBAction func searchPressed(_ sender: Any) {
-        retrieveInfo()
+        if (eventTextField.text == "ecodsa") {
+            retrieveInfo()
+        } else {
+            SVProgressHUD.showError(withStatus: "Invalid event.\nPlease try again.")
+        }
     }
     
     func retrieveInfo() {
@@ -102,11 +111,24 @@ class AddEventViewController : UIViewController {
         
     }
     
+    func showProfileInfo() {
+        let user = SessionHelper.instance.user
+        nameLabel.text = "Hi, " + (user?.firstName)! + "!"
+        var url: URL
+        if (user?.avatarImg)!.starts(with: "http") {
+            url = URL(string: (user?.avatarImg)!)!
+        } else {
+            url = URL(string: WSHelper.getBaseURL() + (user?.avatarImg)!)!
+        }
+        avatarImageView.kf.setImage(with: url)
+    }
+    
     func showMainMenu() {
         if eventsRetrieved && exhibitorsRetrieved && programRetrieved {
             if (shownMenu) {
                 return
             }
+            SessionHelper.instance.eventsDownloaded = true
             shownMenu = true
             SVProgressHUD.dismiss()
             let sideMenu = SideMenuController()

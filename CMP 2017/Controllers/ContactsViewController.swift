@@ -11,8 +11,18 @@ import UIKit
 import CoreData
 import AERecord
 import Alamofire
+import AVFoundation
+import QRCodeReader
+import SVProgressHUD
 
-class ContactsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ContactsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, QRCodeReaderViewControllerDelegate {
+    
+    lazy var readerVC: QRCodeReaderViewController = {
+        let builder = QRCodeReaderViewControllerBuilder {
+            $0.reader = QRCodeReader(metadataObjectTypes: [.qr], captureDevicePosition: .back)
+        }
+        return QRCodeReaderViewController(builder: builder)
+    }()
     
     var friendsArray : [CDFriend]!
     @IBOutlet weak var contactsTableView: UITableView!
@@ -30,19 +40,26 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         self.showFriends()
+        fetchFriends()
         
-        WSHelper.sharedInstance.getFriends { (_ response: DataResponse<FriendsResponse>?, _ error: Error?) in
-            if (error == nil) {
-                let result = response?.value
-                if (result?.code == 200) {
-                    result?.friends?.forEach({ (friend) in
-                        friend.insertFriend()
-                    })
-                    AERecord.saveAndWait()
-                    self.showFriends()
-                }
-            }
+        let button: UIButton = UIButton (type: UIButtonType.custom)
+        button.setImage(#imageLiteral(resourceName: "ic_add_contact"), for: .normal)
+        
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.addTarget(self, action: #selector(addContactPressed), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        
+        
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func addContactPressed(btn : UIButton) {
+        
+        self.readerVC.delegate = self
+        self.readerVC.completionBlock = { (result: QRCodeReaderResult?) in
+            print(result)
         }
+        self.present(self.readerVC, animated: true, completion: nil)
     }
     
     
@@ -61,16 +78,42 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+       
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func fetchFriends() {
+        WSHelper.sharedInstance.getFriends { (_ response: DataResponse<FriendsResponse>?, _ error: Error?) in
+            if (error == nil) {
+                let result = response?.value
+                if (result?.code == 200) {
+                    result?.friends?.forEach({ (friend) in
+                        friend.insertFriend()
+                    })
+                    AERecord.saveAndWait()
+                    self.showFriends()
+                }
+            }
+        }
+    }
+    
     func showChat(friend: CDFriend) {
-        let chat = ContactsViewController.botChat
-        var chatVC = MMChatViewController(chat: chat)
+        let chat = Chat()
+        chat.type = "text"
+        chat.targetId = friend.email!
+        chat.chatId = SessionHelper.instance.email! + "&" + chat.targetId
+        chat.title = friend.firstName! + " " + friend.lastName!
+        chat.detail = "bot"
+        let chatVC = MMChatViewController(chat: chat)
         chatVC.friend = friend
         navigationController?.pushViewController(chatVC, animated: true)
         
@@ -103,5 +146,28 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: QR Reader Delegate
+    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+        
+        reader.stopScanning()
+        reader.dismiss(animated: true) {
+            if result.value.isValidMail() {
+                SVProgressHUD.show(withStatus: "Please wait...")
+                WSHelper.sharedInstance.addFriend(receiver: result.value, sender: SessionHelper.instance.email!) { (result, error) in
+                    if (error == nil) {
+                        SVProgressHUD.showSuccess(withStatus: "Success")
+                        self.fetchFriends()
+                    } else {
+                        SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+    
+    func readerDidCancel(_ reader: QRCodeReaderViewController) {
+        reader.stopScanning()
+        reader.dismiss(animated: true, completion: nil)
+    }
     
 }

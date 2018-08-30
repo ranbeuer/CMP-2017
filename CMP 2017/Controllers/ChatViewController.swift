@@ -17,6 +17,8 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
     
     let chat: Chat
     
+    var messages : [Message] = [Message]()
+    
     // MARK: Overrides
     
     override class func cellLayoutClass(forItemType type: String) -> Swift.AnyClass? {
@@ -54,12 +56,14 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
     }
     
     deinit {
-        messageManager.removeDelegate(self)
+        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        backgroundView?.image = UIImage(named: "MMWallpaper")!
+        backgroundView?.image = UIImage(named: "MMWallpaper")!
         navigationController?.delegate = self
         let rightItem = UIBarButtonItem(image: UIImage(named: "MMUserInfo"), style: .plain, target: nil, action: nil)
 //        navigationItem.rightBarButtonItem = rightItem
@@ -80,6 +84,8 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
         navigationController?.navigationBar.barTintColor = nil
         navigationController?.navigationBar.tintColor = nil
         super.viewWillDisappear(animated)
+        messageManager.removeDelegate(self)
+        stopFetching()
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -151,6 +157,7 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
                 strongSelf.addMessages(msgs, scrollToBottom: true, animated: false)
             }
         }
+        startFetching()
     }
     
     private func sendMessage(_ message: Message) {
@@ -159,7 +166,7 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
         message.deliveryStatus = .Read
         
         addMessages([message], scrollToBottom: true, animated: true)
-        
+
         messageManager.sendMessage(message, toChat: chat)
     }
     
@@ -172,8 +179,11 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
             var layouts = [NOCChatItemCellLayout]()
             
             for message in messages {
-                let layout = strongSelf.createLayout(with: message)!
-                layouts.append(layout)
+                if !((self?.messages.contains(message))!) {
+                    self?.messages.append(message)
+                    let layout = strongSelf.createLayout(with: message)!
+                    layouts.append(layout)
+                }
             }
             
             DispatchQueue.main.async {
@@ -181,6 +191,30 @@ class MMChatViewController: NOCChatViewController, UINavigationControllerDelegat
                 if scrollToBottom {
                     strongSelf.scrollToBottom(animated: animated)
                 }
+            }
+        }
+    }
+    
+    private let kTimeoutInSeconds:TimeInterval = 60
+    
+    private var timer: Timer?
+    
+    func startFetching() {
+        self.timer = Timer.scheduledTimer(timeInterval: 20,
+                                                            target:self,
+                                                            selector:#selector(fetch),
+                                                            userInfo:nil,
+                                                            repeats:true)
+    }
+    
+    func stopFetching() {
+        self.timer!.invalidate()
+    }
+    
+    @objc func fetch() {
+        messageManager.fetchMessages(withChatId: chat.chatId) { [weak self] (msgs) in
+            if let strongSelf = self {
+                strongSelf.addMessages(msgs, scrollToBottom: true, animated: false)
             }
         }
     }

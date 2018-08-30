@@ -10,6 +10,7 @@ import UIKit
 import AERecord
 import Fabric
 import Crashlytics
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error)
         }
+        GMSServices.provideAPIKey("AIzaSyBfsuDfpgIgEW2NdjiHqsvtlDabDwrz5cM")
         return true
     }
 

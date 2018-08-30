@@ -85,15 +85,19 @@ class LoginViewController: UIViewController {
     
     func verifyForSignedIn() {
         if SessionHelper.instance.sessionToken != nil { //has logged in before
-            let sideMenu = SideMenuController()
-            let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
-            let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
-            eventsViewController.title = "EVENTS"
-            let navController = UINavigationController(rootViewController: eventsViewController)
-            navController.navigationBar.setBarColor(UIColor.clear)
-            sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")
-            sideMenu.embed(sideViewController: sideMenuViewController)
-            self.present(sideMenu, animated: true, completion: nil)
+            if (SessionHelper.instance.eventsDownloaded) {
+                let sideMenu = SideMenuController()
+                let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
+                let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
+                eventsViewController.title = "EVENTS"
+                let navController = UINavigationController(rootViewController: eventsViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")
+                sideMenu.embed(sideViewController: sideMenuViewController)
+                self.present(sideMenu, animated: true, completion: nil)
+            } else {
+                showAddEventScreen()
+            }
         }
     }
 }

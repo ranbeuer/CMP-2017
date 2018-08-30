@@ -46,7 +46,7 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
     var faceButton: UIButton!
     var attachButton: UIButton!
     
-    private let inputFiledInsets = UIEdgeInsets(top: 7.5, left: 40, bottom: 7.5, right: 80)
+    private let inputFiledInsets = UIEdgeInsets(top: 7.5, left: 0, bottom: 7.5, right: 0)
     private let inputFiledInternalEdgeInsets = UIEdgeInsets(top: -3 - MMRetinaPixel, left: 0, bottom: 0, right: 0)
     private let baseHeight = CGFloat(50)
     
@@ -71,7 +71,7 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         inputFiledClippingContainer.clipsToBounds = true
         
         inputField = HPGrowingTextView(frame: CGRect(x: inputFiledInternalEdgeInsets.left, y: inputFiledInternalEdgeInsets.top, width: inputFiledClippingFrame.width - inputFiledInternalEdgeInsets.left, height: inputFiledClippingFrame.height))
-        inputField.animateHeightChange = false
+        inputField.animateHeightChange = true
         inputField.animationDuration = 0
         inputField.font = UIFont.systemFont(ofSize: 16)
         inputField.backgroundColor = UIColor.clear
@@ -97,8 +97,11 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         
         attachButton = UIButton(type: .system)
         attachButton.isExclusiveTouch = true
-        attachButton.setImage(UIImage(named: "MMAttach")!, for: .normal)
-        attachButton.setImage(UIImage(named: "MMAttachHL"), for: .highlighted)
+        attachButton.setImage(UIImage(named: "send_on")!, for: .normal)
+        attachButton.setImage(UIImage(named: "send_pressed"), for: .highlighted)
+        attachButton.setImage(UIImage(named: "send_disabled"), for: .disabled)
+        attachButton.isEnabled = false
+        
         
         super.init(frame: frame)
         
@@ -110,9 +113,11 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         inputField.delegate = self
         inputFiledClippingContainer.addSubview(inputField)
         
-        addSubview(micButton)
-        addSubview(faceButton)
+//        addSubview(micButton)
+//        addSubview(faceButton)
         addSubview(attachButton)
+        
+        attachButton.addTarget(self, action: #selector(sendPressed), for: UIControlEvents.touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -124,13 +129,13 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         
         backgroundView.frame = bounds
         
-        fieldBackground.frame = CGRect(x: 40, y: 7.5, width: bounds.width - 120, height: bounds.height - 15)
+        fieldBackground.frame = CGRect(x: 10, y: 7.5, width: bounds.width - 50, height: bounds.height - 15)
         
         inputFiledClippingContainer.frame = CGRect(x: fieldBackground.frame.origin.x + 4, y: fieldBackground.frame.origin.y + 4, width: fieldBackground.frame.width - 8, height: fieldBackground.frame.height - 8)
         
-        micButton.frame = CGRect(x: 0, y: bounds.size.height - baseHeight, width: 40, height: baseHeight)
+//        micButton.frame = CGRect(x: 0, y: bounds.size.height - baseHeight, width: 40, height: baseHeight)
         
-        faceButton.frame = CGRect(x: bounds.size.width - 80, y: bounds.size.height - baseHeight, width: 40, height: baseHeight)
+//        faceButton.frame = CGRect(x: bounds.size.width - 80, y: bounds.size.height - baseHeight, width: 40, height: baseHeight)
         
         attachButton.frame = CGRect(x: bounds.size.width - 40, y: bounds.height - baseHeight, width: 40, height: baseHeight)
         
@@ -223,6 +228,10 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
     }
     
     func growingTextView(_ growingTextView: HPGrowingTextView!, shouldChangeTextIn range: NSRange, replacementText text: String!) -> Bool {
+        if let oldString = growingTextView.text {
+            let newString = oldString.replacingCharacters(in: Range(range, in: oldString)!, with: text!)
+            attachButton.isEnabled = (newString.count != 0)
+        }
         if growingTextView != self.inputField {
             return true
         }
@@ -300,6 +309,13 @@ class MMChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         } else {
             return 7
         }
+    }
+    
+    @objc func sendPressed(sender: UIButton) {
+        if let d = delegate as? MMChatInputTextPanelDelegate {
+            d.inputTextPanel(self, requestSendText: inputField.text!)
+        }
+        clearInputField()
     }
     
 }

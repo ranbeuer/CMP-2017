@@ -26,8 +26,11 @@ class WSHelper {
     let kURLExhibitor =             "/events/exhibitor" //ya
     let kURLDailyEvents =           "/events/daily" //ya
     let kURLEventsRelExhibitor =    "/events/relation/exhibitor"
-    let kURLGetAvatar =             "/images/avatar"
-    let kURLUploadAvatar =          "/upload/avatar"
+    let kURLGetAvatar =             "/images/avatar"//ya
+    let kURLUploadAvatar =          "/upload/avatar"//ya
+    let kURLMessages =              "/operation/message/read"
+    let kURLSendMessage =           "/operation/message"
+    
     
     let manager = AFHTTPSessionManager(baseURL: URL(string: WSHelper.baseURL))
     
@@ -36,7 +39,7 @@ class WSHelper {
     /// Configurable base URL, it can be either prod or dev
     private static var baseURL = WSHelper.devEnv ? WSHelper.devURL : WSHelper.prodURL
     /// If set to true it will let the application to show the requests and responses
-    static let logEverything = false
+    static let logEverything = true
     
     static let USE_AFNETWORKING = true
     
@@ -179,12 +182,24 @@ class WSHelper {
         if (WSHelper.USE_AFNETWORKING) {
             manager.requestSerializer = AFJSONRequestSerializer()
             manager.responseSerializer = AFJSONResponseSerializer()
-            manager.post(url, parameters: parameters, progress: nil, success: { (task, response) in
+           
+            
+            let theURL = URL(string: url)
+            let path = theURL?.path
+            print(">>>>>>> Generic Post <<<<<<<")
+            print("URL: " + (manager.baseURL?.absoluteString)! + path!)
+            manager.post(path!, parameters: parameters, progress: nil, success: { (task, response) in
                 let json = response as! Dictionary <String, Any>
                 let code = json["code"] as! Int
                 if (code == 200) {
-                    let finalresponse = json["response"]
-                    result(finalresponse, nil)
+                    var finalresponse = json["response"]
+                    if (finalresponse != nil) {
+                        result(finalresponse, nil)
+                    } else {
+                        finalresponse = json["result"]
+                        result(finalresponse, nil);
+                        
+                    }
                 } else {
                     let errorMessage = json["message"];
                     let finalError = NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey: errorMessage as Any])
@@ -323,10 +338,71 @@ class WSHelper {
         }
     }
     
+    func getMessages(forReceiver receiver: String, sender: String, result: @escaping ResultBlockForMessages) {
+        let url = WSHelper.getBaseURL() + kURLMessages
+        let token = SessionHelper.instance.sessionToken
+        let parameters = ["receiver": receiver,"sender":sender, "token":token!]
+        
+        print(url)
+        printJson(parameters)
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<MessagesResponse>) in
+            switch response.result {
+            case .success:
+                if (WSHelper.logEverything) {
+                    let data = response.data as Data?
+                    let jsonString = String(data: data!, encoding: .utf8)
+                    print(jsonString!)
+                }
+                result(response, nil)
+                break;
+            case .failure(let error):
+                if (WSHelper.logEverything) {
+                    print(error)
+                    if let data = response.data {
+                        let json = String(data: data, encoding: String.Encoding.utf8)
+                        print("Failure Response: \(String(describing: json))")
+                    }
+                }
+                result(nil, error)
+            }
+        })
+    }
+    
+    func send(message: String, from sender: String, to receiver: String, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLSendMessage
+        let token = SessionHelper.instance.sessionToken
+        let parameters = ["message":message, "receiver": receiver,"sender":sender, "token":token!]
+        genericPost(url: url, parameters: parameters, callback: result)
+    }
+    
+    func addFriend(receiver: String, sender: String, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLAddFriends
+        let token = SessionHelper.instance.sessionToken
+        let parameters = ["receiver": receiver,"sender":sender, "token":token]
+        genericPost(url: url, parameters: parameters, callback: result)
+    }
+    
+//    func send
     
     
     func urlForAvatarWith(email: String) -> String {
         return WSHelper.getBaseURL() + kURLGetAvatar + "/" + email + ".png"
+    }
+    
+    func printJson(_ anyobj: Any?) {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: anyobj!, options: .prettyPrinted)
+            // here "jsonData" is the dictionary encoded in JSON data
+            
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            print(jsonString!)
+            // here "decoded" is of type `Any`, decoded from JSON data
+            
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
 }

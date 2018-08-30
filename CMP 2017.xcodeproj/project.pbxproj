@@ -87,6 +87,7 @@
 		A8D25CE221246CDB00D58159 /* ExhibitorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */; };
 		A8D25CE42124736600D58159 /* ExhibitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */; };
 		A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE521248C1900D58159 /* ProfileViewController.swift */; };
+		A8E84AB221382F0D001B30A5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E84AB121382F0D001B30A5 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +200,7 @@
 		A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorCell.swift; sourceTree = "<group>"; };
 		A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorsViewController.swift; sourceTree = "<group>"; };
 		A8D25CE521248C1900D58159 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A8E84AB121382F0D001B30A5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 				A868AA4421270ED600E244B2 /* ContactsViewController.swift */,
 				A868AA4621270EE300E244B2 /* ChatViewController.swift */,
 				A84A35C621291AC000E3DFC1 /* AddEventViewController.swift */,
+				A8E84AB121382F0D001B30A5 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				69FB64B820DEFE9E008E58D2 /* Frameworks */,
 				69FB64B920DEFE9E008E58D2 /* Resources */,
 				DAE43C6AD889DFBC079F7C6A /* [CP] Embed Pods Frameworks */,
+				ACA4FACCE6C81B36FF1AD633 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -636,6 +640,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ACA4FACCE6C81B36FF1AD633 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CMP 2017/Pods-CMP 2017-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CMP 2017/Pods-CMP 2017-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DAE43C6AD889DFBC079F7C6A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -654,6 +678,7 @@
 				"${BUILT_PRODUCTS_DIR}/NoChat/NoChat.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/UINavigationBar-Transparent/UINavigationBar_Transparent.framework",
@@ -672,6 +697,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NoChat.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UINavigationBar_Transparent.framework",
@@ -720,6 +746,7 @@
 				A83E6681210F016400047B87 /* DailyEventsResponse.swift in Sources */,
 				A84A35AF2128FEE000E3DFC1 /* CDEvent+CoreDataClass.swift in Sources */,
 				A8B42F7D212DC30700824083 /* FriendsResponse.swift in Sources */,
+				A8E84AB221382F0D001B30A5 /* MapViewController.swift in Sources */,
 				A84A35C121290F5A00E3DFC1 /* MMSystemMessageCell.swift in Sources */,
 				A8B42F74212D0C9D00824083 /* String.swift in Sources */,
 				A84A35C32129180700E3DFC1 /* NSAttributedString+NoChat.swift in Sources */,
@@ -946,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -971,7 +998,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.unipagos.unipagos;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ecodsa.tech.dev.CMP-2017";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

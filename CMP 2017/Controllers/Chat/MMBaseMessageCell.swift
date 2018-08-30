@@ -24,6 +24,7 @@
 //
 
 import NoChat
+import Kingfisher
 
 class MMBaseMessageCell: NOCChatItemCell {
     
@@ -55,7 +56,12 @@ class MMBaseMessageCell: NOCChatItemCell {
             
             bubbleView.frame = cellLayout.bubbleViewFrame
             avatarImageView.frame = cellLayout.avatarImageViewFrame
+            avatarImageView.layer.cornerRadius = avatarImageView.frame.size.height / 2
             avatarImageView.image = cellLayout.avatarImage
+            avatarImageView.clipsToBounds = true
+            avatarImageView.contentMode = .scaleAspectFill
+            let avatarURL = WSHelper.sharedInstance.urlForAvatarWith(email: cellLayout.message.senderId) 
+            avatarImageView.kf.setImage(with: URL(string: avatarURL))
         }
     }
     

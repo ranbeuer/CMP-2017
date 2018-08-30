@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import ObjectMapper
 //import NOCProtoKit
 
 protocol MessageManagerDelegate: class {
@@ -51,41 +52,61 @@ class MessageManager: NSObject {
 //        client.open()
     }
     
-    func fetchMessages(withChatId chatId: String, handler: ([Message]) -> Void) {
+    func fetchMessages(withChatId chatId: String, handler: @escaping ([Message]) -> Void) {
         if let msgs = messages[chatId] {
             handler(msgs)
         } else {
-            var arr = [Message]()
-            
-            let msg = Message()
-            msg.msgType = "Date"
-            arr.append(msg)
-            
-            if chatId == "bot_89757" {
-                let msg = Message()
-                msg.msgType = "System"
-                msg.text = "Welcome to Gothons From Planet Percal #25! Please input `/start` to play!"
-                arr.append(msg)
+            let senderReceiver = chatId.split(separator: "&")
+            WSHelper.sharedInstance.getMessages(forReceiver: String(senderReceiver[1]), sender: String(senderReceiver[0])) { (response, error) in
+                if (error == nil) {
+                    let mResponse = response?.value
+                    if mResponse?.code == 200 {
+                        let arr = mResponse?.result
+//                        self.saveMessages(arr!, chatId: chatId)
+                        handler(arr!)
+                    }
+                }
             }
+//            var arr = [Message]()
+//
+//            let msg = Message()
+//            msg.msgType = "Date"
+//            arr.append(msg)
+//
+//            if chatId == "bot_89757" {
+//                let msg = Message()
+//                msg.msgType = "System"
+//                msg.text = "Welcome to Gothons From Planet Percal #25! Please input `/start` to play!"
+//                arr.append(msg)
+//            }
             
-            saveMessages(arr, chatId: chatId)
+//            saveMessages(arr, chatId: chatId)
             
-            handler(arr)
+//            handler(arr)
         }
     }
     
     func sendMessage(_ message: Message, toChat chat: Chat) {
         let chatId = chat.chatId
         
-        saveMessages([message], chatId: chatId)
+//        saveMessages([message], chatId: chatId)
         
-        let dict = [
-            "from": message.senderId,
-            "to": chat.targetId,
-            "type": message.msgType,
-            "text": message.text,
-            "ctype": chat.type
-        ]
+        let destinataries = chatId.split(separator: "&")
+        
+        
+        WSHelper.sharedInstance.send(message: message.text, from: String(destinataries[0]), to: String(destinataries[1])) { (response, error) in
+            if (error == nil) {
+                let messages = response as! [[String:Any]]
+                let message = Message(JSON: messages[0] )
+//                self.saveMessages([message!], chatId: chatId)
+            }
+        }
+//        let dict = [
+//            "sender": destinataries[0],
+//            "receiver": destinataries[1],
+//            "message": message.text,
+//            "ctype": chat.type
+//        ]
         
 //        client.sendMessage(dict)
     }

@@ -10,12 +10,25 @@ import UIKit
 
 class SideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     // MARK: - Vars -
     let menuImages : [String] = ["ic_menu_exp","ic_menu_event","ic_menu_net","ic_menu_tran","ic_menu_loc","ic_menu_noti","ic_menu_conf"]
     let menuStrings : [String] = ["Exhibitors","Events","Networking","Transportation","Map","Notifications","Profile"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user = SessionHelper.instance.user
+        nameLabel.text = (user?.firstName)! + " " + (user?.lastName)!
+        var url: URL
+        if (user?.avatarImg)!.starts(with: "http") {
+            url = URL(string: (user?.avatarImg)!)!
+        } else {
+            url = URL(string: WSHelper.getBaseURL() + (user?.avatarImg)!)!
+        }
+        avatarImageView.kf.setImage(with: url)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -96,6 +109,16 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             
             break
         case 4:
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "map")
+            if centerViewController == nil {
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Map")
+                centerViewController.title = "MAP"
+                let navController = UINavigationController(rootViewController: centerViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "map")
+            } else if centerViewController  != currentCenter {
+                sideMenuController?.embed(centerViewController: centerViewController)
+            }
             
             break
         case 5:

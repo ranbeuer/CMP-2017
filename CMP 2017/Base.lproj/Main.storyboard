@@ -162,8 +162,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consultan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-c7-oG8">
-                                        <rect key="frame" x="125" y="61.5" width="220" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-c7-oG8">
+                                        <rect key="frame" x="125" y="70.5" width="220" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -244,6 +244,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BoZ-Nu-HSp"/>
                     </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="b46-MC-I34" id="HXK-cP-OYF"/>
+                        <outlet property="nameLabel" destination="PDY-XE-gQk" id="Gbw-YW-I4W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ex-hu-PII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -818,17 +822,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4g-4t-O5K">
-                                <rect key="frame" x="25" y="50" width="147" height="60"/>
+                                <rect key="frame" x="25" y="50" width="130" height="60"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="MZJ-fH-goI">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exhibi" translatesAutoresizingMaskIntoConstraints="NO" id="MZJ-fH-goI">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="0x1-Eu-ueI"/>
                                             <constraint firstAttribute="width" constant="60" id="U4h-dt-8ZL"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, Marion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-D2-aWK">
-                                        <rect key="frame" x="65" y="20" width="82" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-D2-aWK">
+                                        <rect key="frame" x="65" y="20" width="65" height="21"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1216,14 +1220,14 @@
                                     <constraint firstAttribute="width" constant="80" id="R6p-Ft-FOt"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marion Larson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWv-Qj-Ryw">
-                                <rect key="frame" x="74.5" y="150" width="225.5" height="44.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWv-Qj-Ryw">
+                                <rect key="frame" x="150" y="150" width="75" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consultant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVJ-7w-HWG">
-                                <rect key="frame" x="145.5" y="204.5" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVJ-7w-HWG">
+                                <rect key="frame" x="187" y="204.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1403,7 +1407,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="6It-F3-j9T"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1460,6 +1464,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXt-9P-lRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-778" y="2014"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="G2f-AA-JJg">
+            <objects>
+                <viewController storyboardIdentifier="Map" id="xoq-x0-iPk" customClass="MapViewController" customModule="CMP_2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bnj-2w-Adc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-y3-ZNT" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S2W-y3-ZNT" firstAttribute="top" secondItem="gXd-ZA-q4Q" secondAttribute="top" id="GN7-Vz-uM4"/>
+                            <constraint firstItem="gXd-ZA-q4Q" firstAttribute="bottom" secondItem="S2W-y3-ZNT" secondAttribute="bottom" id="fTL-p3-rQY"/>
+                            <constraint firstItem="gXd-ZA-q4Q" firstAttribute="trailing" secondItem="S2W-y3-ZNT" secondAttribute="trailing" id="rFx-Xn-mDy"/>
+                            <constraint firstItem="S2W-y3-ZNT" firstAttribute="leading" secondItem="gXd-ZA-q4Q" secondAttribute="leading" id="s0r-mG-zX1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gXd-ZA-q4Q"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="S2W-y3-ZNT" id="Ycy-DF-y75"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FzD-Ql-sf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="2025"/>
         </scene>
         <!--Exhibitor View Controller-->
         <scene sceneID="iLP-DH-G09">

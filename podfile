@@ -22,6 +22,10 @@ pod 'HPGrowingTextView'
 pod 'FRHyperLabel'
 pod 'YYText'
 pod 'AFNetworking', '~> 3.0'
+pod 'QRCodeReader.swift', '~> 8.2.0'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+
 
 #pod 'SideMenu'
 #pod 'SideMenuController'

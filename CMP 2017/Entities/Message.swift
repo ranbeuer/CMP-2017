@@ -16,12 +16,11 @@ class Message :  BaseEntity, NOCChatItem {
     }
     
     func type() -> String {
-        return "text"
+        return "Text"
     }
     
     override init() {
         super.init()
-        id = ""
         
     }
     
@@ -58,6 +57,16 @@ class Message :  BaseEntity, NOCChatItem {
         
         senderId = sender!
         text = message!
+        isOutgoing = senderId == SessionHelper.instance.email
+        
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if (object is Message) {
+            let message = object as! Message
+            return self.idNetworking == message.idNetworking
+        }
+        return false
     }
     
 //    func insertEvent() {
