@@ -165,6 +165,7 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
         reader.dismiss(animated: true, completion: nil)
