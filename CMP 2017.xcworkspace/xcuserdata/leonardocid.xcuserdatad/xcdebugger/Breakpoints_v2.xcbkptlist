@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "556639307.301006"
+            timestampString = "558038520.94634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -40,7 +40,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "556639307.301087"
+            timestampString = "558038520.946437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -54,7 +54,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "556639307.301139"
+            timestampString = "558038520.946509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "556639307.301469"
+            timestampString = "558038520.946673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/EventsViewController.swift"
-            timestampString = "556639307.3016289"
+            timestampString = "558038520.946739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/InitialViewController.swift"
-            timestampString = "556695107.349048"
+            timestampString = "558038520.946833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/InitialViewController.swift"
-            timestampString = "556695107.349319"
+            timestampString = "558038520.946897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/AddEventViewController.swift"
-            timestampString = "557183759.879603"
+            timestampString = "558038520.9469891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.67562"
+            timestampString = "558038520.9470561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -292,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/RegistryViewController.swift"
-            timestampString = "556815925.690114"
+            timestampString = "558038520.947544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -308,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/RegistryViewController.swift"
-            timestampString = "556815925.690555"
+            timestampString = "558038520.947614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.676788"
+            timestampString = "558038520.94768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "uplooadAvatar(_:email:result:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.677466"
+            timestampString = "558038520.948046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "uplooadAvatar(_:email:result:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.677855"
+            timestampString = "558038520.948348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "uplooadAvatar(_:email:result:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -372,7 +372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/RegistryViewController.swift"
-            timestampString = "556815925.690922"
+            timestampString = "558038520.948637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/ProfileViewController.swift"
-            timestampString = "557183759.895072"
+            timestampString = "558038520.948727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.6781729"
+            timestampString = "558038520.948784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "uplooadAvatar(_:email:result:)"
             landmarkType = "7">
             <Locations>
@@ -436,11 +436,11 @@
                   moduleName = "CMP 2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/leonardocid/Documents/Freelance/Rodo/CMP%202017/CMP%202017/Network/WSHelper.swift"
-                  timestampString = "557363805.175089"
+                  timestampString = "558038521.187512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "317"
-                  endingLineNumber = "317"
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
                   offsetFromSymbolStart = "3512">
                </Location>
                <Location
@@ -451,60 +451,12 @@
                   moduleName = "CMP 2017"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/leonardocid/Documents/Freelance/Rodo/CMP%202017/CMP%202017/Network/WSHelper.swift"
-                  timestampString = "557363805.178965"
+                  timestampString = "558038521.189544"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "318"
-                  endingLineNumber = "318"
+                  startingLineNumber = "323"
+                  endingLineNumber = "323"
                   offsetFromSymbolStart = "26">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.678525"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "uplooadAvatar(_:email:result:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CMP_2017.WSHelper.uplooadAvatar(Foundation.Data, email: Swift.String, result: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CMP 2017"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leonardocid/Documents/Freelance/Rodo/CMP%202017/CMP%202017/Network/WSHelper.swift"
-                  timestampString = "557363805.186561"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "297"
-                  endingLineNumber = "297"
-                  offsetFromSymbolStart = "830">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.AFMultipartFormData) -&gt; () in CMP_2017.WSHelper.uplooadAvatar(Foundation.Data, email: Swift.String, result: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CMP 2017"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leonardocid/Documents/Freelance/Rodo/CMP%202017/CMP%202017/Network/WSHelper.swift"
-                  timestampString = "557363805.19188"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "298"
-                  endingLineNumber = "298"
-                  offsetFromSymbolStart = "27">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -516,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/ProfileViewController.swift"
-            timestampString = "557183759.903402"
+            timestampString = "558038520.949071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "showProfileInfo()"
             landmarkType = "7">
             <Locations>
@@ -564,7 +516,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Controllers/AddEventViewController.swift"
-            timestampString = "557183759.904343"
+            timestampString = "558038520.949131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -612,7 +564,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMP 2017/Network/WSHelper.swift"
-            timestampString = "557363804.679167"
+            timestampString = "558038520.9492331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -651,6 +603,70 @@
                   offsetFromSymbolStart = "34">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CMP 2017/Controllers/ExhibitorsViewController.swift"
+            timestampString = "558038520.949571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CMP 2017/Controllers/ExhibitorsViewController.swift"
+            timestampString = "558038520.9496419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CMP 2017/Network/WSHelper.swift"
+            timestampString = "558038520.94971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "getUserProfile(email:result:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CMP 2017/Network/WSHelper.swift"
+            timestampString = "558038520.950102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "genericPost(url:parameters:callback:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

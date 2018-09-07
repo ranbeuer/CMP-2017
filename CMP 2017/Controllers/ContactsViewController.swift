@@ -97,7 +97,18 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
                 let result = response?.value
                 if (result?.code == 200) {
                     result?.friends?.forEach({ (friend) in
-                        friend.insertFriend()
+                        if (!friend.exists() || friend.existsFriendAndNeedsUpdate()) {
+                            WSHelper.sharedInstance.getUserProfile(email: friend.receiver!, result: { (response, error) in
+                                if (error == nil) {
+                                    let responseObj = response as! [String : Any]
+                                    friend.updateData(info:responseObj["profile"] as! [String : Any])
+                                    friend.insertFriend()
+                                    AERecord.save()
+                                    self.showFriends()
+                                }
+                            })
+                        }
+                        
                     })
                     AERecord.saveAndWait()
                     self.showFriends()
@@ -152,7 +163,7 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         reader.stopScanning()
         reader.dismiss(animated: true) {
             if result.value.isValidMail() {
-                SVProgressHUD.show(withStatus: "Please wait...")
+                SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
                 WSHelper.sharedInstance.addFriend(receiver: result.value, sender: SessionHelper.instance.email!) { (result, error) in
                     if (error == nil) {
                         SVProgressHUD.showSuccess(withStatus: "Success")

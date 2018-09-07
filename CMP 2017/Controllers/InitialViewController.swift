@@ -61,7 +61,7 @@ class InitialViewController : UIViewController {
             let sideMenu = SideMenuController()
             let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
             let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
-            eventsViewController.title = "EVENTS"
+            eventsViewController.title = NSLocalizedString("Events", comment: "").uppercased()
             let navController = UINavigationController(rootViewController: eventsViewController)
             navController.navigationBar.setBarColor(UIColor.clear)
             sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")

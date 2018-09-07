@@ -61,6 +61,7 @@ class ExhibitorsViewController : UIViewController, UITableViewDataSource, UITabl
         cell.exhibitorEducation?.text = exhibitor.degree!
         
         var url: URL
+        print(exhibitor.url!)
         if exhibitor.url!.starts(with: "http") {
             url = URL(string: exhibitor.url!)!
         } else {
@@ -76,7 +77,7 @@ class ExhibitorsViewController : UIViewController, UITableViewDataSource, UITabl
         let exhibitorVC = self.storyboard?.instantiateViewController(withIdentifier: "Exhibitor") as! ExhibitorViewController
         let exhibitor = exhibitorsArray![indexPath.row]
         exhibitorVC.exhibitor = exhibitor
-        exhibitorVC.title = "Exhibitor Profile"
+        exhibitorVC.title = NSLocalizedString("ExhibitorProfile", comment: "").uppercased();
         self.show(exhibitorVC, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }

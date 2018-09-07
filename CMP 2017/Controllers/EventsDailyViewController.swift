@@ -106,7 +106,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func reloadButtonPressed(sender: UIButton) {
         if !loadingObjects {
             loadingObjects = true;
-            SVProgressHUD.show(withStatus: "Cargando...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressLoading", comment: ""))
             reloadEvents()
         }
     }

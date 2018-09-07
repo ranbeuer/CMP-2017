@@ -26,7 +26,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "PROGRAM"
+        self.title = NSLocalizedString("Program", comment: "").uppercased()
         self.loadEvents()
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,7 +46,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
             sponsors?.modalTransitionStyle = .crossDissolve
             self.present(sponsors!, animated: true, completion: nil)
         } else if (eventsArrray?.count == 0) {
-            SVProgressHUD.showError(withStatus: "No hay eventos para éste día.")
+            SVProgressHUD.showError(withStatus:NSLocalizedString("DialogMessageNoEventsForDay", comment: ""))
         }
     }
     

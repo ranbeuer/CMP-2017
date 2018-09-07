@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
     @IBAction func signInPressed(_ sender: Any) {
         if emailTextField.text?.count != 0 && passwordTextField.text?.count != 0 {
             if (emailTextField.text?.isValidMail())! {
-                SVProgressHUD.show(withStatus: "Iniciando sesión...")
+                SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressLogin", comment: ""))
                 WSHelper.sharedInstance.login(email: emailTextField.text!, password: passwordTextField.text!) { (_ response:Any?, _ error: Error?) in
                     SVProgressHUD.dismiss()
                     if error == nil {
@@ -64,10 +64,10 @@ class LoginViewController: UIViewController {
                     }
                 }
             } else {
-                SVProgressHUD.showError(withStatus: "Please enter a valid email.")
+                SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorInvalidEmail", comment: ""))
             }
         } else {
-            SVProgressHUD.showError(withStatus: "Email or password missing.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorNoEmailPass", comment: ""))
         }
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddEvent")
 //        self.present(vc!, animated: true, completion: nil)
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
                 let sideMenu = SideMenuController()
                 let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
                 let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
-                eventsViewController.title = "EVENTS"
+                eventsViewController.title = NSLocalizedString("Events", comment: "").uppercased()
                 let navController = UINavigationController(rootViewController: eventsViewController)
                 navController.navigationBar.setBarColor(UIColor.clear)
                 sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")

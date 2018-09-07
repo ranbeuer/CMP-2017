@@ -10,12 +10,27 @@ import UIKit
 
 class SideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    enum MenuEntry : Int {
+        case Exhibitors = 0
+        case Events = 1
+        case Networking = 2
+        case Transportation = 3
+        case Map = 4
+        case Notifications = 5
+        case Profile = 6
+    }
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     // MARK: - Vars -
     let menuImages : [String] = ["ic_menu_exp","ic_menu_event","ic_menu_net","ic_menu_tran","ic_menu_loc","ic_menu_noti","ic_menu_conf"]
-    let menuStrings : [String] = ["Exhibitors","Events","Networking","Transportation","Map","Notifications","Profile"]
+    let menuStrings : [String] = [NSLocalizedString("Exhibitors", comment: ""),
+                                  NSLocalizedString("Events", comment: ""),
+                                  NSLocalizedString("Networking", comment: ""),
+                                  NSLocalizedString("Transportation", comment: ""),
+                                  NSLocalizedString("Map", comment: ""),
+                                  NSLocalizedString("Notifications", comment: ""),
+                                  NSLocalizedString("Profile", comment: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +43,8 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             url = URL(string: WSHelper.getBaseURL() + (user?.avatarImg)!)!
         }
         avatarImageView.kf.setImage(with: url)
+        avatarImageView.layer.cornerRadius = 40
+        avatarImageView.clipsToBounds = true
         
 
         // Do any additional setup after loading the view.
@@ -66,6 +83,10 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let menuEntry = MenuEntry(rawValue: indexPath.row)
+        if menuEntry == .Notifications || menuEntry == .Transportation {
+            return 0
+        }
         return 60
     }
     
@@ -74,12 +95,13 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         
         var centerViewController : UIViewController!
         let currentCenter = self.sideMenuController?.centerViewController
-        switch(indexPath.row) {
-        case 0:
+        let menuEntry = MenuEntry(rawValue: indexPath.row)
+        switch(menuEntry!) {
+        case .Exhibitors:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "exhibitors")
             if centerViewController == nil {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Exhibitors")
-                centerViewController.title = "Exhibitors"
+                centerViewController.title = NSLocalizedString("Exhibitors", comment: "").uppercased()
                 let navController = UINavigationController(rootViewController: centerViewController)
                 navController.navigationBar.setBarColor(UIColor.clear)
                 sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "exhibitors")
@@ -87,32 +109,30 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
-        case 1:
+        case .Events:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "events")
             if centerViewController  != currentCenter {
                 self.sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
-        case 2:
-            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "networking")
-            if centerViewController == nil {
+        case .Networking:
+            
+            if !(currentCenter?.isKind(of: ContactsViewController.self))! {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Networking")
-                centerViewController.title = "NETWORKING"
+                centerViewController.title = NSLocalizedString("Networking", comment: "").uppercased()
                 let navController = UINavigationController(rootViewController: centerViewController)
                 navController.navigationBar.setBarColor(UIColor.clear)
-                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "networking")
-            } else if centerViewController  != currentCenter {
-                sideMenuController?.embed(centerViewController: centerViewController)
+                sideMenuController?.embed(centerViewController: navController)
             }
             break
-        case 3:
+        case .Transportation:
             
             break
-        case 4:
+        case .Map:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "map")
             if centerViewController == nil {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Map")
-                centerViewController.title = "MAP"
+                centerViewController.title = NSLocalizedString("Map", comment: "").uppercased()
                 let navController = UINavigationController(rootViewController: centerViewController)
                 navController.navigationBar.setBarColor(UIColor.clear)
                 sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "map")
@@ -121,23 +141,21 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             break
-        case 5:
+        case .Notifications:
             
             break
-        case 6:
+        case .Profile:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "profile")
             if centerViewController == nil {
                 centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile")
-                centerViewController.title = "Profile"
+                centerViewController.title = NSLocalizedString("Profile", comment: "").uppercased()
                 sideMenuController?.embed(centerViewController: centerViewController, cacheIdentifier: "profile")
             } else if centerViewController  != currentCenter {
                 sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
-        default:
-            
-            break
         }
         self.sideMenuController?.toggle()
     }
+    
 }

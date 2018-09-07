@@ -191,7 +191,7 @@ class WSHelper {
             manager.post(path!, parameters: parameters, progress: nil, success: { (task, response) in
                 let json = response as! Dictionary <String, Any>
                 let code = json["code"] as! Int
-                if (code == 200) {
+                if (code == 200 || code == 0) {
                     var finalresponse = json["response"]
                     if (finalresponse != nil) {
                         result(finalresponse, nil)
@@ -201,7 +201,12 @@ class WSHelper {
                         
                     }
                 } else {
-                    let errorMessage = json["message"];
+                    var errorMessage = json["message"];
+                    if (errorMessage == nil) {
+                        let responseArr = json["response"] as! [[String:Any]]
+                        let response = responseArr[0]
+                        errorMessage = response["message"]
+                    }
                     let finalError = NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey: errorMessage as Any])
                     result(nil, finalError)
                 }

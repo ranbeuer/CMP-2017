@@ -1,0 +1,45 @@
+/* 
+  Strings.strings
+  CMP 2017
+
+  Created by Leonardo Cid on 07/09/18.
+  Copyright © 2018 Rodolfo Casanova. All rights reserved.
+*/
+"Exhibitors" = "Exhibitors";
+"Events" = "Events";
+"Networking" = "Networking";
+"Transportation" = "Transportation";
+"Map" = "Map";
+"Notifications" = "Notifications";
+"Profile" = "Profile";
+
+"EventDetail" = "Event Detail";
+"Program" = "Program";
+"ExhibitorProfile" = "Exhibitor Profile";
+
+"WelcomeHi" = "Hi, <user>!";
+
+"DialogCancel" = "Cancel";
+
+"DialogMessageNoEventsForDay" = "No events for this day";
+
+"DialogProgressCreateAccount" = "Creating account...";
+"DialogProgressUploadAvatar" = "Uploading avatar...";
+"DialogProgressSaveImage" = "Saving image...";
+"DialogProgressLoading" = "Loading...";
+"DialogProgressLogin" = "Logging in...";
+"DialogProgressWait" = "Please wait...";
+
+
+"PicturesSource" = "Select the source of the pictures.";
+"SourceCamera" = "Camera";
+"SourceLibrary" = "Choose from the library";
+
+"DialogErrorName" = "Please enter your first name.";
+"DialogErrorLastName" = "Please enter your last name.";
+"DialogErrorEmail" = "Please enter your email.";
+"DialogErrorInvalidEmail" = "Please enter a valid email.";
+"DialogErrorPassword" = "Please enter a valid password.";
+"DialogErrorNoPhoto" = "Please add a user photo.";
+"DialogErrorNoEmailPass" = "Email or password missing.";
+"DialogErrorInvalidEvent" = "Invalid event.\nPlease try again.";

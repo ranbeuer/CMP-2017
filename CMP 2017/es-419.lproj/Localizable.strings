@@ -1,0 +1,46 @@
+/* 
+  Strings.strings
+  CMP 2017
+
+  Created by Leonardo Cid on 07/09/18.
+  Copyright © 2018 Rodolfo Casanova. All rights reserved.
+*/
+
+"Exhibitors" = "Expositores";
+"Events" = "Eventos";
+"Networking" = "Networking";
+"Transportation" = "Transporte";
+"Map" = "Mapa";
+"Notifications" = "Notificaciones";
+"Profile" = "Perfil";
+
+"EventDetail" = "Detalle de Evento";
+"Program" = "Programa";
+"ExhibitorProfile" = "Perfil de Expositor";
+
+"WelcomeHi" = "Hola, <user>!";
+
+"DialogCancel" = "Cancelar";
+
+"DialogMessageNoEventsForDay" = "No hay eventos para ese día";
+
+"DialogProgressCreateAccount" = "Registrando usuario...";
+"DialogProgressUploadAvatar" = "Subiendo avatar...";
+"DialogProgressSaveImage" = "Guardando foto...";
+"DialogProgressLoading" = "Cargando...";
+"DialogProgressLogin" = "Iniciando Sesión...";
+"DialogProgressWait" = "Por favor espere...";
+
+
+"PicturesSource" = "Elige el origen de la imagen.";
+"SourceCamera" = "Tomar con la cámara";
+"SourceLibrary" = "Elegir de la biblioteca";
+
+"DialogErrorName" = "Por favor introduce tu nombre.";
+"DialogErrorLastName" = "Por favor introduce tu apellido.";
+"DialogErrorEmail" = "Por favor introduce tu email.";
+"DialogErrorInvalidEmail" = "Por favor introduce un email válido.";
+"DialogErrorPassword" = "Por favor introduce una contraseña válida.";
+"DialogErrorNoPhoto" = "Por favor agrega una foto de usuario.";
+"DialogErrorNoEmailPass" = "Falta Email o password.";
+"DialogErrorInvalidEvent" = "Evento no válido.\nPor favor intenta de nuevo.";

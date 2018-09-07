@@ -34,7 +34,7 @@ class ProfileViewController : UIViewController, UICollectionViewDataSource, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if SessionHelper.instance.user == nil {
-            SVProgressHUD.show(withStatus: "Please wait...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
         } else {
             showProfileInfo()
             showFriends()
@@ -53,9 +53,17 @@ class ProfileViewController : UIViewController, UICollectionViewDataSource, UICo
                 let result = response?.value
                 if (result?.code == 200) {
                     result?.friends?.forEach({ (friend) in
-                        friend.insertFriend()
+                        if (!friend.exists() || friend.existsFriendAndNeedsUpdate()) {
+                            WSHelper.sharedInstance.getUserProfile(email: friend.receiver!, result: { (response, error) in
+                                if (error == nil) {
+                                    let responseObj = response as! [String : Any]
+                                    friend.updateData(info:responseObj["profile"] as! [String : Any])
+                                    friend.insertFriend()
+                                    AERecord.save()
+                                }
+                            })
+                        }
                     })
-                    AERecord.saveAndWait()
                     self.showFriends()
                 }
             }

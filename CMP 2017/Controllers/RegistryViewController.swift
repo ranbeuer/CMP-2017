@@ -69,9 +69,9 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
     */
     
     @IBAction func photoPressed(_ sender: Any) {
-        let optionMenu = UIAlertController(title: nil, message: "Select the source of the pictures.", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: NSLocalizedString("PicturesSource", comment:""), preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler:
+        let cameraAction = UIAlertAction(title: NSLocalizedString("SourceCamera", comment:""), style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
             self.imagePicker =  UIImagePickerController()
@@ -86,7 +86,7 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
             
         })
         
-        let libraryAction = UIAlertAction(title: "Choose from the library", style: .default, handler:
+        let libraryAction = UIAlertAction(title: NSLocalizedString("SourceLibrary", comment:""), style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
             self.imagePicker =  UIImagePickerController()
@@ -100,17 +100,17 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
         
         optionMenu.addAction(cameraAction)
         optionMenu.addAction(libraryAction)
-        optionMenu.addAction(UIAlertAction(title:"Cancel", style: .cancel, handler: nil))
+        optionMenu.addAction(UIAlertAction(title:NSLocalizedString("DialogCancel", comment:""), style: .cancel, handler: nil))
         self.present(optionMenu, animated: true, completion: nil)
     }
     
     @IBAction func signUpPressed(_ sender: Any) {
         if validateFields() {
-            SVProgressHUD.show(withStatus: "Creating account...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressCreateAccount", comment:""))
             WSHelper.sharedInstance.createUser(email: emailTextField.text!, password: passwordTextField.text!, name: fullNameTextField.text!, lastName: lastNameTextField.text!) { (_ response:Any? , _ error: Error?) in
                 if error == nil {
                     let data = UIImagePNGRepresentation(self.avatarImageView.image!)
-                    SVProgressHUD.show(withStatus: "Uploading avatar...")
+                    SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressUploadAvatar", comment:""))
                     WSHelper.sharedInstance.uplooadAvatar(data!, email: self.emailTextField.text!, result: { (response, error) in
                         if error == nil {
                             WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
@@ -142,22 +142,22 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func validateFields() -> Bool {
         if fullNameTextField.text?.count == 0 {
-            SVProgressHUD.showError(withStatus: "Please enter your first name.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorName", comment:""))
             return false
         } else if lastNameTextField.text?.count == 0 {
-            SVProgressHUD.showError(withStatus: "Please enter your last name.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorLastName", comment:""))
             return false
         } else if emailTextField.text?.count == 0 {
-            SVProgressHUD.showError(withStatus: "Please enter your email.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorEmail", comment:""))
             return false
         } else if !(emailTextField.text?.isValidMail())! {
-            SVProgressHUD.showError(withStatus: "Please enter a valid email.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorInvalidEmail", comment:""))
             return false
         } else if passwordTextField.text?.count == 0 {
-            SVProgressHUD.showError(withStatus: "Please enter a valid password.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorPassword", comment:""))
             return false
         } else if self.avatarPhotoURL == nil {
-            SVProgressHUD.showError(withStatus: "Please add a user photo.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorNoPhoto", comment:""))
             return false
         } else {
             return true
@@ -185,7 +185,7 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
             avatarImageView.image = image
         }
         if (picker.sourceType == .camera) {
-            SVProgressHUD.show(withStatus: NSLocalizedString("Saving image", comment: ""))
+            SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressSaveImage", comment: ""))
             UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
         } else {
             self.avatarPhotoURL = info[UIImagePickerControllerReferenceURL] as! URL

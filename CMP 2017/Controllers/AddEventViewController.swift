@@ -80,12 +80,12 @@ class AddEventViewController : UIViewController {
         if (eventTextField.text == "ecodsa") {
             retrieveInfo()
         } else {
-            SVProgressHUD.showError(withStatus: "Invalid event.\nPlease try again.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorInvalidEvent", comment: ""))
         }
     }
     
     func retrieveInfo() {
-        SVProgressHUD.show(withStatus: "Por favor espere...")
+        SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
         WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
@@ -113,7 +113,7 @@ class AddEventViewController : UIViewController {
     
     func showProfileInfo() {
         let user = SessionHelper.instance.user
-        nameLabel.text = "Hi, " + (user?.firstName)! + "!"
+        nameLabel.text = NSLocalizedString("WelcomeHi", comment: "").replacingOccurrences(of: "<user>", with: (user?.firstName)!)
         var url: URL
         if (user?.avatarImg)!.starts(with: "http") {
             url = URL(string: (user?.avatarImg)!)!
@@ -134,7 +134,7 @@ class AddEventViewController : UIViewController {
             let sideMenu = SideMenuController()
             let sideMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainSideMenu") as! SideMenuViewController
             let eventsViewController  = self.storyboard?.instantiateViewController(withIdentifier: "Events") as! EventsDailyViewController
-            eventsViewController.title = "EVENTS"
+            eventsViewController.title = NSLocalizedString("Events", comment: "").uppercased()
             let navController = UINavigationController(rootViewController: eventsViewController)
             navController.navigationBar.setBarColor(UIColor.clear)
             sideMenu.embed(centerViewController: navController, cacheIdentifier: "events")

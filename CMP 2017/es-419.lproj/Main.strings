@@ -1,0 +1,165 @@
+
+/* Class = "UILabel"; text = "I agreee to the Terms and Conditions"; ObjectID = "07R-gv-SNI"; */
+"07R-gv-SNI.text" = "Estoy de acuerdo con los Términos y Condiciones";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "0V2-Cb-jQP"; */
+"0V2-Cb-jQP.text" = "¿No tienes una cuenta?";
+
+/* Class = "UILabel"; text = "Sign up"; ObjectID = "0qu-HB-0jP"; */
+"0qu-HB-0jP.text" = "Regístrate";
+
+/* Class = "UILabel"; text = "TUMOR IMMUNOLOGY"; ObjectID = "2hU-Qj-CFB"; */
+"2hU-Qj-CFB.text" = "TUMOR IMMUNOLOGY";
+
+/* Class = "UIViewController"; title = "Sign Up"; ObjectID = "2xf-qn-Ubi"; */
+"2xf-qn-Ubi.title" = "Sign Up";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3KW-ow-tbL"; */
+"3KW-ow-tbL.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3WJ-Je-vrT"; */
+"3WJ-Je-vrT.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Menu"; ObjectID = "4dg-De-75K"; */
+"4dg-De-75K.normalTitle" = "Menú";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "4xe-KV-nzq"; */
+"4xe-KV-nzq.normalTitle" = "Saltar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "59N-aI-Dno"; */
+"59N-aI-Dno.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "6xx-ck-8Qk"; */
+"6xx-ck-8Qk.normalTitle" = "Regístrate";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "8D2-ob-fJP"; */
+"8D2-ob-fJP.placeholder" = "contraseña";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AvK-hH-UeT"; */
+"AvK-hH-UeT.text" = "Label";
+
+/* Class = "UILabel"; text = "GALLERY"; ObjectID = "BNN-W1-8pv"; */
+"BNN-W1-8pv.text" = "GALERÍA";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BOI-1R-oPa"; */
+"BOI-1R-oPa.text" = "Label";
+
+/* Class = "UILabel"; text = "Do you want to add an event?"; ObjectID = "DfJ-uW-iE8"; */
+"DfJ-uW-iE8.text" = "¿Deseas agregar un evento?";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EsH-Hq-Siu"; */
+"EsH-Hq-Siu.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "F4O-ia-eLQ"; */
+"F4O-ia-eLQ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "GpB-LB-gh5"; */
+"GpB-LB-gh5.normalTitle" = "INICIA SESIÓN";
+
+/* Class = "UILabel"; text = "User"; ObjectID = "KWv-Qj-Ryw"; */
+"KWv-Qj-Ryw.text" = "Usuario";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "LIj-vq-d7T"; */
+"LIj-vq-d7T.placeholder" = "Nombre";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "LiT-fI-511"; */
+"LiT-fI-511.text" = "4";
+
+/* Class = "UILabel"; text = "bla"; ObjectID = "NjR-TV-Gba"; */
+"NjR-TV-Gba.text" = "bla";
+
+/* Class = "UILabel"; text = "Marion Larsson"; ObjectID = "PDY-XE-gQk"; */
+"PDY-XE-gQk.text" = "Marion Larsson";
+
+/* Class = "UILabel"; text = "This conferenceis presented by the following sponsors"; ObjectID = "QOy-tf-jeJ"; */
+"QOy-tf-jeJ.text" = "Esta conferencia es presentada por los siguientes patrocinadores";
+
+/* Class = "UILabel"; text = "238"; ObjectID = "ScJ-H6-X5V"; */
+"ScJ-H6-X5V.text" = "238";
+
+/* Class = "UILabel"; text = "Hi, User"; ObjectID = "T1x-D2-aWK"; */
+"T1x-D2-aWK.text" = "Hola, Usuario";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UxA-SW-i4F"; */
+"UxA-SW-i4F.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YTn-Jr-Mwe"; */
+"YTn-Jr-Mwe.text" = "Label";
+
+/* Class = "UILabel"; text = "ID USER"; ObjectID = "Ytn-eN-elc"; */
+"Ytn-eN-elc.text" = "ID USER";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "bVw-Rm-0rI"; */
+"bVw-Rm-0rI.placeholder" = "Contraseña";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "cCL-u6-dwb"; */
+"cCL-u6-dwb.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "ABOUT EVENT"; ObjectID = "cji-eb-HhQ"; */
+"cji-eb-HhQ.text" = "ACERCA DEL EVENTO";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "coa-eQ-rA7"; */
+"coa-eQ-rA7.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "SEARCH CODE"; ObjectID = "dPw-Cd-MVF"; */
+"dPw-Cd-MVF.normalTitle" = "BUSCAR";
+
+/* Class = "UILabel"; text = "PHOTOS"; ObjectID = "dWH-z8-SZn"; */
+"dWH-z8-SZn.text" = "FOTOS";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "dWZ-FT-lTQ"; */
+"dWZ-FT-lTQ.placeholder" = "Contraseña";
+
+/* Class = "UILabel"; text = "ASSISTANTS"; ObjectID = "e2L-7e-Xuh"; */
+"e2L-7e-Xuh.text" = "ASISTENTES";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "euG-S0-ETT"; */
+"euG-S0-ETT.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Reload"; ObjectID = "fxX-Sz-Rey"; */
+"fxX-Sz-Rey.normalTitle" = "Recargar";
+
+/* Class = "UIButton"; normalTitle = "Your photo"; ObjectID = "gDf-mk-kg3"; */
+"gDf-mk-kg3.normalTitle" = "Tu foto";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gRD-yi-EJM"; */
+"gRD-yi-EJM.text" = "Label";
+
+/* Class = "UILabel"; text = "Contacts"; ObjectID = "gZD-wC-V8z"; */
+"gZD-wC-V8z.text" = "Contactos";
+
+/* Class = "UILabel"; text = "Don't have and account?"; ObjectID = "jsZ-F4-bQw"; */
+"jsZ-F4-bQw.text" = "¿No tienes cuenta?";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "ktp-m0-fvO"; */
+"ktp-m0-fvO.text" = "5";
+
+/* Class = "UILabel"; text = "EXHIBITORS"; ObjectID = "prq-G9-bAm"; */
+"prq-G9-bAm.text" = "EXPOSITORES";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sXy-kR-6Wd"; */
+"sXy-kR-6Wd.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "sbf-7L-yiJ"; */
+"sbf-7L-yiJ.normalTitle" = "Regístrate";
+
+/* Class = "UITextField"; placeholder = "Type your event code"; ObjectID = "uTi-Pk-lWA"; */
+"uTi-Pk-lWA.placeholder" = "Introduce el código de tu evento";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "v1H-T7-UQs"; */
+"v1H-T7-UQs.normalTitle" = "Iniciar Sesión";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "v7L-eT-Goe"; */
+"v7L-eT-Goe.placeholder" = "email";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "w6O-ef-FDb"; */
+"w6O-ef-FDb.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "wtg-pP-Kq4"; */
+"wtg-pP-Kq4.placeholder" = "Apellido";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xm5-iO-0qx"; */
+"xm5-iO-0qx.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y5J-Ca-z3o"; */
+"y5J-Ca-z3o.text" = "Label";

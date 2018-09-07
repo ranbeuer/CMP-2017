@@ -24,7 +24,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         eventImageView.image = UIImage(named: "logo_cmp_ss")
         eventNameLabel.text = event!.name
         eventDescriptionLabel.text = event!.eventDescription
-        self.title = "EVENT DETAIL"
+        self.title = NSLocalizedString("EventDetail", comment: "").uppercased()
         var widthConstraint : NSLayoutConstraint?
         for (_, constraint) in containerView.constraints.enumerated() {
             if (constraint.firstAttribute == .width || constraint.secondAttribute == .width) {

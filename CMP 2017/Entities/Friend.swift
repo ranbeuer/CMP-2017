@@ -67,4 +67,8 @@ class Friend : BaseEntity {
         let cdFriend = getCDEquivalent(id: idFriend!, entity: "CDFriend", field: "idFriend") as? CDFriend
         return cdFriend != nil && (cdFriend!.email)! == ""
     }
+    func exists() -> Bool {
+        let cdFriend = getCDEquivalent(id: idFriend!, entity: "CDFriend", field: "idFriend") as? CDFriend
+        return cdFriend != nil
+    }
 }
