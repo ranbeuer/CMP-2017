@@ -14,22 +14,25 @@ import AFNetworking
 class WSHelper {
     static private let devURL = "http://52.173.95.250:3333"
     /// Prod Base url
-    static private let prodURL = "http://142.93.115.237:3333"
+    static private let prodURL = "https://www.apicmp.com/api"
     
     
     let kURLLogin =                 "/session/login" //ya
     let kURLCreateUser =            "/users/create"  //ya
     let kURLUserProfile =           "/profile/minimum"  //ya
     let kURLGetFriends =            "/profile/friends"  //ya
-    let kURLAddFriends =            "/profile/addfriend"
+    let kURLAddFriends =            "/profile/addfriend" //ya
     let kURLEvents =                "/events" //ya
     let kURLExhibitor =             "/events/exhibitor" //ya
     let kURLDailyEvents =           "/events/daily" //ya
     let kURLEventsRelExhibitor =    "/events/relation/exhibitor"
     let kURLGetAvatar =             "/images/avatar"//ya
     let kURLUploadAvatar =          "/upload/avatar"//ya
-    let kURLMessages =              "/operation/message/read"
-    let kURLSendMessage =           "/operation/message"
+    let kURLMessages =              "/operation/message/read" //ya
+    let kURLSendMessage =           "/operation/message" //ya
+    let kURLRoutesCalendar =        "/events/route/calendar"
+    let kURLRoutesDetail =          "/events/route/detail"
+    
     
     
     let manager = AFHTTPSessionManager(baseURL: URL(string: WSHelper.baseURL))

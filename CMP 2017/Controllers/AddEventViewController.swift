@@ -77,7 +77,7 @@ class AddEventViewController : UIViewController {
     }
     
     @IBAction func searchPressed(_ sender: Any) {
-        if (eventTextField.text == "ecodsa") {
+        if (eventTextField.text == "cmp2018") {
             retrieveInfo()
         } else {
             SVProgressHUD.showError(withStatus: NSLocalizedString("DialogErrorInvalidEvent", comment: ""))
