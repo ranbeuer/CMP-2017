@@ -29,9 +29,16 @@ class InitialViewController : UIViewController {
         WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
-            }
-            self.programRetrieved = true
-            self.showMainMenu()
+                WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
+                    if (error == nil) {
+                        let jsonArray = response as! [[String:Any]]
+                        self.saveRelations(jsonArray)
+                    }
+                    self.programRetrieved = true
+                    self.showMainMenu()
+                }
+             }
+            
         }
         WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
             if error == nil {
@@ -75,6 +82,15 @@ class InitialViewController : UIViewController {
             event.insertEvent()
         }
         AERecord.save()
+    }
+    
+    func saveRelations(_ relations: [[String: Any]]) {
+        for (_, obj) in relations.enumerated() {
+            let rel = EventExhibitorRelation(JSON: obj)!
+            rel.insertRelation()
+        }
+        AERecord.save()
+       
     }
     
     func recordExists(id: Int, entity: String, field: String) -> Bool {

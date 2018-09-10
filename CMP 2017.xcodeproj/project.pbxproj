@@ -75,6 +75,9 @@
 		A868AA572127161E00E244B2 /* MMBaseMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4E2127161E00E244B2 /* MMBaseMessageCell.swift */; };
 		A868AA592127161E00E244B2 /* MMBaseMessageCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA502127161E00E244B2 /* MMBaseMessageCellLayout.swift */; };
 		A868AA5A2127161E00E244B2 /* MMTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA512127161E00E244B2 /* MMTextMessageCell.swift */; };
+		A89050132146A8070032E63D /* EventExhibitorRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050122146A8070032E63D /* EventExhibitorRelation.swift */; };
+		A89050172146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */; };
+		A89050182146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */; };
 		A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */; };
 		A8AFC5F3211094A30096E7A5 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */; };
 		A8AFC5F52110983A0096E7A5 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */; };
@@ -189,6 +192,10 @@
 		A868AA4F2127161E00E244B2 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		A868AA502127161E00E244B2 /* MMBaseMessageCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMBaseMessageCellLayout.swift; sourceTree = "<group>"; };
 		A868AA512127161E00E244B2 /* MMTextMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMTextMessageCell.swift; sourceTree = "<group>"; };
+		A89050122146A8070032E63D /* EventExhibitorRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExhibitorRelation.swift; sourceTree = "<group>"; };
+		A89050142146BE620032E63D /* EvExRelation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EvExRelation.xcdatamodel; sourceTree = "<group>"; };
+		A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEvExRelation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEvExRelation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CMP.xcdatamodel; sourceTree = "<group>"; };
 		A8AFC5EA2110419F0096E7A5 /* CDEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AFC5EB2110419F0096E7A5 /* CDDailyEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDDailyEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -366,6 +373,7 @@
 				A8B42F75212DBAA900824083 /* Friend.swift */,
 				A847E879212E1671004D5B8B /* BaseEntity.swift */,
 				A8287435213277DA00B59EBE /* Message.swift */,
+				A89050122146A8070032E63D /* EventExhibitorRelation.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -467,6 +475,8 @@
 		A8AFC5D921103FE90096E7A5 /* CoreDataEntities */ = {
 			isa = PBXGroup;
 			children = (
+				A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */,
+				A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */,
 				A8B42F78212DBD8B00824083 /* CDFriend+CoreDataClass.swift */,
 				A8B42F77212DBD8B00824083 /* CDFriend+CoreDataProperties.swift */,
 				A84A35B12128FF4100E3DFC1 /* CDExhibitor+CoreDataClass.swift */,
@@ -751,10 +761,13 @@
 				A83E6696210F0C5600047B87 /* SideMenuController+CustomTypes.swift in Sources */,
 				A8AFC5F52110983A0096E7A5 /* SponsorCell.swift in Sources */,
 				A83E6693210F0C5600047B87 /* SideContainmentSegue.swift in Sources */,
+				A89050132146A8070032E63D /* EventExhibitorRelation.swift in Sources */,
 				A83E6699210F0C5600047B87 /* SideMenuController+SideOver.swift in Sources */,
 				A83E6695210F0C5600047B87 /* UIKitExtensions.swift in Sources */,
 				A84A35AD2128FEE000E3DFC1 /* CDDailyEvent+CoreDataClass.swift in Sources */,
 				A868AA552127161E00E244B2 /* User.swift in Sources */,
+				A89050182146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift in Sources */,
+				A89050172146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift in Sources */,
 				A83E6681210F016400047B87 /* DailyEventsResponse.swift in Sources */,
 				A84A35AF2128FEE000E3DFC1 /* CDEvent+CoreDataClass.swift in Sources */,
 				A8B42F7D212DC30700824083 /* FriendsResponse.swift in Sources */,
@@ -1160,12 +1173,13 @@
 		A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A89050142146BE620032E63D /* EvExRelation.xcdatamodel */,
 				A82874372132883000B59EBE /* MessagesUpdate.xcdatamodel */,
 				A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */,
 				A847E878212E0513004D5B8B /* Friends.xcdatamodel */,
 				A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */,
 			);
-			currentVersion = A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */;
+			currentVersion = A89050142146BE620032E63D /* EvExRelation.xcdatamodel */;
 			path = CMP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

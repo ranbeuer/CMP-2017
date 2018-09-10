@@ -181,6 +181,11 @@ class WSHelper {
         })
     }
     
+    func getExhibitorEventRelations(callback result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventsRelExhibitor
+        genericGet(url: url, parameters: nil, callback: result);
+    }
+    
     func genericPost(url: String, parameters:[String:Any]?, callback result: @escaping ResultBlock ) {
         if (WSHelper.USE_AFNETWORKING) {
             manager.requestSerializer = AFJSONRequestSerializer()
@@ -271,8 +276,13 @@ class WSHelper {
                     let json = response.result.value as! Dictionary <String, Any>
                     let code = json["code"] as! Int
                     if (code == 200) {
-                        let finalresponse = json["response"]
-                        result(finalresponse, nil)
+                        if let finalresponse = json["response"] {
+                            result(finalresponse, nil)
+                        } else  if let finalResponse = json["result"] {
+                            result(finalResponse, nil)
+                        }
+                        
+                        
                     } else {
                         let errorMessage = json["message"];
                         let finalError = NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey: errorMessage as Any])
@@ -412,5 +422,7 @@ class WSHelper {
             print(error.localizedDescription)
         }
     }
+    
+    
     
 }

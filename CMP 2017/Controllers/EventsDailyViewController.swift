@@ -97,6 +97,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         
 //        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
 //            if error == nil {
+        
 //                self.eventsArrray = response?.value?.result
 //                self.collectionView?.reloadData()
 //            }
@@ -125,6 +126,12 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
                 SVProgressHUD.dismiss()
                 self.loadingObjects = false;
 
+            }
+        }
+        WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
+            if (error == nil) {
+                let jsonArray = response as! [[String:Any]]
+                self.saveRelations(jsonArray)
             }
         }
     }
@@ -163,5 +170,14 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
             CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
             
         }
+    }
+    
+    func saveRelations(_ relations: [[String: Any]]) {
+        for (_, obj) in relations.enumerated() {
+            let rel = EventExhibitorRelation(JSON: obj)!
+            rel.insertRelation()
+        }
+        AERecord.save()
+        
     }
 }

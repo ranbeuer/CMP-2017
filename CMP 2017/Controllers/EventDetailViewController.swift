@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AERecord
+import Kingfisher
 
 class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -15,6 +17,10 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var eventExhibitorImageView: UIImageView!
+    @IBOutlet weak var eventExhibitorName: UILabel!
+    @IBOutlet weak var eventExhibitorJob: UILabel!
+    @IBOutlet weak var exhibitorContainer: UIView!
     
     var event : CDEvent?
     
@@ -43,6 +49,20 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         gradient.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.5), UIColor.white.cgColor]
         gradient.locations = [0, 0.6, 1]
         self.view.layer.addSublayer(gradient)
+        
+        if let exhibitor = getExhibitor(eventId: String((event?.idEvent)!)) {
+            eventExhibitorName.text = exhibitor.name! + " " + exhibitor.lastName!
+            eventExhibitorJob.text = exhibitor.degree!
+            var url: URL
+            if exhibitor.url!.starts(with: "http") {
+                url = URL(string: exhibitor.url!)!
+            } else {
+                url = URL(string: WSHelper.getBaseURL() + exhibitor.url!)!
+            }
+            eventExhibitorImageView?.kf.setImage(with: url)
+        } else {
+            exhibitorContainer.removeFromSuperview()
+        }
         
     }
     
@@ -76,5 +96,23 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         return CGSize(width: height * 1.6, height: height)
     }
 
+    func getExhibitor(eventId: String) -> CDExhibitor?{
+        var request = CDEvExRelation.createFetchRequest()
+        var query = "idEvent = \"" + eventId + "\""
+        request.predicate = NSPredicate(format: query)
+        let relations = AERecord.execute(fetchRequest: request)
+        if (relations.count == 0){
+            return nil
+        }
+        let relation = relations[0] as! CDEvExRelation
+        request = CDExhibitor.createFetchRequest()
+        query = "idExhibitor = \"" + String(relation.idExhibitor) + "\""
+        request.predicate = NSPredicate(format: query)
+        let exhibitorsResult = AERecord.execute(fetchRequest: request)
+        if (exhibitorsResult.count == 0){
+            return nil
+        }
+        return exhibitorsResult[0] as? CDExhibitor
+    }
 }
 

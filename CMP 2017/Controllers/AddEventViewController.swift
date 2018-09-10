@@ -89,9 +89,15 @@ class AddEventViewController : UIViewController {
         WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
+                WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
+                    if (error == nil) {
+                        let jsonArray = response as! [[String:Any]]
+                        self.saveRelations(jsonArray)
+                    }
+                    self.programRetrieved = true
+                    self.showMainMenu()
+                }
             }
-            self.programRetrieved = true
-            self.showMainMenu()
         }
         WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
             if error == nil {
@@ -179,15 +185,25 @@ class AddEventViewController : UIViewController {
         }
     }
     
-    func saveExhibitors(_ exhibitors: [Exhibitor]) {
-        for (i, exhibitor) in exhibitors.enumerated() {
-            insertExhibitor(exhibitor: exhibitor)
+    func saveRelations(_ relations: [[String: Any]]) {
+        for (_, obj) in relations.enumerated() {
+            let rel = EventExhibitorRelation(JSON: obj)!
+            rel.insertRelation()
         }
-        AERecord.saveAndWait()
+        AERecord.save()
+        
     }
+    
     func insertExhibitor(exhibitor: Exhibitor ) {
         if !recordExists(id: exhibitor.idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
             CDExhibitor.create(with: ["idExhibitor":exhibitor.idExhibitor!,"degree":exhibitor.degree!,"email":exhibitor.email!,"history":exhibitor.history!,"job":exhibitor.job!,"lastName":exhibitor.lastName ?? "", "name":exhibitor.name!, "phoneNumber":exhibitor.phonenumber!, "url":exhibitor.picture!, "type":exhibitor.type!])
         }
+    }
+    
+    func saveExhibitors(_ exhibitors: [Exhibitor]) {
+        for (_, exhibitor) in exhibitors.enumerated() {
+            exhibitor.insertExhibitor()
+        }
+        AERecord.save()
     }
 }
