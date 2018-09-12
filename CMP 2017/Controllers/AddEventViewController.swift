@@ -126,6 +126,8 @@ class AddEventViewController : UIViewController {
         } else {
             url = URL(string: WSHelper.getBaseURL() + (user?.avatarImg)!)!
         }
+        let image = #imageLiteral(resourceName: "ic_avatar_placeholder")
+        avatarImageView.kf.setImage(with: url, placeholder: image, options: nil, progressBlock: nil, completionHandler: nil)
         avatarImageView.kf.setImage(with: url)
     }
     

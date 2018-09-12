@@ -153,7 +153,6 @@ class WSHelper {
         let url = WSHelper.getBaseURL() + kURLUserProfile
         let token = SessionHelper.instance.sessionToken
         genericPost(url: url, parameters: ["email":email,"token":token!], callback: result)
-        
     }
     
     func getDaily(result: @escaping ResultBlockForDEvent) {

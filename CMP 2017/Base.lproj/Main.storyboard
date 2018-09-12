@@ -694,7 +694,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="f9L-fa-O4F">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_up" translatesAutoresizingMaskIntoConstraints="NO" id="f9L-fa-O4F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-ef-FDb">
@@ -717,8 +717,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo_cmp_ss" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-dN-zcr">
-                                <rect key="frame" x="105" y="60" width="165" height="246"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo_cmp_white" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-dN-zcr">
+                                <rect key="frame" x="131.5" y="60" width="112" height="246"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="esc-Sd-kY4"/>
                                 </constraints>
@@ -755,7 +755,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Sign Up">
-                                            <color key="titleColor" red="0.95686274510000002" green="0.3294117647" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="showSignUp" destination="gyU-ID-Kei" eventType="touchUpInside" id="fWH-1K-pEt"/>
@@ -818,7 +818,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_addevent" translatesAutoresizingMaskIntoConstraints="NO" id="Amq-1v-wgk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_event" translatesAutoresizingMaskIntoConstraints="NO" id="Amq-1v-wgk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4g-4t-O5K">
@@ -918,7 +918,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_sign_up" translatesAutoresizingMaskIntoConstraints="NO" id="TVk-mO-9UC" customClass="bg_sign_up">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_up" translatesAutoresizingMaskIntoConstraints="NO" id="TVk-mO-9UC" customClass="bg_sign_up">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wtg-pP-Kq4">
@@ -1667,7 +1667,9 @@
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xKQ-sN-diT"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xKQ-sN-diT">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                                                </imageView>
                                                             </subviews>
                                                         </view>
                                                         <constraints>
@@ -1846,10 +1848,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_event" width="414" height="736"/>
         <image name="bg_addevent" width="226" height="403"/>
         <image name="bg_login" width="226" height="403"/>
         <image name="bg_news" width="375" height="804"/>
-        <image name="bg_sign_up" width="226" height="403"/>
         <image name="ic_avatar_placeholder" width="50" height="50"/>
         <image name="ic_camera" width="25" height="25"/>
         <image name="ic_check" width="50" height="50"/>
@@ -1858,6 +1860,8 @@
         <image name="ic_google" width="24" height="24"/>
         <image name="ic_twitter" width="24" height="24"/>
         <image name="logo_cmp_ss" width="165" height="117"/>
+        <image name="logo_cmp_white" width="112" height="79"/>
         <image name="sample_avatar" width="34" height="35"/>
+        <image name="sign_up" width="414" height="736"/>
     </resources>
 </document>
