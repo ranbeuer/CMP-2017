@@ -78,6 +78,7 @@
 		A89050132146A8070032E63D /* EventExhibitorRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050122146A8070032E63D /* EventExhibitorRelation.swift */; };
 		A89050172146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */; };
 		A89050182146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */; };
+		A8A6673F214C09F600312B88 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8A6673E214C09F500312B88 /* Info.plist */; };
 		A8AFC5D7211036970096E7A5 /* CMP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */; };
 		A8AFC5F3211094A30096E7A5 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */; };
 		A8AFC5F52110983A0096E7A5 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */; };
@@ -122,7 +123,6 @@
 		69FB64C220DEFE9E008E58D2 /* EventsDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDailyViewController.swift; sourceTree = "<group>"; };
 		69FB64C520DEFE9E008E58D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69FB64CA20DEFEAF008E58D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		69FB64CC20DEFEAF008E58D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FB64D120DEFEB0008E58D2 /* CMP 2017Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CMP 2017Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FB64D520DEFEB0008E58D2 /* CMP_2017Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMP_2017Tests.swift; sourceTree = "<group>"; };
 		69FB64D720DEFEB0008E58D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,6 +196,7 @@
 		A89050142146BE620032E63D /* EvExRelation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EvExRelation.xcdatamodel; sourceTree = "<group>"; };
 		A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEvExRelation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEvExRelation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A8A6673E214C09F500312B88 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CMP.xcdatamodel; sourceTree = "<group>"; };
 		A8AFC5EA2110419F0096E7A5 /* CDEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AFC5EB2110419F0096E7A5 /* CDDailyEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDDailyEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -285,7 +286,7 @@
 				69FB64BE20DEFE9E008E58D2 /* AppDelegate.swift */,
 				69FB64C420DEFE9E008E58D2 /* Main.storyboard */,
 				69FB64C920DEFEAF008E58D2 /* LaunchScreen.storyboard */,
-				69FB64CC20DEFEAF008E58D2 /* Info.plist */,
+				A8A6673E214C09F500312B88 /* Info.plist */,
 				A85B6FFA21425C510068811F /* Localizable.strings */,
 			);
 			path = "CMP 2017";
@@ -623,6 +624,7 @@
 				69FB64C620DEFE9E008E58D2 /* Main.storyboard in Resources */,
 				A84A35A12128EBA800E3DFC1 /* Assets.xcassets in Resources */,
 				A85B6FF821425C510068811F /* Localizable.strings in Resources */,
+				A8A6673F214C09F600312B88 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

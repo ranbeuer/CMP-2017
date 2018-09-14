@@ -48,6 +48,19 @@ class Exhibitor : BaseEntity {
     func insertExhibitor() {
         if !recordExists(id: idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
             CDExhibitor.create(with: ["idExhibitor":idExhibitor!,"degree":degree!,"email":email!,"history":history!,"job":job!,"lastName":lastName ?? "", "name":name!, "phoneNumber":phonenumber!, "url":picture!, "type":type!])
+        } else {
+            updateDBData()
         }
+    }
+    
+    func updateDBData() { //should call save or saveAndWait after this call
+        let cdExhibitor = getCDEquivalent(id: idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") as! CDExhibitor
+        cdExhibitor.degree = degree!
+        cdExhibitor.history = history!
+        cdExhibitor.job = job!
+        cdExhibitor.lastName = lastName ?? ""
+        cdExhibitor.name = name!
+        cdExhibitor.phoneNumber = phonenumber!
+        cdExhibitor.url = picture!
     }
 }

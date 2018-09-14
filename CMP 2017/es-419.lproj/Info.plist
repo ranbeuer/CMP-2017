@@ -28,11 +28,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Wee need you to take a photo to create your user image.</string>
+	<string>Necesitamos que tomes tu foto para crear tu imagen de usuario.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string> </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Wee need to access your photos to create your user image.</string>
+	<string>Necesitamos acceder tus fotos para crear tu imagen de usuario.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

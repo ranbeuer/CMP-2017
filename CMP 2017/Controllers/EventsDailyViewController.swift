@@ -134,6 +134,12 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
                 self.saveRelations(jsonArray)
             }
         }
+        
+        WSHelper.sharedInstance.getExhibitors { (_ response: DataResponse<ExhibitorResponse>?,_ error: Error?) in
+            if error == nil {
+                self.saveExhibitors((response?.value?.result)!)
+            }
+        }
     }
     
     func saveEvents(_ events: [Event]) {
@@ -149,6 +155,13 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let results = AERecord.execute(fetchRequest: fetchRequest)
         return results.count > 0
+    }
+    
+    func saveExhibitors(_ exhibitors: [Exhibitor]) {
+        for (_, exhibitor) in exhibitors.enumerated() {
+            exhibitor.insertExhibitor()
+        }
+        AERecord.save()
     }
     
     func insertEvent(event: Event) {
