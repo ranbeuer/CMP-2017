@@ -26,7 +26,7 @@ class ProfileViewController : UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarImageView.layer.cornerRadius = 40
+        avatarImageView.layer.cornerRadius = 30
         avatarImageView.clipsToBounds = true
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -115,7 +115,7 @@ class ProfileViewController : UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PContactCell", for: indexPath)
         let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         let friend = friendsArray[indexPath.row]
         let url = URL(string: WSHelper.sharedInstance.urlForAvatarWith(email: friend.receiver!))

@@ -176,6 +176,31 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    /*func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+        
+        reader.stopScanning()
+        reader.dismiss(animated: true) {
+            if result.value.isValidMail() {
+                SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
+                let friendEmail = result.value;
+                WSHelper.sharedInstance.getUserProfile(email: friendEmail, result: { (profileResponse, error) in
+                    if (error == nil) {
+                        let responseObj = profileResponse as! [String : Any]
+                        let profile = responseObj["profile"] as! [String : Any]
+                        WSHelper.sharedInstance.addFriend(receiver: friendEmail, sender: SessionHelper.instance.email!) { (result, error) in
+                            if (error == nil) {
+                                SVProgressHUD.showSuccess(withStatus: "Success")
+                                self.fetchFriends()
+                            } else {
+                                SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                            }
+                        }
+                    }
+                })
+                
+            }
+        }
+    }*/
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
