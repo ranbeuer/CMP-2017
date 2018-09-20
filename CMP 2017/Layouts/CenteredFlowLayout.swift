@@ -59,8 +59,6 @@ class CenteredFlowLayout : UICollectionViewFlowLayout {
         let canvasSize = self.collectionView?.frame.size;
         
         let rowCount = ((canvasSize?.height)! - self.itemSize.height) / (self.itemSize.height + self.minimumInteritemSpacing) + 1;
-        let itemHeight = self.itemSize.height
-        let interimSpacing = self.minimumInteritemSpacing
         let columnCount = ((canvasSize?.width)! - self.itemSize.width) / (self.itemSize.width + self.minimumLineSpacing) + 1;
         
         let pageMarginX = ((canvasSize?.width)! - columnCount * self.itemSize.width) + self.minimumLineSpacing// - (columnCount > 1 ? (columnCount - 1) * self.minimumLineSpacing : 0)) / 2.0
