@@ -109,23 +109,22 @@ class RegistryViewController: UIViewController, UIImagePickerControllerDelegate,
             SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressCreateAccount", comment:""))
             WSHelper.sharedInstance.createUser(email: emailTextField.text!, password: passwordTextField.text!, name: fullNameTextField.text!, lastName: lastNameTextField.text!) { (_ response:Any? , _ error: Error?) in
                 if error == nil {
-                    let data = UIImagePNGRepresentation(self.avatarImageView.image!)
-                    SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressUploadAvatar", comment:""))
-                    WSHelper.sharedInstance.uplooadAvatar(data!, email: self.emailTextField.text!, result: { (response, error) in
-                        if error == nil {
-                            WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
-                                SVProgressHUD.dismiss()
-                                if (error == nil) {
-                                    SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
-                                    self.showAddEventScreen()
-                                } else {
-                                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
-                                }
-                            })
-                        }
+                    self.avatarImageView.image!.resizedTo1MB(completionHandler: { (image: UIImage?, data: NSData?) in
+                        SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressUploadAvatar", comment:""))
+                        WSHelper.sharedInstance.uplooadAvatar(data! as Data, email: self.emailTextField.text!, result: { (response, error) in
+                            if error == nil {
+                                WSHelper.sharedInstance.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, withResult: { (_ response:Any?, _ error: Error?) in
+                                    SVProgressHUD.dismiss()
+                                    if (error == nil) {
+                                        SessionHelper.instance.saveSessionInfo(response as! NSDictionary)
+                                        self.showAddEventScreen()
+                                    } else {
+                                        SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                                    }
+                                })
+                            }
+                        })
                     })
-                    
-                    
                 } else {
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showError(withStatus: error?.localizedDescription)

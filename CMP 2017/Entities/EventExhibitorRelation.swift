@@ -17,7 +17,6 @@ class EventExhibitorRelation :  BaseEntity {
     
     required init?(map: Map){
         super.init(map: map)
-        
     }
     
     override func mapping(map: Map) {

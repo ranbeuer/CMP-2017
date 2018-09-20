@@ -23,6 +23,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var imagesArray: [String] = ["sample_conf1", "sample_conf2","sample"]
     var sponsors : SponsorsViewController?
     var filterString : String?
+    var social : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +97,8 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func loadEvents() {
         let request = CDEvent.createFetchRequest()
-        let query = "eventDate = \"" + filterString! + "\""
+        var query = "eventDate = \"" + filterString! + "\""
+         query += " AND isSocial = " + String(self.social)
         request.predicate = NSPredicate(format: query)
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDEvent];

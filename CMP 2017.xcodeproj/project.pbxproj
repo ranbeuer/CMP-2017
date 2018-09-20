@@ -75,6 +75,10 @@
 		A868AA572127161E00E244B2 /* MMBaseMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4E2127161E00E244B2 /* MMBaseMessageCell.swift */; };
 		A868AA592127161E00E244B2 /* MMBaseMessageCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA502127161E00E244B2 /* MMBaseMessageCellLayout.swift */; };
 		A868AA5A2127161E00E244B2 /* MMTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA512127161E00E244B2 /* MMTextMessageCell.swift */; };
+		A871EDB72154249400CCC9D2 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871EDB62154249400CCC9D2 /* UIImage+Utils.swift */; };
+		A87A0308214FAD6A000D8FC1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A0307214FAD6A000D8FC1 /* Route.swift */; };
+		A87A030A2151A04D000D8FC1 /* RouteSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A03092151A04C000D8FC1 /* RouteSchedule.swift */; };
+		A87A030C2151AD1C000D8FC1 /* RouteScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A030B2151AD1C000D8FC1 /* RouteScheduleCell.swift */; };
 		A89050132146A8070032E63D /* EventExhibitorRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050122146A8070032E63D /* EventExhibitorRelation.swift */; };
 		A89050172146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */; };
 		A89050182146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89050162146BF6A0032E63D /* CDEvExRelation+CoreDataProperties.swift */; };
@@ -192,6 +196,11 @@
 		A868AA4F2127161E00E244B2 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		A868AA502127161E00E244B2 /* MMBaseMessageCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMBaseMessageCellLayout.swift; sourceTree = "<group>"; };
 		A868AA512127161E00E244B2 /* MMTextMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMTextMessageCell.swift; sourceTree = "<group>"; };
+		A871EDB5215238BA00CCC9D2 /* SocialEvents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SocialEvents.xcdatamodel; sourceTree = "<group>"; };
+		A871EDB62154249400CCC9D2 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		A87A0307214FAD6A000D8FC1 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		A87A03092151A04C000D8FC1 /* RouteSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSchedule.swift; sourceTree = "<group>"; };
+		A87A030B2151AD1C000D8FC1 /* RouteScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScheduleCell.swift; sourceTree = "<group>"; };
 		A89050122146A8070032E63D /* EventExhibitorRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExhibitorRelation.swift; sourceTree = "<group>"; };
 		A89050142146BE620032E63D /* EvExRelation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EvExRelation.xcdatamodel; sourceTree = "<group>"; };
 		A89050152146BF6A0032E63D /* CDEvExRelation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEvExRelation+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -322,21 +331,21 @@
 		69FB64F620DF0AC6008E58D2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A83E6608210EC17C00047B87 /* SideMenuViewController.swift */,
-				69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */,
+				A84A35C621291AC000E3DFC1 /* AddEventViewController.swift */,
+				A868AA4621270EE300E244B2 /* ChatViewController.swift */,
+				A868AA4421270ED600E244B2 /* ContactsViewController.swift */,
 				69FB64C020DEFE9E008E58D2 /* EventDetailViewController.swift */,
 				69FB64C220DEFE9E008E58D2 /* EventsDailyViewController.swift */,
 				A83E669E210FF27C00047B87 /* EventsViewController.swift */,
-				69FB64F220DF0927008E58D2 /* LoginViewController.swift */,
-				A83E660D210ED89E00047B87 /* InitialViewController.swift */,
-				A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */,
-				A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */,
 				A8D25CDD2123E40300D58159 /* ExhibitorViewController.swift */,
-				A8D25CE521248C1900D58159 /* ProfileViewController.swift */,
-				A868AA4421270ED600E244B2 /* ContactsViewController.swift */,
-				A868AA4621270EE300E244B2 /* ChatViewController.swift */,
-				A84A35C621291AC000E3DFC1 /* AddEventViewController.swift */,
+				A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */,
+				A83E660D210ED89E00047B87 /* InitialViewController.swift */,
+				69FB64F220DF0927008E58D2 /* LoginViewController.swift */,
 				A8E84AB121382F0D001B30A5 /* MapViewController.swift */,
+				A8D25CE521248C1900D58159 /* ProfileViewController.swift */,
+				69FB64F420DF09A4008E58D2 /* RegistryViewController.swift */,
+				A83E6608210EC17C00047B87 /* SideMenuViewController.swift */,
+				A8AFC5F2211094A20096E7A5 /* SponsorsViewController.swift */,
 				A8BDD6B9213F4D150026EC81 /* TransportationViewController.swift */,
 			);
 			path = Controllers;
@@ -345,6 +354,7 @@
 		A802DC452114D16100E455C0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A871EDB62154249400CCC9D2 /* UIImage+Utils.swift */,
 				A8B42F73212D0C9C00824083 /* String.swift */,
 				A84A35C22129180700E3DFC1 /* NSAttributedString+NoChat.swift */,
 				A84A35B8212905A700E3DFC1 /* NSMutableAttributedString+Utils.swift */,
@@ -368,13 +378,15 @@
 		A83E65FE210EA2B000047B87 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				A83E65FF210EA2B900047B87 /* Event.swift */,
-				A83E6601210EA2C500047B87 /* Exhibitor.swift */,
-				A83E667E210F004F00047B87 /* DailyEvent.swift */,
-				A8B42F75212DBAA900824083 /* Friend.swift */,
 				A847E879212E1671004D5B8B /* BaseEntity.swift */,
-				A8287435213277DA00B59EBE /* Message.swift */,
+				A83E667E210F004F00047B87 /* DailyEvent.swift */,
+				A83E65FF210EA2B900047B87 /* Event.swift */,
 				A89050122146A8070032E63D /* EventExhibitorRelation.swift */,
+				A83E6601210EA2C500047B87 /* Exhibitor.swift */,
+				A8B42F75212DBAA900824083 /* Friend.swift */,
+				A8287435213277DA00B59EBE /* Message.swift */,
+				A87A0307214FAD6A000D8FC1 /* Route.swift */,
+				A87A03092151A04C000D8FC1 /* RouteSchedule.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -394,11 +406,12 @@
 		A83E6682210F02C900047B87 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A84A35C82129206700E3DFC1 /* ContactCell.swift */,
 				A83E6683210F02E200047B87 /* DailyEventCell.swift */,
 				A83E66A0211029C400047B87 /* EventProgramCell.swift */,
-				A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */,
 				A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */,
-				A84A35C82129206700E3DFC1 /* ContactCell.swift */,
+				A8AFC5F42110983A0096E7A5 /* SponsorCell.swift */,
+				A87A030B2151AD1C000D8FC1 /* RouteScheduleCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -773,6 +786,7 @@
 				A83E6681210F016400047B87 /* DailyEventsResponse.swift in Sources */,
 				A84A35AF2128FEE000E3DFC1 /* CDEvent+CoreDataClass.swift in Sources */,
 				A8B42F7D212DC30700824083 /* FriendsResponse.swift in Sources */,
+				A87A030C2151AD1C000D8FC1 /* RouteScheduleCell.swift in Sources */,
 				A8E84AB221382F0D001B30A5 /* MapViewController.swift in Sources */,
 				A84A35C121290F5A00E3DFC1 /* MMSystemMessageCell.swift in Sources */,
 				A8B42F74212D0C9D00824083 /* String.swift in Sources */,
@@ -780,6 +794,7 @@
 				A84A35C721291AC000E3DFC1 /* AddEventViewController.swift in Sources */,
 				A8D25CE221246CDB00D58159 /* ExhibitorCell.swift in Sources */,
 				A83E6600210EA2B900047B87 /* Event.swift in Sources */,
+				A871EDB72154249400CCC9D2 /* UIImage+Utils.swift in Sources */,
 				A8D25CDE2123E40300D58159 /* ExhibitorViewController.swift in Sources */,
 				A83E6694210F0C5600047B87 /* TransitionAnimator.swift in Sources */,
 				A8B42F76212DBAA900824083 /* Friend.swift in Sources */,
@@ -806,9 +821,11 @@
 				A868AA522127161E00E244B2 /* Chat.swift in Sources */,
 				A84A35C92129206700E3DFC1 /* ContactCell.swift in Sources */,
 				A84A35B02128FEE000E3DFC1 /* CDEvent+CoreDataProperties.swift in Sources */,
+				A87A0308214FAD6A000D8FC1 /* Route.swift in Sources */,
 				A868AA4721270EE300E244B2 /* ChatViewController.swift in Sources */,
 				A84A35B42128FF4100E3DFC1 /* CDExhibitor+CoreDataProperties.swift in Sources */,
 				A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */,
+				A87A030A2151A04D000D8FC1 /* RouteSchedule.swift in Sources */,
 				A847E87A212E1671004D5B8B /* BaseEntity.swift in Sources */,
 				A83E66A1211029C400047B87 /* EventProgramCell.swift in Sources */,
 				A868AA542127161E00E244B2 /* MMTextMessageCellLayout.swift in Sources */,
@@ -1004,8 +1021,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FD7V433D7B;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1015,8 +1032,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "05cee866-d468-4ab9-b33a-5c915b48b19d";
-				PROVISIONING_PROFILE_SPECIFIER = "Leo Store";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1029,8 +1046,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "CMP 2017/CMP 2017.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FD7V433D7B;
 				INFOPLIST_FILE = "CMP 2017/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1040,8 +1057,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecodsa.tech.dev.CMP2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "05cee866-d468-4ab9-b33a-5c915b48b19d";
-				PROVISIONING_PROFILE_SPECIFIER = "Leo Store";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1176,13 +1193,14 @@
 		A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A871EDB5215238BA00CCC9D2 /* SocialEvents.xcdatamodel */,
 				A89050142146BE620032E63D /* EvExRelation.xcdatamodel */,
 				A82874372132883000B59EBE /* MessagesUpdate.xcdatamodel */,
 				A8287432213060DB00B59EBE /* FriendsUpdate.xcdatamodel */,
 				A847E878212E0513004D5B8B /* Friends.xcdatamodel */,
 				A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */,
 			);
-			currentVersion = A89050142146BE620032E63D /* EvExRelation.xcdatamodel */;
+			currentVersion = A871EDB5215238BA00CCC9D2 /* SocialEvents.xcdatamodel */;
 			path = CMP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

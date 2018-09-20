@@ -12,26 +12,31 @@ import AlamofireObjectMapper
 import AFNetworking
 
 class WSHelper {
-    static private let devURL = "http://52.173.95.250:3333"
+    static private let devURL = "http://52.173.95.250:3333/"
     /// Prod Base url
-    static private let prodURL = "https://www.apicmp.com/api"
+    static private let prodURL = "https://www.apicmp.com/api/"
     
     
-    let kURLLogin =                 "/session/login" //ya
-    let kURLCreateUser =            "/users/create"  //ya
-    let kURLUserProfile =           "/profile/minimum"  //ya
-    let kURLGetFriends =            "/profile/friends"  //ya
-    let kURLAddFriends =            "/profile/addfriend" //ya
-    let kURLEvents =                "/events" //ya
-    let kURLExhibitor =             "/events/exhibitor" //ya
-    let kURLDailyEvents =           "/events/daily" //ya
-    let kURLEventsRelExhibitor =    "/events/relation/exhibitor"
-    let kURLGetAvatar =             "/images/avatar"//ya
-    let kURLUploadAvatar =          "/upload/avatar"//ya
-    let kURLMessages =              "/operation/message/read" //ya
-    let kURLSendMessage =           "/operation/message" //ya
-    let kURLRoutesCalendar =        "/events/route/calendar"
-    let kURLRoutesDetail =          "/events/route/detail"
+    let kURLLogin =                 "session/login" //ya
+    let kURLCreateUser =            "users/create"  //ya
+    let kURLUserProfile =           "profile/minimum"  //ya
+    let kURLGetFriends =            "profile/friends"  //ya
+    let kURLAddFriends =            "profile/addfriend" //ya
+    let kURLEvents =                "events" //ya
+    let kURLEventsSocial =          "events/social" //ya
+    let kURLExhibitor =             "events/exhibitor" //ya
+    let kURLDailyEvents =           "events/daily" //ya
+    let kURLDailyEventsSocial =     "events/daily/social" //ya
+    let kURLEventsRelExhibitor =    "events/relation/exhibitor"
+    let kURLGetAvatar =             "images/avatar"//ya
+    let kURLUploadAvatar =          "upload/avatar"//ya
+    let kURLMessages =              "operation/message/read" //ya
+    let kURLSendMessage =           "operation/message" //ya
+    let kURLRoutesCalendar =        "events/route/calendar" //ya
+    let kURLRoutesDetail =          "events/route/detail" //ya
+    let kURLEventsProgramLikes =    "events/count/program"
+    let kURLEventsDailyLikes =      "events/count"
+    
     
     
     
@@ -70,8 +75,8 @@ class WSHelper {
     }
     
     
-    func getEvents(result: @escaping ResultBlockForEvents) {
-        let url = WSHelper.getBaseURL() + kURLEvents
+    func getEvents(isSocial: Bool, result: @escaping ResultBlockForEvents) {
+        let url = WSHelper.getBaseURL() + (isSocial ? kURLEventsSocial : kURLEvents)
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<EventsResponse>) in
             switch response.result {
@@ -155,8 +160,8 @@ class WSHelper {
         genericPost(url: url, parameters: ["email":email,"token":token!], callback: result)
     }
     
-    func getDaily(result: @escaping ResultBlockForDEvent) {
-        let url = WSHelper.getBaseURL() + kURLDailyEvents
+    func getDaily(isSocial: Bool, result: @escaping ResultBlockForDEvent) {
+        let url = WSHelper.getBaseURL() + (isSocial ? kURLDailyEventsSocial : kURLDailyEvents)
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject(completionHandler: {  (response: DataResponse<DailyEventsResponse>) in
             switch response.result {
             case .success:
@@ -189,12 +194,10 @@ class WSHelper {
         if (WSHelper.USE_AFNETWORKING) {
             manager.requestSerializer = AFJSONRequestSerializer()
             manager.responseSerializer = AFJSONResponseSerializer()
-           
-            
             let theURL = URL(string: url)
             let path = theURL?.path
             print(">>>>>>> Generic Post <<<<<<<")
-            print("URL: " + (manager.baseURL?.absoluteString)! + path!)
+            print("URL: " + path!)
             manager.post(path!, parameters: parameters, progress: nil, success: { (task, response) in
                 let json = response as! Dictionary <String, Any>
                 let code = json["code"] as! Int
@@ -386,6 +389,17 @@ class WSHelper {
         })
     }
     
+    func getCalendar(callback result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLRoutesCalendar
+        genericGet(url: url, parameters: nil, callback: result)
+    }
+    
+    func getRouteDetail(route: Route, callback result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLRoutesDetail
+        let parameters = ["day":route.day!, "month": route.month!,"year":route.year!, "route":route.routeName!]
+        genericPost(url: url, parameters: parameters, callback: result)
+    }
+    
     func send(message: String, from sender: String, to receiver: String, result: @escaping ResultBlock) {
         let url = WSHelper.getBaseURL() + kURLSendMessage
         let token = SessionHelper.instance.sessionToken
@@ -422,6 +436,8 @@ class WSHelper {
         }
     }
     
-    
+    func getDailyEventsLike(idEvent: Int, result: @escaping ResultBlock) {
+        
+    }
     
 }

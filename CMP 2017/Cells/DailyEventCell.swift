@@ -15,6 +15,7 @@ class DailyEventCell : UICollectionViewCell {
     @IBOutlet var descriptionLabel : UILabel?
     @IBOutlet var quotationlabel : UILabel?
     @IBOutlet var bookmarkButton : UIButton?
+    @IBOutlet var likesLabel : UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

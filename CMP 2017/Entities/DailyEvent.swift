@@ -9,6 +9,7 @@
 import Foundation
 import ObjectMapper
 import AERecord
+import CoreData
 
 class DailyEvent : BaseEntity {
     var idDailyEvent : NSInteger?
@@ -18,6 +19,8 @@ class DailyEvent : BaseEntity {
     var dailyEventDate : String?
     var dailyEventStartsAt : String?
     var dailyEventPicture : String?
+    var likes : NSInteger = 0
+    var isSocial : Bool = false
     
     
     required init?(map: Map){
@@ -35,8 +38,13 @@ class DailyEvent : BaseEntity {
     }
     
     func insertEvent() {
-        if !recordExists(id: idDailyEvent!, entity: "CDDailyEvent", field: "id") {
-            CDDailyEvent.create(with: ["id":idDailyEvent!,"dailyEventDate":dailyEventDate!,"dailyEventDescription":dailyEventDescription!,"dailyEventPicture":dailyEventPicture!,"image":image!,"dailyEventName":dailyEventName!])
+        if !eventExists(id: self.idDailyEvent!, isSocial: self.isSocial) {
+            CDDailyEvent.create(with: ["id":idDailyEvent!,"dailyEventDate":dailyEventDate!,"dailyEventDescription":dailyEventDescription!,"dailyEventPicture":dailyEventPicture!,"image":image!,"dailyEventName":dailyEventName!, "isSocial" : isSocial, "likes" : likes])
         }
+    }
+    
+    func eventExists(id: NSInteger, isSocial: Bool) -> Bool {
+        let query = String(format:"id = %d AND isSocial = \(String(isSocial))", id )
+        return super.recordExists(query: query, entity: "CDDailyEvent")
     }
 }

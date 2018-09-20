@@ -26,7 +26,7 @@ class InitialViewController : UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         SVProgressHUD.show(withStatus: "Por favor espere...")
-        WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
+        WSHelper.sharedInstance.getEvents(isSocial: false) { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
                 WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
@@ -48,7 +48,7 @@ class InitialViewController : UIViewController {
             self.showMainMenu()
         }
         
-        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
+        WSHelper.sharedInstance.getDaily(isSocial: false) { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
             if error == nil {
                 self.saveDailyEvents(events: (response?.value?.result)!)
             }

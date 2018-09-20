@@ -28,7 +28,14 @@ class BaseEntity : NSObject, Mappable {
     func recordExists(id: Int, entity: String, field: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
         fetchRequest.predicate = NSPredicate(format: "\(field) = %d", id)
-        
+        let results = AERecord.execute(fetchRequest: fetchRequest)
+        return results.count > 0
+    }
+    
+    func recordExists(query: String, entity: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
+        let predicate = NSPredicate(format: query)
+        fetchRequest.predicate = predicate
         let results = AERecord.execute(fetchRequest: fetchRequest)
         return results.count > 0
     }

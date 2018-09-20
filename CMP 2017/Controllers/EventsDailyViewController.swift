@@ -18,7 +18,9 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet var collectionView : UICollectionView?
     @IBOutlet var reloadButton : UIButton?
-    var loadingObjects : Bool = false;
+    var loadingObjects : Bool = false
+    var isSocial : Bool = false
+    static var flowLayout : CenteredFlowLayout?
     
     var eventsArrray: [CDDailyEvent]?
     
@@ -36,9 +38,17 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         self.setTitleBarItemsColor(color: UIColor.black)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.collectionView?.collectionViewLayout = CenteredFlowLayout(with: CGSize(width: UIScreen.main.bounds.size.width - 30, height: (self.collectionView?.frame.size.height)! - 30))
+        if EventsDailyViewController.flowLayout == nil {
+            EventsDailyViewController.flowLayout = CenteredFlowLayout(with: CGSize(width: UIScreen.main.bounds.size.width - 30, height: (self.collectionView?.frame.size.height)! - 30))
+        }
+        self.collectionView?.collectionViewLayout = EventsDailyViewController.flowLayout!
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,19 +91,46 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "Program") as! EventsViewController
         let event = eventsArrray![indexPath.row]
         newViewController.filterString = event.dailyEventDate
+        newViewController.social = true
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     func loadDailyEvents() {
         let sortDescriptor = NSSortDescriptor(key: "dailyEventDate", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
-        let request = CDDailyEvent.createFetchRequest(predicate: nil, sortDescriptors: [sortDescriptor])
+        let query = "isSocial = " + String(isSocial)
+        let predicate = NSPredicate(format: query)
+        let request = CDDailyEvent.createFetchRequest(predicate: predicate, sortDescriptors: [sortDescriptor])
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDDailyEvent];
-        self.collectionView?.performBatchUpdates({
-            self.collectionView?.reloadData()
-        }, completion: { (finished: Bool) in
-            
-        })
+        if (eventsArrray!.count == 0) {
+            SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressLoading", comment: ""))
+            WSHelper.sharedInstance.getDaily(isSocial: isSocial) { (response : DataResponse<DailyEventsResponse>?, error) in
+                SVProgressHUD.dismiss()
+                if error == nil {
+                    let events = (response?.value?.result)!
+                    for (_, event) in events.enumerated() {
+                        event.isSocial = true
+                        event.insertEvent()
+                    }
+                    AERecord.saveAndWait()
+                    let results = AERecord.execute(fetchRequest: request)
+                    self.eventsArrray = results as? [CDDailyEvent];
+                    self.collectionView?.reloadData()
+                }
+            }
+            WSHelper.sharedInstance.getEvents(isSocial: isSocial) { (response, error) in
+                if error == nil {
+                    let events = (response?.value?.result)!
+                    for (_, event) in events.enumerated() {
+                        event.insertEvent()
+                    }
+                    AERecord.save()
+                }
+            }
+        }
+        
+        self.collectionView?.reloadData()
+        
         
 //        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
 //            if error == nil {
@@ -113,13 +150,13 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func reloadEvents() {
-        WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
+        WSHelper.sharedInstance.getEvents(isSocial: isSocial) { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
             }
         }
         
-        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
+        WSHelper.sharedInstance.getDaily(isSocial: isSocial) { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
             if error == nil {
                 self.saveDailyEvents(events: (response?.value?.result)!)
                 self.loadDailyEvents()
@@ -128,6 +165,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
 
             }
         }
+        
         WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
             if (error == nil) {
                 let jsonArray = response as! [[String:Any]]
@@ -144,7 +182,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func saveEvents(_ events: [Event]) {
         for (_, event) in events.enumerated() {
-            insertEvent(event: event)
+            event.insertEvent()
         }
         AERecord.saveAndWait()
     }
@@ -164,25 +202,11 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         AERecord.save()
     }
     
-    func insertEvent(event: Event) {
-        if !recordExists(id: event.idEvent!, entity: "CDEvent", field: "idEvent") {
-            CDEvent.create(with: ["idEvent":event.idEvent!,"eventDate":event.eventDate!,"eventDescription":event.eventDescription!,"eventHour":event.eventHour!,"image":event.image!,"name":event.name!])
-            AERecord.saveAndWait()
-        }
-    }
-    
     func saveDailyEvents(events: [DailyEvent]) {
         for (i, event) in events.enumerated() {
-            insertDailyEvent(event: event)
+            event.insertEvent()
         }
         AERecord.saveAndWait()
-    }
-    
-    func insertDailyEvent(event: DailyEvent) {
-        if !recordExists(id: event.idDailyEvent!, entity: "CDDailyEvent", field: "id") {
-            CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
-            
-        }
     }
     
     func saveRelations(_ relations: [[String: Any]]) {

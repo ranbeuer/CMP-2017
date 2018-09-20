@@ -22,5 +22,8 @@ extension CDEvent {
     @NSManaged public var image: String?
     @NSManaged public var eventDate: String?
     @NSManaged public var eventHour: String?
+    @NSManaged public var isSocial: Bool
+    @NSManaged public var likes: Int32
+    
 
 }

@@ -11,6 +11,7 @@ import AERecord
 import Fabric
 import Crashlytics
 import GoogleMaps
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SideMenuController.preferences.animating.statusBarBehaviour = .horizontalPan
         SideMenuController.preferences.interaction.swipingEnabled = false //remove to enable swiping on side menu
         do {
-            try AERecord.loadCoreDataStack()
+            try AERecord.loadCoreDataStack(options:[NSInferMappingModelAutomaticallyOption : true,
+                                                    NSMigratePersistentStoresAutomaticallyOption : true])
         } catch {
             print(error)
         }

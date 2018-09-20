@@ -158,7 +158,7 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     //MARK: QR Reader Delegate
-    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+    /*func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         
         reader.stopScanning()
         reader.dismiss(animated: true) {
@@ -174,9 +174,9 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
             }
         }
-    }
+    }*/
     
-    /*func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         
         reader.stopScanning()
         reader.dismiss(animated: true) {
@@ -200,7 +200,7 @@ class ContactsViewController : UIViewController, UITableViewDelegate, UITableVie
                 
             }
         }
-    }*/
+    }
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()

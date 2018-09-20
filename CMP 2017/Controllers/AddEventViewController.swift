@@ -86,7 +86,7 @@ class AddEventViewController : UIViewController {
     
     func retrieveInfo() {
         SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
-        WSHelper.sharedInstance.getEvents { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
+        WSHelper.sharedInstance.getEvents(isSocial: true) { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
                 WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
@@ -107,7 +107,7 @@ class AddEventViewController : UIViewController {
             self.showMainMenu()
         }
         
-        WSHelper.sharedInstance.getDaily { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
+        WSHelper.sharedInstance.getDaily(isSocial: false) { (_ response : DataResponse<DailyEventsResponse>?,_ error : Error?) in
             if error == nil {
                 self.saveDailyEvents(events: (response?.value?.result)!)
             }

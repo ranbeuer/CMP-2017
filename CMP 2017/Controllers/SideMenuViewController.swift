@@ -10,22 +10,26 @@ import UIKit
 
 class SideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    /**/
     enum MenuEntry : Int {
         case Exhibitors = 0
         case Events = 1
-        case Networking = 2
-        case Transportation = 3
-        case Map = 4
-        case Notifications = 5
-        case Profile = 6
+        case SocialEvents = 2
+        case Networking = 3
+        case Transportation = 4
+        case Map = 5
+        case Notifications = 6
+        case Profile = 7
+        
     }
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     // MARK: - Vars -
-    let menuImages : [String] = ["ic_menu_exp","ic_menu_event","ic_menu_net","ic_menu_tran","ic_menu_loc","ic_menu_noti","ic_menu_conf"]
+    let menuImages : [String] = ["ic_menu_exp","ic_menu_event", "ic_menu_event","ic_menu_net","ic_menu_tran","ic_menu_loc","ic_menu_noti","ic_menu_conf"]
     let menuStrings : [String] = [NSLocalizedString("Exhibitors", comment: ""),
                                   NSLocalizedString("Events", comment: ""),
+                                  NSLocalizedString("SocialEvents", comment: ""),
                                   NSLocalizedString("Networking", comment: ""),
                                   NSLocalizedString("Transportation", comment: ""),
                                   NSLocalizedString("Map", comment: ""),
@@ -79,12 +83,12 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return MenuEntry.Profile.rawValue + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let menuEntry = MenuEntry(rawValue: indexPath.row)
-        if menuEntry == .Notifications || menuEntry == .Transportation {
+        if menuEntry == .Notifications {
             return 0
         }
         return 60
@@ -115,6 +119,20 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 self.sideMenuController?.embed(centerViewController: centerViewController)
             }
             break
+        case .SocialEvents:
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "socialEvents")
+            if centerViewController == nil {
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Events")
+                let socialEventsVC = centerViewController as! EventsDailyViewController
+                socialEventsVC.isSocial = true
+                centerViewController.title = NSLocalizedString("SocialEvents", comment: "").uppercased()
+                let navController = UINavigationController(rootViewController: centerViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "socialEvents")
+            } else if centerViewController  != currentCenter {
+                sideMenuController?.embed(centerViewController: centerViewController)
+            }
+            break;
         case .Networking:
             
             if !(currentCenter?.isKind(of: ContactsViewController.self))! {
@@ -126,7 +144,19 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case .Transportation:
-            
+            centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "transport")
+            if centerViewController == nil {
+                centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "Transportation")
+                centerViewController.title = NSLocalizedString("Transportation", comment: "").uppercased()
+                let navController = UINavigationController(rootViewController: centerViewController)
+                navController.navigationBar.setBarColor(UIColor.clear)
+                sideMenuController?.embed(centerViewController: navController, cacheIdentifier: "transport")
+            } else if centerViewController  != currentCenter {
+                let nav = centerViewController as! UINavigationController
+                let transport = nav.viewControllers[0] as! TransportationViewController
+                transport.clearSelection()
+                sideMenuController?.embed(centerViewController: centerViewController)
+            }
             break
         case .Map:
             centerViewController = self.sideMenuController?.viewController(forCacheIdentifier: "map")
