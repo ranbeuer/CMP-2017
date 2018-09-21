@@ -40,8 +40,10 @@ class Event : BaseEntity {
     }
     
     func insertEvent() {
+        print("Event id: \(self.idEvent!)")
         if !eventExists(id: self.idEvent!, isSocial: self.isSocial) {
             CDEvent.create(with: ["idEvent":self.idEvent!,"eventDate":self.eventDate!,"eventDescription":self.eventDescription!,"eventHour":self.eventHour!,"image":self.image!,"name":self.name!, "isSocial" : self.isSocial, "likes" : self.likes])
+            
         }
     }
     

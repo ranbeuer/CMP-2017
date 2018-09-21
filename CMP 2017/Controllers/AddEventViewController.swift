@@ -86,7 +86,7 @@ class AddEventViewController : UIViewController {
     
     func retrieveInfo() {
         SVProgressHUD.show(withStatus: NSLocalizedString("DialogProgressWait", comment: ""))
-        WSHelper.sharedInstance.getEvents(isSocial: true) { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
+        WSHelper.sharedInstance.getEvents(isSocial: false) { (_ response: DataResponse<EventsResponse>?,_ error: Error?) in
             if error == nil {
                 self.saveEvents((response?.value?.result)!)
                 WSHelper.sharedInstance.getExhibitorEventRelations { (response, error) in
@@ -154,7 +154,7 @@ class AddEventViewController : UIViewController {
     
     func saveEvents(_ events: [Event]) {
         for (_, event) in events.enumerated() {
-            insertEvent(event: event)
+            event.insertEvent()
         }
         AERecord.saveAndWait()
     }
@@ -167,24 +167,12 @@ class AddEventViewController : UIViewController {
         return results.count > 0
     }
     
-    func insertEvent(event: Event) {
-        if !recordExists(id: event.idEvent!, entity: "CDEvent", field: "idEvent") {
-            CDEvent.create(with: ["idEvent":event.idEvent!,"eventDate":event.eventDate!,"eventDescription":event.eventDescription!,"eventHour":event.eventHour!,"image":event.image!,"name":event.name!])
-            AERecord.saveAndWait()
-        }
-    }
     
     func saveDailyEvents(events: [DailyEvent]) {
-        for (i, event) in events.enumerated() {
-            insertDailyEvent(event: event)
+        for (_, event) in events.enumerated() {
+            event.insertEvent()
         }
         AERecord.saveAndWait()
-    }
-    
-    func insertDailyEvent(event: DailyEvent) {
-        if !recordExists(id: event.idDailyEvent!, entity: "CDDailyEvent", field: "id") {
-            CDDailyEvent.create(with: ["id":event.idDailyEvent!,"dailyEventDate":event.dailyEventDate!,"dailyEventDescription":event.dailyEventDescription!,"dailyEventPicture":event.dailyEventPicture!,"image":event.image!,"dailyEventName":event.dailyEventName!])
-        }
     }
     
     func saveRelations(_ relations: [[String: Any]]) {
@@ -194,12 +182,6 @@ class AddEventViewController : UIViewController {
         }
         AERecord.save()
         
-    }
-    
-    func insertExhibitor(exhibitor: Exhibitor ) {
-        if !recordExists(id: exhibitor.idExhibitor!, entity: "CDExhibitor", field: "idExhibitor") {
-            CDExhibitor.create(with: ["idExhibitor":exhibitor.idExhibitor!,"degree":exhibitor.degree!,"email":exhibitor.email!,"history":exhibitor.history!,"job":exhibitor.job!,"lastName":exhibitor.lastName ?? "", "name":exhibitor.name!, "phoneNumber":exhibitor.phonenumber!, "url":exhibitor.picture!, "type":exhibitor.type!])
-        }
     }
     
     func saveExhibitors(_ exhibitors: [Exhibitor]) {

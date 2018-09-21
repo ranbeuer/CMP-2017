@@ -69,9 +69,14 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dailyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventProgramCell", for: indexPath) as! EventProgramCell
         let event = eventsArrray![indexPath.row]
-        let url = WSHelper.getBaseURL() +  event.image!
+        var url : URL
+        if event.image!.starts(with: "http") {
+            url = URL(string: event.image!)!
+        } else {
+            url = URL(string: WSHelper.getBaseURL() + event.image!)!
+        }
         let placeholderIndex = indexPath.row % imagesArray.count
-        dailyCell.backgroundImageView?.kf.setImage(with: URL(string: url), placeholder: UIImage(named: imagesArray[placeholderIndex]), options: nil, progressBlock: nil, completionHandler: { (image : UIImage, error: NSError?, cacheType : CacheType, url: URL?) in
+        dailyCell.backgroundImageView?.kf.setImage(with: url, placeholder: UIImage(named: imagesArray[placeholderIndex]), options: nil, progressBlock: nil, completionHandler: { (image : UIImage, error: NSError?, cacheType : CacheType, url: URL?) in
             
             } as? CompletionHandler)
         dailyCell.layer.cornerRadius = 10
@@ -100,6 +105,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         var query = "eventDate = \"" + filterString! + "\""
          query += " AND isSocial = " + String(self.social)
         request.predicate = NSPredicate(format: query)
+        request.sortDescriptors = [NSSortDescriptor(key: "eventHour", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
         let results = AERecord.execute(fetchRequest: request)
         eventsArrray = results as? [CDEvent];
         self.collectionView?.reloadData()

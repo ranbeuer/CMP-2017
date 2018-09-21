@@ -91,7 +91,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "Program") as! EventsViewController
         let event = eventsArrray![indexPath.row]
         newViewController.filterString = event.dailyEventDate
-        newViewController.social = true
+        newViewController.social = self.isSocial
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
@@ -109,7 +109,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
                 if error == nil {
                     let events = (response?.value?.result)!
                     for (_, event) in events.enumerated() {
-                        event.isSocial = true
+                        event.isSocial = self.isSocial
                         event.insertEvent()
                     }
                     AERecord.saveAndWait()

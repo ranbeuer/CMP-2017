@@ -35,7 +35,9 @@ class WSHelper {
     let kURLRoutesCalendar =        "events/route/calendar" //ya
     let kURLRoutesDetail =          "events/route/detail" //ya
     let kURLEventsProgramLikes =    "events/count/program"
-    let kURLEventsDailyLikes =      "events/count"
+    let kURLEventLikes =      "events/count"
+    let kURLEventLike =             "events/like"
+    
     
     
     
@@ -436,8 +438,16 @@ class WSHelper {
         }
     }
     
-    func getDailyEventsLike(idEvent: Int, result: @escaping ResultBlock) {
-        
+    func getDailyEventsLike(eventDate: String, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventsProgramLikes
+        let token = SessionHelper.instance.sessionToken
+        genericPost(url: url, parameters: ["eventDate":eventDate,"token":token!], callback: result)
+    }
+    
+    func getEventsLike(idEvent: Int, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventLikes
+        let token = SessionHelper.instance.sessionToken
+        genericPost(url: url, parameters: ["idEvent":idEvent,"token":token!], callback: result)
     }
     
 }
