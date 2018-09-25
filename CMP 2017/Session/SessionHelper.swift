@@ -24,6 +24,22 @@ class SessionHelper : NSObject {
     /// Uid, email address.
 //    private var uid : String? = nil
     
+    private var avatarImage : UIImage? = nil {
+        didSet {
+            
+            do {
+                let imageData = UIImageJPEGRepresentation(avatarImage!, 1)
+                let relativePath = "image_\(Date.timeIntervalSinceReferenceDate).jpg"
+                let path = SessionHelper.documentsPathForFileName(name: relativePath)
+                try imageData?.write(to: URL(fileURLWithPath: path), options: .atomic)
+                UserDefaults.standard.set(relativePath, forKey: "path")
+                UserDefaults.standard.synchronize()
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+    }
     
     
     /// User's email address.
@@ -46,6 +62,7 @@ class SessionHelper : NSObject {
         }
     }
     
+    
     /// User's info.
     private(set) var user : User?;
     
@@ -55,6 +72,14 @@ class SessionHelper : NSObject {
             sessionToken = info["sessionToken"]
             client = info["client"]
             email = info["email"]
+            let possibleOldImagePath = UserDefaults.standard.string(forKey: "path")
+            if let oldImagePath = possibleOldImagePath {
+                let oldFullPath = SessionHelper.documentsPathForFileName(name: oldImagePath)
+                let oldImageData = NSData(contentsOfFile: oldFullPath)
+                // here is your saved image:
+                avatarImage = UIImage(data: oldImageData! as Data)
+            }
+            
         }
         
         if let userInfo : [String:Any] = UserDefaults.standard.dictionary(forKey: "userInfo") {
@@ -127,5 +152,14 @@ class SessionHelper : NSObject {
         
     }
     
+    static func documentsPathForFileName(name: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true);
+        let path = paths[0] as String;
+        let fullPath = path.appendPathComponent(path: name)
+        
+        return fullPath
+    }
+    
+
     
 }

@@ -25,5 +25,6 @@ extension CDDailyEvent {
     @NSManaged public var dailyEventPicture: String?
     @NSManaged public var isSocial: Bool
     @NSManaged public var likes: Int32
+    @NSManaged public var liked: Bool
 
 }

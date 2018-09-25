@@ -19,4 +19,8 @@ extension String{
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegex);
         return emailTest.evaluate(with:self)
     }
+    func appendPathComponent(path: String) -> String {
+        let nsSt = self as NSString
+        return nsSt.appendingPathComponent(path)
+    }
 }

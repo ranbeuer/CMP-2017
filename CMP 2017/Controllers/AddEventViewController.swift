@@ -42,6 +42,20 @@ class AddEventViewController : UIViewController {
                 let responseObj = response as! [String : Any]
                 SessionHelper.instance.saveUserInfo(responseObj["profile"] as! [String : Any])
                 self.showProfileInfo()
+                
+//                let fcmSent = UserDefaults.standard.bool(forKey: "FCMSent")
+//                if !fcmSent {
+                    if let fcmToken = UserDefaults.standard.string(forKey: "FCMToken")  {
+                        let user = SessionHelper.instance.user
+                        WSHelper.sharedInstance.register(fcmToken: fcmToken, email: (user?.email)!) { (response, error) in
+                            if (error == nil) {
+                                UserDefaults.standard.set(true, forKey: "FCMSent")
+                            } else {
+                                print(error?.localizedDescription)
+                            }
+                        }
+                    }
+//                }
             }
         }
         WSHelper.sharedInstance.getFriends { (response, error) in

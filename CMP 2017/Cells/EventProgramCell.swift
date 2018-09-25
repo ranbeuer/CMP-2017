@@ -14,7 +14,8 @@ class EventProgramCell : UICollectionViewCell {
     @IBOutlet var nameLabel : UILabel?
     @IBOutlet var descriptionLabel : UILabel?
     @IBOutlet var dateLabel : UILabel?
-    @IBOutlet var bookmarkButton : UIButton?
+    @IBOutlet var bookmarkImageView : UIImageView?
+    @IBOutlet var likesLabel : UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -24,6 +24,7 @@ extension CDEvent {
     @NSManaged public var eventHour: String?
     @NSManaged public var isSocial: Bool
     @NSManaged public var likes: Int32
+    @NSManaged public var liked: Bool
     
 
 }

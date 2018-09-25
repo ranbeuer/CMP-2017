@@ -35,8 +35,9 @@ class WSHelper {
     let kURLRoutesCalendar =        "events/route/calendar" //ya
     let kURLRoutesDetail =          "events/route/detail" //ya
     let kURLEventsProgramLikes =    "events/count/program"
-    let kURLEventLikes =      "events/count"
+    let kURLEventLikes =            "events/count"
     let kURLEventLike =             "events/like"
+    let kURLFCMToken =              "users/create/firebase"
     
     
     
@@ -203,6 +204,8 @@ class WSHelper {
             manager.post(path!, parameters: parameters, progress: nil, success: { (task, response) in
                 let json = response as! Dictionary <String, Any>
                 let code = json["code"] as! Int
+                let headers = task.currentRequest?.allHTTPHeaderFields
+                
                 if (code == 200 || code == 0) {
                     var finalresponse = json["response"]
                     if (finalresponse != nil) {
@@ -438,16 +441,27 @@ class WSHelper {
         }
     }
     
-    func getDailyEventsLike(eventDate: String, result: @escaping ResultBlock) {
-        let url = WSHelper.getBaseURL() + kURLEventsProgramLikes
+    func getDailyEventsLike(social: Bool, eventDate: String, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventsProgramLikes + (social ? "/social" : "" )
         let token = SessionHelper.instance.sessionToken
         genericPost(url: url, parameters: ["eventDate":eventDate,"token":token!], callback: result)
     }
     
-    func getEventsLike(idEvent: Int, result: @escaping ResultBlock) {
-        let url = WSHelper.getBaseURL() + kURLEventLikes
+    func getEventsLike(social: Bool, idEvent: Int, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventLikes + (social ? "/social" : "" )
         let token = SessionHelper.instance.sessionToken
         genericPost(url: url, parameters: ["idEvent":idEvent,"token":token!], callback: result)
     }
     
+    func likeEvent(idEvent: Int, email: String, social: Bool, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLEventLike
+        let token = SessionHelper.instance.sessionToken
+        genericPost(url: url, parameters: ["idEvent":idEvent,"token":token!, "type": (social ? 2 : 1)], callback: result)
+    }
+    
+    func register(fcmToken: String, email: String, result: @escaping ResultBlock) {
+        let url = WSHelper.getBaseURL() + kURLFCMToken
+        let parameters = ["email": email,"idFirebase":fcmToken, "device":2] as [String : Any]
+        genericPost(url: url, parameters:parameters, callback: result)
+    }
 }

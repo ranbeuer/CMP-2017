@@ -65,6 +65,7 @@
 		A84A35C721291AC000E3DFC1 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A35C621291AC000E3DFC1 /* AddEventViewController.swift */; };
 		A84A35C92129206700E3DFC1 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A35C82129206700E3DFC1 /* ContactCell.swift */; };
 		A85B6FF821425C510068811F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A85B6FFA21425C510068811F /* Localizable.strings */; };
+		A85FFD782158900D00C1564E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A85FFD772158900D00C1564E /* GoogleService-Info.plist */; };
 		A868AA4521270ED600E244B2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4421270ED600E244B2 /* ContactsViewController.swift */; };
 		A868AA4721270EE300E244B2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA4621270EE300E244B2 /* ChatViewController.swift */; };
 		A868AA522127161E00E244B2 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868AA492127161E00E244B2 /* Chat.swift */; };
@@ -185,6 +186,8 @@
 		A85B6FF5214259160068811F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A85B6FF921425C510068811F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A85B6FFB21425C5F0068811F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A85FFD772158900D00C1564E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A85FFD79215A105500C1564E /* EventsLike.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsLike.xcdatamodel; sourceTree = "<group>"; };
 		A868AA4421270ED600E244B2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		A868AA4621270EE300E244B2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A868AA492127161E00E244B2 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -295,6 +298,7 @@
 				69FB64BE20DEFE9E008E58D2 /* AppDelegate.swift */,
 				69FB64C420DEFE9E008E58D2 /* Main.storyboard */,
 				69FB64C920DEFEAF008E58D2 /* LaunchScreen.storyboard */,
+				A85FFD772158900D00C1564E /* GoogleService-Info.plist */,
 				A8A6673E214C09F500312B88 /* Info.plist */,
 				A85B6FFA21425C510068811F /* Localizable.strings */,
 			);
@@ -632,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FB64CB20DEFEAF008E58D2 /* LaunchScreen.storyboard in Resources */,
+				A85FFD782158900D00C1564E /* GoogleService-Info.plist in Resources */,
 				A83E669A210F0C5600047B87 /* README.md in Resources */,
 				A83E6691210F0C5600047B87 /* LICENSE in Resources */,
 				69FB64C620DEFE9E008E58D2 /* Main.storyboard in Resources */,
@@ -708,17 +713,20 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/FRHyperLabel/FRHyperLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HPGrowingTextView/HPGrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NoChat/NoChat.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/UINavigationBar-Transparent/UINavigationBar_Transparent.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -727,17 +735,20 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FRHyperLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HPGrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NoChat.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UINavigationBar_Transparent.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1193,6 +1204,7 @@
 		A8AFC5D5211036970096E7A5 /* CMP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A85FFD79215A105500C1564E /* EventsLike.xcdatamodel */,
 				A871EDB5215238BA00CCC9D2 /* SocialEvents.xcdatamodel */,
 				A89050142146BE620032E63D /* EvExRelation.xcdatamodel */,
 				A82874372132883000B59EBE /* MessagesUpdate.xcdatamodel */,
@@ -1200,7 +1212,7 @@
 				A847E878212E0513004D5B8B /* Friends.xcdatamodel */,
 				A8AFC5D6211036970096E7A5 /* CMP.xcdatamodel */,
 			);
-			currentVersion = A871EDB5215238BA00CCC9D2 /* SocialEvents.xcdatamodel */;
+			currentVersion = A85FFD79215A105500C1564E /* EventsLike.xcdatamodel */;
 			path = CMP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

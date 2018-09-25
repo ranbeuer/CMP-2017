@@ -21,6 +21,7 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
     var loadingObjects : Bool = false
     var isSocial : Bool = false
     static var flowLayout : CenteredFlowLayout?
+    var indexesForLoad = IndexSet()
     
     var eventsArrray: [CDDailyEvent]?
     
@@ -30,17 +31,29 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
 //        flowLayout.minimumLineSpacing = 0
         self.loadDailyEvents()
         reloadButton?.layer.cornerRadius = 10
+        
+//        let fcmSent = UserDefaults.standard.bool(forKey: "FCMSent")
+//        if !fcmSent {
+            if let fcmToken = UserDefaults.standard.string(forKey: "FCMToken")  {
+                let user = SessionHelper.instance.user
+                WSHelper.sharedInstance.register(fcmToken: fcmToken, email: (user?.email)!) { (response, error) in
+//                    UserDefaults.standard.set(true, forKey: "FCMSent")
+                }
+            }
+//        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setTitleBarItemsColor(color: UIColor.black)
+        indexesForLoad.removeAll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,6 +91,24 @@ class EventsDailyViewController: UIViewController, UICollectionViewDelegate, UIC
         dailyCell.nameLabel?.text = event.dailyEventName
         dailyCell.descriptionLabel?.text = event.dailyEventDescription
         dailyCell.quotationlabel?.text = event.dailyEventDate
+        dailyCell.likesLabel?.superview?.isHidden = false
+        dailyCell.likesLabel?.text = String(event.likes)
+        
+        if !indexesForLoad.contains(indexPath.row) {
+            WSHelper.sharedInstance.getDailyEventsLike(social: self.isSocial, eventDate: event.dailyEventDate!) { (result, error) in
+                if (error == nil) {
+                    self.indexesForLoad.insert(indexPath.row)
+                    let response = result as! [[String:NSInteger]]
+                    let likesDict = response[0]
+                    let likes = likesDict["count"]
+                    event.likes = Int32(likes!)
+                    AERecord.save()
+                    collectionView.reloadData()
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        }
         
         return dailyCell
     }

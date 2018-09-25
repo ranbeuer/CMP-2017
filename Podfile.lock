@@ -22,6 +22,28 @@ PODS:
   - Crashlytics (3.10.5):
     - Fabric (~> 1.7.9)
   - Fabric (1.7.9)
+  - Firebase/Core (5.4.1):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.4.1):
+    - FirebaseCore (= 5.0.6)
+  - Firebase/Messaging (5.4.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.3)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.6):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.1.1):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.3):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - FRHyperLabel (1.0.4)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -30,11 +52,22 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - HPGrowingTextView (1.1)
   - IQKeyboardManager (6.1.1)
   - Kingfisher (4.8.1)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - NoChat (0.3.2)
   - ObjectMapper (3.3.0)
+  - Protobuf (3.6.0)
   - QRCode (2.0)
   - QRCodeReader.swift (8.2.0)
   - Spring (1.0.5)
@@ -48,6 +81,8 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.0)
   - Crashlytics
   - Fabric
+  - Firebase/Core
+  - Firebase/Messaging
   - FRHyperLabel
   - GoogleMaps
   - GooglePlaces
@@ -70,14 +105,22 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Crashlytics
     - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - FRHyperLabel
     - GoogleMaps
     - GooglePlaces
+    - GoogleToolboxForMac
     - HPGrowingTextView
     - IQKeyboardManager
     - Kingfisher
+    - nanopb
     - NoChat
     - ObjectMapper
+    - Protobuf
     - QRCode
     - QRCodeReader.swift
     - SVProgressHUD
@@ -100,14 +143,22 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  Firebase: 355bd535bfdacaa82a7fe8d9784115edefd6fc03
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: 4c28e3b9708ba48a765e76515f913a71596eb5dd
+  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
+  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
   FRHyperLabel: f4a127d5f8ffb211040554615e93f936d5a576a6
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   HPGrowingTextView: 88a716d97fb853bcb08a4a08e4727da17efc9b19
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NoChat: aaa980b8b29c0db8c8bd8ecde22e718cc8ad1bf7
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
   QRCodeReader.swift: 003eb32f18a5a675b936ec82ba0ff368cddbff45
   Spring: 3c7666eccefdeb87140008dc81043f89f8dbb787
@@ -115,6 +166,6 @@ SPEC CHECKSUMS:
   UINavigationBar-Transparent: 7461a7dbff53a7b558985812d38bb054717de795
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b530686d7c40e1d04de5b8e83e1bb210154891df
+PODFILE CHECKSUM: ae30c7c0fa596ef4f238d62ce9545f6207189217
 
 COCOAPODS: 1.5.2

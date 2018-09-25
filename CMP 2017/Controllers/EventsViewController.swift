@@ -24,6 +24,7 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var sponsors : SponsorsViewController?
     var filterString : String?
     var social : Bool = false
+    var indexesForLoad = IndexSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,8 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setTitleBarItemsColor(color: UIColor.white)
+        indexesForLoad.removeAll()
+        self.collectionView?.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +52,11 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         } else if (eventsArrray?.count == 0) {
             SVProgressHUD.showError(withStatus:NSLocalizedString("DialogMessageNoEventsForDay", comment: ""))
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +91,27 @@ class EventsViewController: UIViewController, UICollectionViewDataSource, UIColl
         dailyCell.nameLabel?.text = event.name
         dailyCell.descriptionLabel?.text = event.eventDate
         dailyCell.dateLabel?.text = event.eventHour
+        dailyCell.likesLabel?.text = String(event.likes)
+        
+        let imageName = event.liked ? "ic_fav_ribbon" : "ic_no_fav_ribbon"
+        let image = UIImage(named: imageName)
+        dailyCell.bookmarkImageView?.image = image
+        
+        if !indexesForLoad.contains(indexPath.row) {
+            WSHelper.sharedInstance.getEventsLike(social: self.social, idEvent: Int(event.idEvent)) { (result, error) in
+                if (error == nil) {
+                    self.indexesForLoad.insert(indexPath.row)
+                    let response = result as! [[String:NSInteger]]
+                    let likesDict = response[0]
+                    let likes = likesDict["count"]
+                    event.likes = Int32(likes!)
+                    AERecord.save()
+                    collectionView.reloadData()
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        }
         
         return dailyCell
     }

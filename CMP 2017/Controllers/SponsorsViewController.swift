@@ -27,23 +27,30 @@ class SponsorsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        if (section == 0) {
+            return 2
+        }
+        else if section == 1 {
+            return 4
+        }
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sponsorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SponsorCell", for: indexPath) as! SponsorCell
-        let sponsorImg = String(format: "sponsor\(indexPath.row + 1)")
+        let sponsorImg = String(format: "sponsor\(indexPath.section)\(indexPath.row)")
         let image = UIImage(named: sponsorImg)
         sponsorCell.backgroundImageView?.image = image!
         return sponsorCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: collectionView.frame.size.width/2, height: collectionView.frame.size.height / 3)
+        let numberOfrows = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
+        let size = CGSize(width: collectionView.frame.size.width/CGFloat(numberOfrows), height: collectionView.frame.size.height / 3)
         return size
     }
     

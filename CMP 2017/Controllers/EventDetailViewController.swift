@@ -21,6 +21,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
     @IBOutlet weak var eventExhibitorName: UILabel!
     @IBOutlet weak var eventExhibitorJob: UILabel!
     @IBOutlet weak var exhibitorContainer: UIView!
+    @IBOutlet weak var likeButton: UIButton!
     
     var event : CDEvent?
     
@@ -41,15 +42,6 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         widthConstraint?.constant = self.view.frame.size.width
         containerView.setNeedsLayout()
         
-        let gradient = CAGradientLayer()
-        var rect = self.view.bounds
-        rect.origin.y += (rect.size.height - (rect.size.height / 3))
-        rect.size.height = rect.size.height / 3
-        gradient.frame = rect
-        gradient.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.5), UIColor.white.cgColor]
-        gradient.locations = [0, 0.6, 1]
-        self.view.layer.addSublayer(gradient)
-        
         if let exhibitor = getExhibitor(eventId: String((event?.idEvent)!)) {
             eventExhibitorName.text = exhibitor.name! + " " + exhibitor.lastName!
             eventExhibitorJob.text = exhibitor.degree!
@@ -63,6 +55,10 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
         } else {
             exhibitorContainer.removeFromSuperview()
         }
+        
+//        self.likeButton.isSelected = (self.event?.liked)!
+        self.likeButton.isEnabled = !(self.event?.liked)!
+
         
     }
     
@@ -113,6 +109,30 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegateFlowL
             return nil
         }
         return exhibitorsResult[0] as? CDExhibitor
+    }
+    
+    @IBAction func likeButtonPressed(sender: UIButton) {
+        if (event?.liked)! {
+            return
+        }
+        let user = SessionHelper.instance.user
+        let idEvent = (event?.idEvent)! as Int32
+        WSHelper.sharedInstance.likeEvent(idEvent: Int(idEvent), email: (user?.email)!, social: (event?.isSocial)!) { (result, error) in
+            if (error != nil) {
+                self.event?.liked = true
+                AERecord.save()
+                self.likeButton.isEnabled = false
+            }
+        }
+        UIView.animate(withDuration: 0.15, animations: {
+            sender.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.15, animations: {
+                sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }) { (finished) in
+                
+            }
+        }
     }
 }
 
