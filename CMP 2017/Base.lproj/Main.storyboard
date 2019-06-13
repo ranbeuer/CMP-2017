@@ -807,8 +807,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_up" translatesAutoresizingMaskIntoConstraints="NO" id="f9L-fa-O4F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-ef-FDb">
-                                <rect key="frame" x="30" y="356" width="315" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-ef-FDb">
+                                <rect key="frame" x="30" y="289" width="315" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="c2v-ru-afS"/>
@@ -817,8 +817,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bVw-Rm-0rI">
-                                <rect key="frame" x="30" y="436" width="315" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bVw-Rm-0rI">
+                                <rect key="frame" x="30" y="369" width="315" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="p6k-8k-eXB"/>
@@ -827,14 +827,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo_cmp_white" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-dN-zcr">
-                                <rect key="frame" x="179.5" y="60" width="16" height="246"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_cmp_ss" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-dN-zcr">
+                                <rect key="frame" x="60" y="60" width="255" height="179"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="esc-Sd-kY4"/>
+                                    <constraint firstAttribute="width" secondItem="PQc-dN-zcr" secondAttribute="height" multiplier="225:158" id="zpw-u0-PdU"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpB-LB-gh5">
-                                <rect key="frame" x="30" y="546" width="315" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpB-LB-gh5">
+                                <rect key="frame" x="30" y="479" width="315" height="50"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.32941176470588235" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aqk-Tn-Jgw"/>
@@ -889,7 +889,8 @@
                             <constraint firstItem="bVw-Rm-0rI" firstAttribute="leading" secondItem="gxP-4e-TIk" secondAttribute="leading" constant="30" id="33Z-13-Jx6"/>
                             <constraint firstItem="GpB-LB-gh5" firstAttribute="leading" secondItem="gxP-4e-TIk" secondAttribute="leading" constant="30" id="5tX-IN-ycG"/>
                             <constraint firstAttribute="bottom" secondItem="f9L-fa-O4F" secondAttribute="bottom" id="60M-pH-Ma7"/>
-                            <constraint firstItem="PQc-dN-zcr" firstAttribute="top" relation="lessThanOrEqual" secondItem="gxP-4e-TIk" secondAttribute="top" constant="40" id="9Zc-Ng-NEq"/>
+                            <constraint firstItem="PQc-dN-zcr" firstAttribute="leading" secondItem="gxP-4e-TIk" secondAttribute="leading" constant="60" id="9Mu-UK-hhQ"/>
+                            <constraint firstItem="PQc-dN-zcr" firstAttribute="top" secondItem="gxP-4e-TIk" secondAttribute="top" constant="40" id="9Zc-Ng-NEq"/>
                             <constraint firstItem="w6O-ef-FDb" firstAttribute="top" secondItem="PQc-dN-zcr" secondAttribute="bottom" constant="50" id="AmX-WU-uYJ"/>
                             <constraint firstItem="f9L-fa-O4F" firstAttribute="top" secondItem="IFO-fy-ch3" secondAttribute="top" id="Bs7-hU-Md7"/>
                             <constraint firstItem="gxP-4e-TIk" firstAttribute="trailing" secondItem="bVw-Rm-0rI" secondAttribute="trailing" constant="30" id="C9D-ee-ehF"/>
@@ -903,6 +904,7 @@
                             <constraint firstItem="gxP-4e-TIk" firstAttribute="trailing" secondItem="GpB-LB-gh5" secondAttribute="trailing" constant="30" id="sYQ-x6-d14"/>
                             <constraint firstItem="w6O-ef-FDb" firstAttribute="leading" secondItem="gxP-4e-TIk" secondAttribute="leading" constant="30" id="u1x-vW-rxV"/>
                             <constraint firstItem="gxP-4e-TIk" firstAttribute="trailing" secondItem="f9L-fa-O4F" secondAttribute="trailing" id="ugu-6o-ycz"/>
+                            <constraint firstItem="gxP-4e-TIk" firstAttribute="trailing" secondItem="PQc-dN-zcr" secondAttribute="trailing" constant="60" id="wgI-0t-FVj"/>
                             <constraint firstItem="gxP-4e-TIk" firstAttribute="trailing" secondItem="w6O-ef-FDb" secondAttribute="trailing" constant="30" id="wlg-Me-Pxi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gxP-4e-TIk"/>
@@ -1987,7 +1989,7 @@
         <image name="ic_check" width="50" height="50"/>
         <image name="ic_exhibi" width="32" height="32"/>
         <image name="ic_heart_fav" width="32" height="32"/>
-        <image name="logo_cmp_white" width="112.5" height="79"/>
+        <image name="logo_cmp_ss" width="165.5" height="111.5"/>
         <image name="sample_avatar" width="34.5" height="35.5"/>
         <image name="sign_up" width="414" height="736"/>
     </resources>
