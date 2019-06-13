@@ -9,7 +9,7 @@
 "0qu-HB-0jP.text" = "Regístrate";
 
 /* Class = "UILabel"; text = "TUMOR IMMUNOLOGY"; ObjectID = "2hU-Qj-CFB"; */
-"2hU-Qj-CFB.text" = "CMP 2018";
+"2hU-Qj-CFB.text" = "CMP 2019";
 
 /* Class = "UIViewController"; title = "Sign Up"; ObjectID = "2xf-qn-Ubi"; */
 "2xf-qn-Ubi.title" = "Sign Up";
@@ -45,7 +45,7 @@
 "BOI-1R-oPa.text" = "Label";
 
 /* Class = "UILabel"; text = "Do you want to add an event?"; ObjectID = "DfJ-uW-iE8"; */
-"DfJ-uW-iE8.text" = "¿Deseas agregar un evento?";
+"DfJ-uW-iE8.text" = "Bienvenido al congreso mexicano del petróleo 2019.";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "EsH-Hq-Siu"; */
 "EsH-Hq-Siu.text" = "Label";
@@ -101,8 +101,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "coa-eQ-rA7"; */
 "coa-eQ-rA7.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "SEARCH CODE"; ObjectID = "dPw-Cd-MVF"; */
-"dPw-Cd-MVF.normalTitle" = "BUSCAR";
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "dPw-Cd-MVF"; */
+"dPw-Cd-MVF.normalTitle" = "CONTINUAR";
 
 /* Class = "UILabel"; text = "PHOTOS"; ObjectID = "dWH-z8-SZn"; */
 "dWH-z8-SZn.text" = "FOTOS";

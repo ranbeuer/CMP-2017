@@ -12,7 +12,7 @@ import AlamofireObjectMapper
 import AFNetworking
 
 class WSHelper {
-    static private let devURL = "http://52.173.95.250:3333/"
+    static private let devURL = "http://167.99.101.209/api/"
     /// Prod Base url
     static private let prodURL = "https://www.apicmp.com/api/"
     
@@ -46,7 +46,7 @@ class WSHelper {
     let manager = AFHTTPSessionManager(baseURL: URL(string: WSHelper.baseURL))
     
     /// Indicates if the application is pointing to prod or dev env
-    static let devEnv = false
+    static let devEnv = true
     /// Configurable base URL, it can be either prod or dev
     private static var baseURL = WSHelper.devEnv ? WSHelper.devURL : WSHelper.prodURL
     /// If set to true it will let the application to show the requests and responses

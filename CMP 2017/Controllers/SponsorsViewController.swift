@@ -32,12 +32,12 @@ class SponsorsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (section == 0) {
-            return 2
+            return 1
         }
         else if section == 1 {
-            return 4
+            return 7
         }
-        return 3
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,7 +50,7 @@ class SponsorsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfrows = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
-        let size = CGSize(width: collectionView.frame.size.width/CGFloat(numberOfrows), height: collectionView.frame.size.height / 3)
+        let size = CGSize(width: collectionView.frame.size.width/CGFloat((numberOfrows > 4 ? (indexPath.row < 4 ? 4 :numberOfrows - 4 ): numberOfrows)) - 5, height: collectionView.frame.size.height / (numberOfrows > 4 ? 6 : 3))
         return size
     }
     

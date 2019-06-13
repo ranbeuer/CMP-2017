@@ -97,6 +97,8 @@
 		A8D25CE221246CDB00D58159 /* ExhibitorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */; };
 		A8D25CE42124736600D58159 /* ExhibitorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */; };
 		A8D25CE621248C1900D58159 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25CE521248C1900D58159 /* ProfileViewController.swift */; };
+		A8E2BF7222B1E82300388AE2 /* Hoteles.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E2BF7122B1E82300388AE2 /* Hoteles.json */; };
+		A8E2BF7422B1E8A900388AE2 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2BF7322B1E8A900388AE2 /* Hotel.swift */; };
 		A8E84AB221382F0D001B30A5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E84AB121382F0D001B30A5 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +228,8 @@
 		A8D25CE121246CDB00D58159 /* ExhibitorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorCell.swift; sourceTree = "<group>"; };
 		A8D25CE32124736600D58159 /* ExhibitorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorsViewController.swift; sourceTree = "<group>"; };
 		A8D25CE521248C1900D58159 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A8E2BF7122B1E82300388AE2 /* Hoteles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Hoteles.json; sourceTree = "<group>"; };
+		A8E2BF7322B1E8A900388AE2 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		A8E84AB121382F0D001B30A5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +304,7 @@
 				A85FFD772158900D00C1564E /* GoogleService-Info.plist */,
 				A8A6673E214C09F500312B88 /* Info.plist */,
 				A85B6FFA21425C510068811F /* Localizable.strings */,
+				A8E2BF7122B1E82300388AE2 /* Hoteles.json */,
 			);
 			path = "CMP 2017";
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 				A8287435213277DA00B59EBE /* Message.swift */,
 				A87A0307214FAD6A000D8FC1 /* Route.swift */,
 				A87A03092151A04C000D8FC1 /* RouteSchedule.swift */,
+				A8E2BF7322B1E8A900388AE2 /* Hotel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E2BF7222B1E82300388AE2 /* Hoteles.json in Resources */,
 				69FB64CB20DEFEAF008E58D2 /* LaunchScreen.storyboard in Resources */,
 				A85FFD782158900D00C1564E /* GoogleService-Info.plist in Resources */,
 				A83E669A210F0C5600047B87 /* README.md in Resources */,
@@ -723,6 +730,7 @@
 				A83E6605210EB3A300047B87 /* EventsResponse.swift in Sources */,
 				A83E6698210F0C5600047B87 /* SideMenuController.swift in Sources */,
 				A83E6692210F0C5600047B87 /* CenterContainmentSegue.swift in Sources */,
+				A8E2BF7422B1E8A900388AE2 /* Hotel.swift in Sources */,
 				A83E6602210EA2C500047B87 /* Exhibitor.swift in Sources */,
 				69FB64F320DF0927008E58D2 /* LoginViewController.swift in Sources */,
 				A84A35BF21290F5A00E3DFC1 /* MMSystemMessageCellLayout.swift in Sources */,

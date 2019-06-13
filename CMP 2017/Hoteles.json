@@ -1,0 +1,124 @@
+[
+    {
+        "name":"City Express Plus León Centro de Convenciones",
+        "coordinates": {
+            "lat":21.1134593,
+            "long":-101.6526513
+        },
+        "description": "City Express Plus León Centro de Convenciones es un hotel en la zona centro de León, Guanajuato, justo sobre el Blvd. Adolfo López Mateos, la vía principal de la metrópolis del Bajío.\nFrente al Centro de Convenciones Poliforum, el recinto de la Feria de León, el Parque Ecológico Explora y el Estadio León, la ubicación del hotel es, sencillamente, inmejorable.\nPuedes llegar en 5 minutos al centro histórico de León y en 10 minutos al Aeropuerto Internacional del Bajío. Además, si quieres ir de compras, Plaza Altacia, Plaza Centro Max y los outlets Mulza y Factory están todos en los alrededores."
+    },
+    {
+        "name":"City Express Junior León Centro de Convenciones",
+        "coordinates": {
+            "lat":21.1164144,
+            "long":-101.6578618
+        },
+        "description": "City Express Junior León Centro de Convenciones es un hotel en la zona centro de León, Guanajuato, justo sobre el Blvd. Adolfo López Mateos, la vía principal de la metrópolis del Bajío.\nFrente al Centro de Convenciones Poliforum, el recinto de la Feria de León, el Parque Ecológico Explora y el Estadio León, la ubicación del hotel es, sencillamente, inmejorable.\nPuedes llegar en 5 minutos al centro histórico de León y en 10 minutos al Aeropuerto Internacional del Bajío. Además, si quieres ir de compras, Plaza Altacia, Plaza Centro Max y los outlets Mulza y Factory están todos en los alrededores."
+    },
+    {
+        "name":"Hampton Inn by Hilton Leon Guanajuato",
+        "coordinates": {
+            "lat":21.1182147,
+            "long":-101.6626449
+        },
+        "description": "Hampton Inn by Hilton Leon Guanajuato, un hotel para familias que te acerca a lo mejor de León. Se ofrece wifi gratuito a los huéspedes y las habitaciones de Hampton Inn by Hilton Leon incluyen televisor de pantalla plana, aire acondicionado y frigorífico. Durante la estancia, disfruta de algunos de los servicios que ofrecen, como recepción abierta 24 horas, conserje y servicio de habitaciones. Los huéspedes de Hampton Inn by Hilton Leon también disponen de piscina y desayuno incluido allí mismo."
+    },
+    {
+        "name":"HS HOTSSON HOTEL LEÓN",
+        "coordinates": {
+            "lat":21.1192877,
+            "long":-101.6691756
+        },
+        "description": "Todos los hoteles de la cadena HS HOTSSON están ubicados estratégicamente cerca de importantes puntos turísticos y de negocios, facilitando la movilidad de nuestros huéspedes."
+    },
+    {
+        "name":"Holiday Inn Leon",
+        "coordinates": {
+            "lat":21.1193571,
+            "long":-101.6757417
+        },
+        "description": "Hotel Holiday Inn Leon, está ubicado a unos pasos de la Central de Autobuses, a 1 km del Poliforum de León, y en una de las zonas comerciales principales de la ciudad. Recientemente relanzado y con 176 habitaciones para tu comodidad.\nTambien podras difrutar de un rico desayuno en el restaurante \"Nuestro Patio\", o bien relajarte en el bar \"Time Out\""
+        
+        
+    },
+    {
+        "name":"Courtyard Leon at The Poliforum",
+        "coordinates": {
+            "lat":21.1135641,
+            "long":-101.6561844
+        },
+        "description": "Ubicado en el centro de la hermosa ciudad de León, el Courtyard León at The Poliforum ofrece un diseño contemporáneo, modernas comodidades y un servicio extraordinario. Venga a nuestro hotel en León, Guanajuato por viaje de negocio o de placer."
+    },
+    {
+        "name":"Hotel NH Collection León Expo",
+        "coordinates": {
+            "lat":21.1150609,
+            "long":-101.6545462
+        },
+        "description": "El NH Collection León Expo, un hotel recién inaugurado de estilo contemporáneo, se encuentra en la ubicación perfecta tanto para los viajeros de negocios como para aquellos que quieran explorar la ciudad."
+    },
+    {
+        "name":"Holiday Inn León Centro de Convenciones",
+        "coordinates": {
+            "lat":21.1137992,
+            "long":-101.6524489
+        },
+        "description": "Holiday Inn León Centro de Convenciones es un hotel de negocios equipado con salones para eventos, salas de juntas y acceso a Internet inalámbrico en cortesía. Por su conveniente ubicación en la ciudad de León, al elegirlo estarás cerca de importantes puntos de interés turístico y ejecutivo, como la Plaza del Zapato, las instalaciones de la feria anual y el Poliforum."
+    },
+    {
+        "name":"Radisson Poliforum Plaza Hotel Leon",
+        "coordinates": {
+            "lat":21.1134119,
+            "long":-101.6491125
+        },
+        "description": "adisson Poliforum Plaza Hotel León ofrece un alojamiento de cinco estrellas en el centro de México y está a una cómoda distancia de 20 minutos en coche del aeropuerto internacional de Guanajuato (BJX)."
+    },
+    {
+        "name":"Real De Minas Business Class",
+        "coordinates": {
+            "lat":21.114186,
+            "long":-101.6548677
+        },
+        "description": "Hotel Real de Minas Poliforum Situado frente al centro de convenciones Poliforum, muy cerca del parque Explora, del estadio León y de la Zona Piel, Real de Minas Poliforum es un hotel de categoría 5 estrellas pensado para el viajero de negocios, familiar y de placer que busca una opción única de hospedaje en León, Gto."
+    },
+    {
+        "name":"Hotel Real de Minas Poliforum",
+        "coordinates": {
+            "lat":21.115797,
+            "long":-101.6564787
+        },
+        "description": "Hotel Real de Minas Poliforum Situado frente al centro de convenciones Poliforum, muy cerca del parque Explora, del estadio León y de la Zona Piel, Real de Minas Poliforum es un hotel de categoría 5 estrellas pensado para el viajero de negocios, familiar y de placer que busca una opción única de hospedaje en León, Gto."
+    },
+    {
+        "name":"La Quinta Inn & Suites",
+        "coordinates": {
+            "lat":21.1079569,
+            "long":-101.6460048
+        },
+        "description": "Ubicado a solo 5 minutos del principal Centro de Convenciones de la región. Es una de las zonas de mayor plusvalia, modernidad y favorable crecimiento economico, industrial, social y cultural al sur de la ciudad de León dentro de la zona Hotelera."
+    },
+    {
+        "name":"Crowne Plaza Leon",
+        "coordinates": {
+            "lat":21.1597893,
+            "long":-101.6954211
+        },
+        "description": "El Hotel Crowne Plaza León cuenta con 208 habitaciones, está ubicado en la zona dorada de León y a 500 metros de Plaza Mayor. Sus amplias habitaciones proporcionan al huésped un ambiente relajado ideal para el descanso o para el trabajo ya que cuenta con las más modernas instalaciones para ello."
+    },
+    {
+        "name":"City Express León",
+        "coordinates": {
+            "lat":21.0990169,
+            "long":-101.6341675
+        },
+        "description": "City Express León está ubicado a tan sólo 15 minutos del centro de la ciudad donde podrás conocer edificios emblemáticos como el templo Expiatorio y el Arco de la Calzada mientras disfrutas una deliciosa guacamaya."
+    },
+    {
+        "name":"Hotel Stadium",
+        "coordinates": {
+            "lat":21.1161387,
+            "long":-101.6610075
+        },
+        "description": "El Hotel & Plaza Stadium se encuentra frente al Museo de Arte e Historia de Guanajuato, y ofrece vistas impresionantes al estadio de fútbol de León, un restaurante y conexión Wi-Fi gratuita en todo el establecimiento."
+    }
+]
